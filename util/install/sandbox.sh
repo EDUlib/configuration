@@ -45,9 +45,7 @@ fi
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
-git clone https://github.com/edx/configuration
-cd configuration
-git checkout $CONFIG_VER
+git clone -b release https://github.com/edulib/configuration
 
 ##
 ## Install the ansible requirements
