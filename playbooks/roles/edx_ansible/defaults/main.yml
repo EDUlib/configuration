@@ -37,8 +37,10 @@ edx_ansible_venvs_dir: "{{ edx_ansible_app_dir }}/venvs"
 edx_ansible_venv_dir: "{{ edx_ansible_venvs_dir }}/edx_ansible"
 edx_ansible_venv_bin: "{{ edx_ansible_venv_dir }}/bin"
 edx_ansible_user: "edx-ansible"
-edx_ansible_source_repo: https://github.com/edx/configuration.git
+#edx_ansible_source_repo: https://github.com/edx/configuration.git
+edx_ansible_source_repo: https://github.com/EDUlib/configuration.git
 edx_ansible_requirements_file: "{{ edx_ansible_code_dir }}/requirements.txt"
 # edX configuration repo
-configuration_version: release
+#configuration_version: release
+configuration_version: edulib
 edx_ansible_var_file: "{{ edx_ansible_app_dir }}/server-vars.yml"
