@@ -50,6 +50,8 @@
     # xserver_version:
     # XSERVER_GRADER_SOURCE:
     # xserver_grader_version:
+    edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
+    edx_platform_version: 'edulib'
     # Set to false if deployed behind another proxy/load balancer.
     NGINX_SET_X_FORWARDED_HEADERS: True
     # These should stay false for the public AMI
