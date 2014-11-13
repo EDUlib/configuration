@@ -1,6 +1,6 @@
 ---
 - name: before git
-  sheel: echo 'before git'
+  shell: echo 'before git'
 
 - name: git checkout edx_ansible repo into edx_ansible_code_dir
   git: >
