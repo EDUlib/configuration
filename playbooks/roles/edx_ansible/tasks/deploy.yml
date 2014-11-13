@@ -1,4 +1,7 @@
 ---
+- name: before git
+  sheel: echo 'before git'
+
 - name: git checkout edx_ansible repo into edx_ansible_code_dir
   git: >
     dest={{ edx_ansible_code_dir }} repo={{ edx_ansible_source_repo }} version={{ configuration_version }}
