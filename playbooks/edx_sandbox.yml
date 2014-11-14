@@ -12,8 +12,44 @@
     migrate_db: "yes"
     openid_workaround: True
     EDXAPP_LMS_NGINX_PORT: '80'
+    # alton_source_repo:
+    # alton_version:
+    # analytics_source_repo:
+    # analytics_version:
+    # analytics_api_source_repo:
+    # ANALYTICS_API_VERSION:
+    # as_source_repo:
+    # as_version:
+    # CERTS_REPO:
+    # certs_version:
+    # demo_repo:
+    # demo_version:
+    # discern_source_repo:
+    # discern_version:
+    # discern_ease_source_repo:
+    # discern_ease_version:
+    edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
+    configuration_version: 'edulib'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
     edx_platform_version: 'edulib'
+    # edxapp_theme_source_repo:
+    # edxapp_theme_version:
+    # forum_source_repo: https://github.com/EDUlib/cs_comments_service.git'
+    # forum_version: 'edulib'
+    # insights_source_repo:
+    # INSIGHTS_VERSION:
+    # NOTIFIER_SOURCE_REPO:
+    # NOTIFIER_VERSION:
+    # NOTIFIER_THEME_REPO:
+    # NOTIFIER_THEME_VERSION:
+    # ora_source_repo:
+    # ora_version: 
+    # xqueue_source_repo:
+    # xqueue_version:
+    # xserver_source_repo:
+    # xserver_version:
+    # XSERVER_GRADER_SOURCE:
+    # xserver_grader_version:
     # Set to false if deployed behind another proxy/load balancer.
     NGINX_SET_X_FORWARDED_HEADERS: True
     # These should stay false for the public AMI
