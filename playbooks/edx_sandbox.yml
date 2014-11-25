@@ -34,7 +34,7 @@
     edx_platform_version: 'edulib'
     # edxapp_theme_source_repo:
     # edxapp_theme_version:
-    forum_source_repo: https://github.com/EDUlib/cs_comments_service.git'
+    forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
     forum_version: 'edulib'
     # insights_source_repo:
     # INSIGHTS_VERSION:
