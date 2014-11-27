@@ -77,7 +77,7 @@ if [[ -z $elb ]]; then
 fi
 
 if [[ -z $dns_name ]]; then
-  dns_name=$github_username
+  dns_name=${github_username}
 fi
 
 if [[ -z $name_tag ]]; then
@@ -86,7 +86,7 @@ fi
 
 if [[ -z $ami ]]; then
   if [[ $server_type == "full_edx_installation" ]]; then
-    ami="ami-f213ba9a"
+    ami="ami-26cb5a4e"
   elif [[ $server_type == "ubuntu_12.04" || $server_type == "full_edx_installation_from_scratch" ]]; then
     ami="ami-a217b2ca"
   elif [[ $server_type == "ubuntu_14.04(experimental)" ]]; then
@@ -101,6 +101,9 @@ fi
 if [[ -z $enable_monitoring ]]; then
   enable_monitoring="false"
 fi
+
+# Lowercase the dns name to deal with an ansible bug
+dns_name="${dns_name,,}"
 
 deploy_host="${dns_name}.${dns_zone}"
 ssh-keygen -f "/var/lib/jenkins/.ssh/known_hosts" -R "$deploy_host"
