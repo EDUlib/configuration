@@ -43,7 +43,9 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 
 ## Did we specify an openedx release?
+echo "avant"
 echo $OPENEDX_RELEASE
+echo "avant"
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
     -e certs_version=$OPENEDX_RELEASE \
@@ -62,7 +64,9 @@ fi
 ##
 ## Clone the configuration repository and run Ansible
 ##
+echo "apres"
 echo $CONFIG_VER
+echo "apres"
 cd /var/tmp
 git clone -b $CONFIG_VER https://github.com/EDUlib/configuration
 
