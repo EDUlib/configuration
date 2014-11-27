@@ -30,6 +30,7 @@ sudo pip install --upgrade pip
 sudo pip install --upgrade virtualenv
 
 ## Did we specify an openedx release?
+echo $OPENEDX_RELEASE
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
     -e ora2_version=$OPENEDX_RELEASE \
