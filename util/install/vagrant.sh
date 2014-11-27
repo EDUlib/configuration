@@ -45,6 +45,7 @@ fi
 ##
 ## Clone the configuration repository and run Ansible
 ##
+echo $CONFIG_VER
 cd /var/tmp
 git clone -b $CONFIG_VER https://github.com/EDUlib/configuration
 
