@@ -20,8 +20,8 @@
     # ANALYTICS_API_VERSION:
     # as_source_repo:
     # as_version:
-    # CERTS_REPO:
-    # certs_version:
+    CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
+    certs_version: 'edulib'
     # demo_repo:
     # demo_version:
     # discern_source_repo:
@@ -44,8 +44,8 @@
     # NOTIFIER_THEME_VERSION:
     # ora_source_repo:
     # ora_version: 
-    # xqueue_source_repo:
-    # xqueue_version:
+    xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
+    xqueue_version: 'edulib'
     # xserver_source_repo:
     # xserver_version:
     # XSERVER_GRADER_SOURCE:
