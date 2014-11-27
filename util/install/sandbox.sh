@@ -43,7 +43,6 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 
 ## Did we specify an openedx release?
-OPENEDX_RELEASE=edulib
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
     -e certs_version=$OPENEDX_RELEASE \
