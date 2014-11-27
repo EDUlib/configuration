@@ -73,6 +73,7 @@ sudo -H pip install -r requirements.txt
 
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
+## Adding verbose to the playbook
 ##
 <<<<<<< HEAD:util/install/sandbox.sh
 #cd /var/tmp/configuration/playbooks && sudo ansible-playbook -c local ./edx_sandbox.yml -i "localhost,"
