@@ -46,7 +46,7 @@ fi
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
-git clone -b $CONFIG_VER https://github.com/edx/configuration
+git clone -b $CONFIG_VER https://github.com/EDUlib/configuration
 
 ##
 ## Install the ansible requirements
@@ -57,4 +57,4 @@ sudo pip install -r requirements.txt
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks && sudo ansible-playbook -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
+cd /var/tmp/configuration/playbooks && sudo ansible-playbook -c -v local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
