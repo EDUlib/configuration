@@ -33,6 +33,7 @@ sudo pip install --upgrade virtualenv
 echo "avant"
 echo $OPENEDX_RELEASE
 echo "avant"
+OPENEDX_RELEASE=edulib
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
     -e ora2_version=$OPENEDX_RELEASE \
