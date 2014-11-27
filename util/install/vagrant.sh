@@ -30,10 +30,6 @@ sudo pip install --upgrade pip
 sudo pip install --upgrade virtualenv
 
 ## Did we specify an openedx release?
-echo "avant"
-echo $OPENEDX_RELEASE
-echo "avant"
-OPENEDX_RELEASE=edulib
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
     -e ora2_version=$OPENEDX_RELEASE \
@@ -49,9 +45,6 @@ fi
 ##
 ## Clone the configuration repository and run Ansible
 ##
-echo "apres"
-echo $CONFIG_VER
-echo "apres"
 cd /var/tmp
 git clone -b $CONFIG_VER https://github.com/EDUlib/configuration
 
@@ -65,4 +58,4 @@ sudo pip install -r requirements.txt
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ## Adding verbose to the playbook
 ##
-cd /var/tmp/configuration/playbooks && sudo ansible-playbook -c -v local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
+cd /var/tmp/configuration/playbooks && sudo ansible-playbook -v -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
