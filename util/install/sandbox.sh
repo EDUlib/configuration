@@ -42,6 +42,11 @@ sudo -H pip install --upgrade virtualenv==13.1.2
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 
+##
+## Forcing OPENEDX_RELEASE to edulib
+##
+OPENEDX_RELEASE=edulib
+
 ## Did we specify an openedx release?
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
@@ -58,6 +63,14 @@ if [ -n "$OPENEDX_RELEASE" ]; then
 else
   CONFIG_VER="master"
 fi
+
+##
+## Checking which version will be cloned
+##
+echo "=========="
+echo "Version of configuration repository to be cloned is"
+echo $CONFIG_VER
+echo "=========="
 
 ##
 ## Clone the configuration repository and run Ansible
