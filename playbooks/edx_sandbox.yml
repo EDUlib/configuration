@@ -37,12 +37,12 @@
     forum_version: 'edulib'
     # insights_source_repo:
     # INSIGHTS_VERSION:
-    # NOTIFIER_SOURCE_REPO:
-    # NOTIFIER_VERSION:
+    NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
+    NOTIFIER_VERSION: 'edulib'
     # NOTIFIER_THEME_REPO:
     # NOTIFIER_THEME_VERSION:
-    # ora_source_repo:
-    # ora_version: 
+    ora2_source_repo: 'https://github.com/EDUlib/edx-ora2.git'
+    ora2_version: 'edulib'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
     xqueue_version: 'edulib'
     # xserver_source_repo:
