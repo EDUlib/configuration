@@ -22,6 +22,9 @@ env
 export PYTHONUNBUFFERED=1
 export BOTO_CONFIG=/var/lib/jenkins/${aws_account}.boto
 
+# This DATE_TIME will be used as instance launch time tag
+TERMINATION_DATE_TIME=`date +"%m-%d-%Y %T" --date="-7 days ago"`
+
 if [[ -z $BUILD_USER ]]; then
     BUILD_USER=jenkins
 fi
@@ -57,7 +60,7 @@ extra_var_arg="-e@${extra_vars_file}"
 if [[ $edx_internal == "true" ]]; then
     # if this is a an edx server include
     # the secret var file
-    extra_var_arg="-e@${extra_vars_file} -e@${WORKSPACE}/configuration-secure/ansible/vars/developer-sandbox.yml"
+    extra_var_arg="-e@${WORKSPACE}/configuration-secure/ansible/vars/developer-sandbox.yml -e@${extra_vars_file}"
 fi
 
 if [[ -z $region ]]; then
@@ -86,11 +89,11 @@ fi
 
 if [[ -z $ami ]]; then
   if [[ $server_type == "full_edx_installation" ]]; then
-    ami="ami-26cb5a4e"
+    ami="ami-867d3bee"
   elif [[ $server_type == "ubuntu_12.04" || $server_type == "full_edx_installation_from_scratch" ]]; then
-    ami="ami-a217b2ca"
+    ami="ami-e2bbff8a"
   elif [[ $server_type == "ubuntu_14.04(experimental)" ]]; then
-    ami="ami-10389d78"
+    ami="ami-88562de0"
   fi
 fi
 
@@ -115,6 +118,7 @@ cat << EOF > $extra_vars_file
 ansible_ssh_private_key_file: /var/lib/jenkins/${keypair}.pem
 edx_platform_version: $edxapp_version
 forum_version: $forum_version
+notifier_version: $notifier_version
 xqueue_version: $xqueue_version
 xserver_version: $xserver_version
 ora_version: $ora_version
@@ -198,6 +202,7 @@ instance_tags:
     Name: $name_tag
     source: jenkins
     owner: $BUILD_USER
+    instance_termination_time: $TERMINATION_DATE_TIME
     datadog: monitored
 root_ebs_size: $root_ebs_size
 name_tag: $name_tag
@@ -221,7 +226,7 @@ EOF
 fi
 
 declare -A deploy
-roles="edxapp forum xqueue xserver ora discern certs demo testcourses"
+roles="edxapp forum notifier xqueue xserver ora discern certs demo testcourses"
 for role in $roles; do
     deploy[$role]=${!role}
 done

@@ -37,7 +37,6 @@ OPENEDX_RELEASE=edulib
 ## Did we specify an openedx release?
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
-    -e ora2_version=$OPENEDX_RELEASE \
     -e certs_version=$OPENEDX_RELEASE \
     -e forum_version=$OPENEDX_RELEASE \
     -e xqueue_version=$OPENEDX_RELEASE \
