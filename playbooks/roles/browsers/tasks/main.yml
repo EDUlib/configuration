@@ -26,7 +26,7 @@
   get_url:
     url={{ chromedriver_url }}
     dest=/var/tmp/chromedriver_{{ chromedriver_version }}.zip
-  register: download_chromedriver
+    validate_certs=no
 
 - name: unzip ChromeDriver tarfile
   shell: unzip /var/tmp/chromedriver_{{ chromedriver_version }}.zip
