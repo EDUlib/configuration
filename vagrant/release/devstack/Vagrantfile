@@ -89,6 +89,9 @@ openedx_releases = {
   "named-release/birch.1" => {
     :name => "birch-devstack-1", :file => "birch-1-devstack.box",
   },
+  "named-release/birch.2" => {
+    :name => "birch-devstack-2", :file => "birch-2-devstack.box",
+  },
 }
 openedx_releases.default = {
   :name => "cypress-devstack-rc3", :file => "20150724-cypress-devstack-rc3.box",

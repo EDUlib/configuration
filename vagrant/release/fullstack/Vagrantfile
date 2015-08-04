@@ -38,6 +38,9 @@ openedx_releases = {
   "named-release/birch.1" => {
     :name => "birch-fullstack-1", :file => "birch-1-fullstack.box",
   },
+  "named-release/birch.2" => {
+    :name => "birch-fullstack-2", :file => "birch-2-fullstack.box",
+  },
 }
 openedx_releases.default = {
   :name => "cypress-fullstack-rc3", :file => "20150724-cypress-fullstack-rc3.box",
