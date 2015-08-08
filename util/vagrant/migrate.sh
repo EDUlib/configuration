@@ -228,6 +228,11 @@ fi
 
 cd configuration/playbooks
 echo "edx_platform_version: $TARGET" > vars.yml
+#####git clone https://github.com/edulib/configuration.git --depth=1 --single-branch --branch=$TARGET
+#####virtualenv venv
+#####source venv/bin/activate
+#####pip install -r configuration/requirements.txt
+#####echo "edx_platform_version: $TARGET" >> vars.yml
 echo "ora2_version: $TARGET" >> vars.yml
 echo "certs_version: $TARGET" >> vars.yml
 echo "forum_version: $TARGET" >> vars.yml
