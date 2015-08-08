@@ -114,7 +114,7 @@ fi
 TEMPDIR=`mktemp -d`
 chmod 777 $TEMPDIR
 cd $TEMPDIR
-git clone https://github.com/edulib/configuration.git --depth=1 --single-branch --branch=$TARGET
+git clone https://github.com/EDUlib/configuration.git --depth=1 --single-branch --branch=$TARGET
 virtualenv venv
 source venv/bin/activate
 pip install -r configuration/requirements.txt
