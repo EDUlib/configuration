@@ -2,7 +2,7 @@
 
 # defaults
 CONFIGURATION="fullstack"
-TARGET="named-release/edulib-cypress.rc4"
+TARGET="edulib-cypress.rc4"
 INTERACTIVE=true
 OPENEDX_ROOT="/edx"
 
