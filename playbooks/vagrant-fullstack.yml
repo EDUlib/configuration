@@ -40,6 +40,7 @@
     - elasticsearch
     - forum
     - { role: "xqueue", update_users: True }
-    - certs
+    # removing certs temporarily
+    # - certs
     - role: analytics_api
       when: ANALYTICS_API_GIT_IDENTITY
