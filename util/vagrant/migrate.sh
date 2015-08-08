@@ -6,6 +6,8 @@ set -e
 # defaults
 CONFIGURATION="none"
 TARGET="none"
+#####CONFIGURATION="fullstack"
+#####TARGET="edulib-cypress"
 INTERACTIVE=true
 OPENEDX_ROOT="/edx"
 
