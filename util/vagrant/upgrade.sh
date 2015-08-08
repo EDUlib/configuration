@@ -10,6 +10,8 @@ exec > >(sudo tee /var/log/edx/upgrade-$(date +%Y%m%d-%H%M%S).log) 2>&1
 # defaults
 CONFIGURATION="none"
 TARGET="none"
+#####CONFIGURATION="fullstack"
+#####TARGET="edulib-cypress"
 INTERACTIVE=true
 OPENEDX_ROOT="/edx"
 
