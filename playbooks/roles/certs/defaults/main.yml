@@ -35,7 +35,7 @@ CERTS_LOCAL_PRIVATE_KEY: "example-private-key.txt"
 
 # This defaults to the public certificates repo which is
 # used for open-edx
-CERTS_REPO: "https://github.com/edx/edx-certificates"
+CERTS_REPO: "https://github.com/edulib/edx-certificates"
 CERTS_NGINX_PORT: 18090
 CERTS_WEB_ROOT: "{{ certs_data_dir }}/www-data"
 CERTS_URL: "http://localhost:{{ CERTS_NGINX_PORT }}"
@@ -65,7 +65,7 @@ certs_venv_bin: "{{ certs_venv_dir }}/bin"
 certs_git_ssh: /tmp/git_ssh.sh
 certs_git_identity: "{{ certs_app_dir }}/certs-git-identity"
 certs_requirements_file: "{{ certs_code_dir }}/requirements.txt"
-certs_version: 'master'
+certs_version: 'edulib-cypress-rc4'
 certs_gpg_dir: "{{ certs_app_dir }}/gnupg"
 certs_env_config:
   # CERTS_DATA is legacy, not used
