@@ -10,10 +10,10 @@
     CERTS_DOWNLOAD_URL: 'https://edulib-certificats.s3.amazonaws.com'
     CERTS_VERIFY_URL: 'http://ec2-52-2-47-62.compute-1.amazonaws.com:18090'
     # used for releases
-    edx_platform_version: 'OPENEDX_RELEASE'
-    certs_version: 'OPENEDX_RELEASE'
-    forum_version: 'OPENEDX_RELEASE'
-    xqueue_version: 'OPENEDX_RELEASE'
+    edx_platform_version: 'edulib-cypress-rc4'
+    certs_version: 'edulib-cypress-rc4'
+    forum_version: 'edulib-cypress-rc4'
+    xqueue_version: 'edulib-cypress-rc4'
   roles:
     - common
     - vhost
