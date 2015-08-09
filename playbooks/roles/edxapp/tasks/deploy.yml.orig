@@ -28,9 +28,16 @@
     force=yes owner={{ edxapp_user }} mode=0600
   when: EDXAPP_USE_GIT_IDENTITY
 
-- name: set git fetch.prune to ignore deleted remote refs
-  shell: git config --global fetch.prune true
+- name: check if git repo exists before pruning
+  stat: path={{ edxapp_code_dir }}/.git
+  register: git_dir
+
+- name: git prune before checking out
+  shell: cd {{ edxapp_code_dir }} && git remote prune origin
+  environment:
+    GIT_SSH: "{{ edxapp_git_ssh }}"
   sudo_user: "{{ edxapp_user }}"
+  when: git_dir.stat.exists and git_dir.stat.isdir
 
 # Do A Checkout
 - name: checkout edx-platform repo into {{ edxapp_code_dir }}
@@ -60,11 +67,25 @@
     GIT_SSH: "{{ edxapp_git_ssh }}"
   register: edxapp_theme_checkout
 
+- name: create checksum for requirements, package.json and Gemfile
+  shell: >
+    /usr/bin/md5sum {{ " ".join(edxapp_chksum_req_files) }} 2>/dev/null > /var/tmp/edxapp.req.new
+  sudo_user: "{{ edxapp_user }}"
+  ignore_errors: true
+
+- stat: path=/var/tmp/edxapp.req.new
+  register: new
+  sudo_user: "{{ edxapp_user }}"
+
+- stat: path=/var/tmp/edxapp.req.installed
+  register: inst
+  sudo_user: "{{ edxapp_user }}"
+
 # Substitute github mirror in all requirements files
 # This is run on every single deploy
 - name: Updating requirement files for git mirror
   command: |
-    /bin/sed -i -e 's/github\.com/{{ COMMON_GIT_MIRROR }}/g' {{ " ".join(edxapp_requirements_with_github_urls) }}
+    /bin/sed -i -e 's/github\.com/{{ COMMON_GIT_MIRROR }}/g' {{ " ".join(edxapp_all_req_files) }}
   sudo_user: "{{ edxapp_user }}"
 
 # Ruby plays that need to be run after platform updates.
@@ -107,14 +128,15 @@
 
 
 # Install the python pre requirements into {{ edxapp_venv_dir }}
-#####- name : install python pre-requirements
-#####  pip: >
-#####    requirements="{{ pre_requirements_file }}"
-#####    virtualenv="{{ edxapp_venv_dir }}"
-#####    state=present
-#####    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }} --exists-action w"
-#####  sudo_user: "{{ edxapp_user }}"
-#####  environment: "{{ edxapp_environment }}"
+- name : install python pre-requirements
+  pip: >
+    requirements="{{ pre_requirements_file }}"
+    virtualenv="{{ edxapp_venv_dir }}"
+    state=present
+    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }}"
+  sudo_user: "{{ edxapp_user }}"
+  environment: "{{ edxapp_environment }}"
+  when: not inst.stat.exists or new.stat.md5 != inst.stat.md5
 
 # Install the python modules into {{ edxapp_venv_dir }}
 - name : install python base-requirements
@@ -126,10 +148,7 @@
     chdir={{ edxapp_code_dir }}
   environment: "{{ edxapp_environment }}"
   sudo_user: "{{ edxapp_user }}"
-
-- stat: path="{{ post_requirements_file }}"
-  register: post_requirements
-  sudo_user: "{{ edxapp_user }}"
+  when: not inst.stat.exists or new.stat.md5 != inst.stat.md5
 
 # Install the python post requirements into {{ edxapp_venv_dir }}
 - name : install python post-requirements
@@ -137,10 +156,10 @@
     requirements="{{ post_requirements_file }}"
     virtualenv="{{ edxapp_venv_dir }}"
     state=present
-    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }} --exists-action w"
+    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }}"
   sudo_user: "{{ edxapp_user }}"
   environment: "{{ edxapp_environment }}"
-  when: post_requirements.stat.exists
+  when: not inst.stat.exists or new.stat.md5 != inst.stat.md5
 
 # Install the python paver requirements into {{ edxapp_venv_dir }}
 - name : install python paver-requirements
@@ -148,9 +167,10 @@
     requirements="{{ paver_requirements_file }}"
     virtualenv="{{ edxapp_venv_dir }}"
     state=present
-    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }} --exists-action w"
+    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }}"
   sudo_user: "{{ edxapp_user }}"
   environment: "{{ edxapp_environment }}"
+  when: not inst.stat.exists or new.stat.md5 != inst.stat.md5
 
 # Install the python custom requirements into {{ edxapp_venv_dir }}
 
@@ -163,10 +183,10 @@
     requirements="{{ custom_requirements_file }}"
     virtualenv="{{ edxapp_venv_dir }}"
     state=present
-    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }} --exists-action w"
+    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }}"
   sudo_user: "{{ edxapp_user }}"
   environment: "{{ edxapp_environment }}"
-  when: custom_requirements.stat.exists
+  when: custom_requirements.stat.exists and new.stat.md5 != inst.stat.md5
 
 # Install the final python modules into {{ edxapp_venv_dir }}
 - name : install python post-post requirements
@@ -201,7 +221,7 @@
 - name: install python extra requirements
   pip: >
     name="{{ item.name }}"
-    version="{{ item.version|default(omit) }}"
+    {% if 'version' in item %}version="{{ item.version }}"{% endif %}
     extra_args="--exists-action w --use-mirrors {{ item.extra_args|default('') }}"
     virtualenv="{{ edxapp_venv_dir }}"
     state=present
@@ -232,7 +252,7 @@
   - "{{ sandbox_local_requirements }}"
   - "{{ sandbox_post_requirements }}"
   sudo_user: "{{ edxapp_user }}"
-  when: not EDXAPP_PYTHON_SANDBOX
+  when: "not EDXAPP_PYTHON_SANDBOX and (not inst.stat.exists or new.stat.md5 != inst.stat.md5)"
 
 # The next few tasks set up the python code sandbox
 
@@ -284,6 +304,11 @@
   # root access.
 - name: give other read permissions to the virtualenv
   command: chmod -R o+r "{{ edxapp_venv_dir }}"
+
+- name: create checksum for installed requirements
+  shell: cp /var/tmp/edxapp.req.new /var/tmp/edxapp.req.installed
+  sudo_user: "{{ edxapp_user }}"
+
 
 # https://code.launchpad.net/~wligtenberg/django-openid-auth/mysql_fix/+merge/22726
 # This is necessary for when syncdb is run and the django_openid_auth module is installed,
@@ -356,7 +381,7 @@
   when: not disable_edx_services
 
 - name: ensure edxapp has started
-  supervisorctl: >
+  supervisorctl_local: >
     state=started
     supervisorctl_path={{ supervisor_ctl }}
     config={{ supervisor_cfg }}
@@ -366,7 +391,7 @@
   with_items: service_variants_enabled
 
 - name: ensure edxapp_workers has started
-  supervisorctl: >
+  supervisorctl_local: >
     name="edxapp_worker:{{ item.service_variant }}_{{ item.queue }}_{{ item.concurrency }}"
     supervisorctl_path={{ supervisor_ctl }}
     config={{ supervisor_cfg }}
@@ -403,7 +428,7 @@
 - set_fact: edxapp_installed=true
 
 - name: restart edxapp
-  supervisorctl: >
+  supervisorctl_local: >
     state=restarted
     supervisorctl_path={{ supervisor_ctl }}
     config={{ supervisor_cfg }}
@@ -413,7 +438,7 @@
   with_items: service_variants_enabled
 
 - name: restart edxapp_workers
-  supervisorctl: >
+  supervisorctl_local: >
     name="edxapp_worker:{{ item.service_variant }}_{{ item.queue }}_{{ item.concurrency }}"
     supervisorctl_path={{ supervisor_ctl }}
     config={{ supervisor_cfg }}
