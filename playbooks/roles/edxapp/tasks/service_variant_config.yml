@@ -1,6 +1,5 @@
-service_variants_enabled:
-  - lms
-  - cms
+service_variants_enabled: 
+  - "{{ lms, cms }}"
 
 - name: "create {{ item }} application config"
   template: >
