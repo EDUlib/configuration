@@ -1,6 +1,3 @@
-"{{ lms, cms }}": 
-  - ""{{ lms, cms }}""
-
 - name: "create {{ item }} application config"
   template: >
     src={{ item }}.env.json.j2
@@ -52,7 +49,8 @@
     src={{ item }}.conf.j2 dest={{ supervisor_available_dir }}/{{ item }}.conf
     owner={{ supervisor_user }}
     group={{ supervisor_user }}
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
   sudo_user: "{{ supervisor_user }}"
   tags:
     - install
@@ -71,7 +69,8 @@
 - name: "add gunicorn configuration files"
   template: >
     src={{ item }}_gunicorn.py.j2 dest={{ edxapp_app_dir }}/{{ item }}_gunicorn.py
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
   sudo_user: "{{ edxapp_user }}"
   tags:
     - install
@@ -96,7 +95,8 @@
     dest={{ supervisor_cfg_dir }}/{{ item }}.conf
     state=link
     force=yes
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
   when: celery_worker is not defined and not disable_edx_services
   sudo_user: "{{ supervisor_user }}"
   tags:
