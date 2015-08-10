@@ -58,7 +58,7 @@ if [ -n "$OPENEDX_RELEASE" ]; then
   "
   CONFIG_VER=$OPENEDX_RELEASE
 else
-  CONFIG_VER="master"
+  CONFIG_VER="edulib-dogwood-rc2"
 fi
 
 ##
