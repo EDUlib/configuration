@@ -5,8 +5,8 @@
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
 
 - name: "create {{ item }} auth file"
   template: >
@@ -15,8 +15,8 @@
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
 
 - name: "create {{ item }} yaml application config"
   template: >
@@ -25,8 +25,8 @@
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
 
 - name: "create {{ item }} yaml auth file"
   template: >
@@ -35,8 +35,8 @@
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
 
 
 # write the supervisor scripts for the service variants
@@ -47,8 +47,8 @@
     owner={{ supervisor_user }}
     group={{ supervisor_user }}
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
   sudo_user: "{{ supervisor_user }}"
 
 - name: writing edxapp supervisor script
@@ -62,8 +62,8 @@
   template: >
     src={{ item }}_gunicorn.py.j2 dest={{ edxapp_app_dir }}/{{ item }}_gunicorn.py
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
   sudo_user: "{{ edxapp_user }}"
 
 # write the supervisor script for celery workers
@@ -83,8 +83,8 @@
     state=link
     force=yes
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
   when: celery_worker is not defined and not disable_edx_services
   sudo_user: "{{ supervisor_user }}"
 
@@ -113,9 +113,9 @@
     owner={{ edxapp_user }}
     mode=0755
   with_nested:
-    - edxapp_helper_scripts
-    - lms
-    - cms
+     - edxapp_helper_scripts
+     - lms
+     - cms
 
 # Syncdb with migrate when the migrate user is overridden in extra vars
 - name: syncdb and migrate
@@ -126,8 +126,8 @@
     DB_MIGRATION_PASS: "{{ COMMON_MYSQL_MIGRATE_PASS }}"
     EDX_PLATFORM_SETTINGS_OVERRIDE: "aws_migrate"
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
 
 # Gather assets using paver if possible
 
@@ -136,5 +136,5 @@
   when: celery_worker is not defined and not devstack and item != "lms-preview"
   tags: gather_static_assets
   with_items: 
-    - lms
-    - cms
+     - lms
+     - cms
