@@ -45,7 +45,7 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 ##
 ## Forcing OPENEDX_RELEASE to edulib
 ##
-OPENEDX_RELEASE=edulib
+OPENEDX_RELEASE=edulib-cypress-rc4
 
 ## Did we specify an openedx release?
 if [ -n "$OPENEDX_RELEASE" ]; then
