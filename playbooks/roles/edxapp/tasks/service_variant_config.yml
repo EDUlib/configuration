@@ -1,13 +1,11 @@
-"{{ lms, cms }}": 
-  - ""{{ lms, cms }}""
-
 - name: "create {{ item }} application config"
   template: >
     src={{ item }}.env.json.j2
     dest={{ edxapp_app_dir }}/{{ item }}.env.json
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
 
 - name: "create {{ item }} auth file"
   template: >
@@ -15,7 +13,8 @@
     dest={{ edxapp_app_dir }}/{{ item }}.auth.json
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
 
 - name: "create {{ item }} yaml application config"
   template: >
@@ -23,7 +22,8 @@
     dest={{ EDXAPP_CFG_DIR }}/{{ item }}.env.yaml
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
 
 - name: "create {{ item }} yaml auth file"
   template: >
@@ -31,7 +31,8 @@
     dest={{ EDXAPP_CFG_DIR }}/{{ item }}.auth.yaml
   sudo_user: "{{ edxapp_user }}"
   tags: edxapp_cfg
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
 
 
 # write the supervisor scripts for the service variants
@@ -41,7 +42,8 @@
     src={{ item }}.conf.j2 dest={{ supervisor_available_dir }}/{{ item }}.conf
     owner={{ supervisor_user }}
     group={{ supervisor_user }}
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
   sudo_user: "{{ supervisor_user }}"
 
 - name: writing edxapp supervisor script
@@ -54,7 +56,8 @@
 - name: "add gunicorn configuration files"
   template: >
     src={{ item }}_gunicorn.py.j2 dest={{ edxapp_app_dir }}/{{ item }}_gunicorn.py
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
   sudo_user: "{{ edxapp_user }}"
 
 # write the supervisor script for celery workers
@@ -73,7 +76,8 @@
     dest={{ supervisor_cfg_dir }}/{{ item }}.conf
     state=link
     force=yes
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
   when: celery_worker is not defined and not disable_edx_services
   sudo_user: "{{ supervisor_user }}"
 
@@ -113,7 +117,8 @@
     DB_MIGRATION_USER: "{{ COMMON_MYSQL_MIGRATE_USER }}"
     DB_MIGRATION_PASS: "{{ COMMON_MYSQL_MIGRATE_PASS }}"
     EDX_PLATFORM_SETTINGS_OVERRIDE: "aws_migrate"
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
 
 # Gather assets using paver if possible
 
@@ -121,4 +126,5 @@
   command: "{{ COMMON_BIN_DIR }}/edxapp-update-assets-{{ item }}"
   when: celery_worker is not defined and not devstack and item != "lms-preview"
   tags: gather_static_assets
-  with_items: "{{ lms, cms }}"
+  with_items: 
+    - "{{ lms, cms }}"
