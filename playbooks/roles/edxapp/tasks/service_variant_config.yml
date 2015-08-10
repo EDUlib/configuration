@@ -1,3 +1,7 @@
+service_variants_enabled:
+  - lms
+  - cms
+
 - name: "create {{ item }} application config"
   template: >
     src={{ item }}.env.json.j2
