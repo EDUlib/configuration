@@ -38,7 +38,6 @@
     - edxapp
     - notifier
     - analytics_api
-    - insights
     - edx_notes_api
     - demo
     - oauth_client_setup
