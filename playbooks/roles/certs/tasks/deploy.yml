@@ -49,6 +49,7 @@
   git: >
     dest={{ certs_code_dir }} repo={{ CERTS_REPO }} version={{ certs_version }}
     accept_hostkey=yes
+    force=yes
   sudo_user: "{{ certs_user }}"
   environment:
     GIT_SSH: "{{ certs_git_ssh }}"
