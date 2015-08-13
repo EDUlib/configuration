@@ -32,7 +32,7 @@ sudo pip install --upgrade virtualenv
 ##
 ## Forcing OPENEDX_RELEASE to edulib
 ##
-OPENEDX_RELEASE=edulib-cypress-rc4
+OPENEDX_RELEASE=edulib-cypress
 
 ## Did we specify an openedx release?
 if [ -n "$OPENEDX_RELEASE" ]; then
@@ -44,7 +44,7 @@ if [ -n "$OPENEDX_RELEASE" ]; then
   "
   CONFIG_VER=$OPENEDX_RELEASE
 else
-  CONFIG_VER="edulib-cypress-rc4"
+  CONFIG_VER="edulib-cypress"
 fi
 
 ##
