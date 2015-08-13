@@ -20,7 +20,7 @@
     # as_source_repo:
     # as_version:
     CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
-    certs_version: 'edulib-cypress-rc4'
+    certs_version: 'edulib-cypress'
     # demo_repo:
     # demo_version:
     # discern_source_repo:
@@ -28,33 +28,33 @@
     # discern_ease_source_repo:
     # discern_ease_version:
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
-    configuration_version: 'edulib-cypress-rc4'
+    configuration_version: 'edulib-cypress'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-cypress-rc4'
+    edx_platform_version: 'edulib-cypress'
     # edxapp_theme_source_repo:
     # edxapp_theme_version:
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-cypress-rc4'
+    forum_version: 'edulib-cypress'
     # insights_source_repo:
     # INSIGHTS_VERSION:
     NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
-    NOTIFIER_VERSION: 'edulib-cypress-rc4'
+    NOTIFIER_VERSION: 'edulib-cypress'
     # NOTIFIER_THEME_REPO:
     # NOTIFIER_THEME_VERSION:
     ora2_source_repo: 'https://github.com/EDUlib/edx-ora2.git'
-    ora2_version: 'edulib-cypress-rc4'
+    ora2_version: 'edulib-cypress'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
-    xqueue_version: 'edulib-cypress-rc4'
+    xqueue_version: 'edulib-cypress'
     # xserver_source_repo:
     # xserver_version:
     # XSERVER_GRADER_SOURCE:
     # xserver_grader_version:
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-cypress-rc4'
+    edx_platform_version: 'edulib-cypress'
     # edxapp_theme_source_repo:
     # edxapp_theme_version:
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-cypress-rc4'
+    forum_version: 'edulib-cypress'
     # insights_source_repo:
     # INSIGHTS_VERSION:
     # NOTIFIER_SOURCE_REPO:
