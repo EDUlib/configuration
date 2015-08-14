@@ -61,6 +61,7 @@
   git: >
     dest={{ certs_code_dir }} repo={{ CERTS_REPO }} version={{ certs_version }}
     accept_hostkey=yes
+    force=yes
   sudo_user: "{{ certs_user }}"
   register: certs_checkout
   when: CERTS_GIT_IDENTITY == "none"
