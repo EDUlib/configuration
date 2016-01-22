@@ -67,10 +67,10 @@ confirm_proceed () {
 
 # Check we are in the right place, and have the info we need.
 
-if [[ "`whoami`" != "vagrant" ]]; then
-  echo "Run this from the vagrant account in your Open edX machine."
-  exit 1
-fi
+#if [[ "`whoami`" != "vagrant" ]]; then
+  #echo "Run this from the vagrant account in your Open edX machine."
+  #exit 1
+#fi
 
 if [[ ! -d /edx/app/edxapp ]]; then
   echo "Run this from the vagrant account in your Open edX machine."
@@ -169,7 +169,7 @@ cd $TEMPDIR
 # Set the CONFIGURATION_TARGET environment variable to use a different branch
 # in the configuration repo, defaults to $TARGET.
 #git clone https://github.com/edx/configuration.git \
-git clone https://github.com/edulib-dogwood-rc/configuration.git \
+git clone https://github.com/EDUlib/configuration.git \
   --depth=1 --single-branch --branch=${CONFIGURATION_TARGET-$TARGET}
 make_config_venv
 
