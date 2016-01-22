@@ -167,7 +167,8 @@ chmod 777 $TEMPDIR
 cd $TEMPDIR
 # Set the CONFIGURATION_TARGET environment variable to use a different branch
 # in the configuration repo, defaults to $TARGET.
-git clone https://github.com/edx/configuration.git \
+#git clone https://github.com/edx/configuration.git \
+git clone https://github.com/edulib-dogwood-rc/configuration.git \
   --depth=1 --single-branch --branch=${CONFIGURATION_TARGET-$TARGET}
 make_config_venv
 
@@ -244,17 +245,6 @@ fi
 echo "Updating to final version of code"
 cd configuration/playbooks
 echo "edx_platform_version: $TARGET" > vars.yml
-#####git clone https://github.com/edulib/configuration.git --depth=1 --single-branch --branch=$TARGET
-#####virtualenv venv
-#####source venv/bin/activate
-#####pip install -r configuration/requirements.txt
-#####echo "edx_platform_version: $TARGET" >> vars.yml
-=======
-#####git clone https://github.com/EDUlib/configuration.git --depth=1 --single-branch --branch=$TARGET
-#####virtualenv venv
-#####source venv/bin/activate
-#####pip install -r configuration/requirements.txt
-#####echo "edx_platform_version: $TARGET" >> vars.yml
 echo "ora2_version: $TARGET" >> vars.yml
 echo "certs_version: $TARGET" >> vars.yml
 echo "forum_version: $TARGET" >> vars.yml
