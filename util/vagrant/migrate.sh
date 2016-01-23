@@ -233,6 +233,8 @@ EOF
       /edx/bin/manage.edxapp $item migrate --settings=aws --noinput --fake-initial
   done
 
+  echo "After Running the Django 1.8 faked migrations"
+
   if [[ $CONFIGURATION == fullstack ]] ; then
     sudo -u xqueue \
     SERVICE_VARIANT=xqueue \
@@ -243,6 +245,8 @@ EOF
 fi
 
 echo "Updating to final version of code"
+echo "After Target Dogwood before edulib-dogwood-rc"
+
 cd configuration/playbooks
 echo "edx_platform_version: $TARGET" > vars.yml
 echo "ora2_version: $TARGET" >> vars.yml
