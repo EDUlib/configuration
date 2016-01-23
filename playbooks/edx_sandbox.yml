@@ -12,6 +12,29 @@
     migrate_db: "yes"
     openid_workaround: True
     EDXAPP_LMS_NGINX_PORT: '80'
+
+    EDXAPP_MYSQL_DB_NAME: 'edxapp'
+    EDXAPP_MYSQL_USER: 'edxapp001'
+    EDXAPP_MYSQL_USER_ADMIN: 'root'
+    EDXAPP_MYSQL_PASSWORD: 'password'
+    EDXAPP_MYSQL_PASSWORD_READ_ONLY: 'password'
+    EDXAPP_MYSQL_PASSWORD_ADMIN: 'password'
+    EDXAPP_MYSQL_REPLICA_DB_NAME: "{{ EDXAPP_MYSQL_DB_NAME }}"
+    EDXAPP_MYSQL_REPLICA_USER: "{{ EDXAPP_MYSQL_USER }}"
+    EDXAPP_MYSQL_REPLICA_PASSWORD: "{{ EDXAPP_MYSQL_PASSWORD }}"
+    EDXAPP_MYSQL_REPLICA_HOST: "{{ EDXAPP_MYSQL_HOST }}"
+    EDXAPP_MYSQL_REPLICA_PORT: "{{ EDXAPP_MYSQL_PORT }}"
+
+    EDXAPP_MYSQL_HOST: '10.0.1.22'
+    EDXAPP_MYSQL_PORT: '3306'
+
+    EDXAPP_MONGO_HOSTS: ['10.0.1.22']
+    EDXAPP_MONGO_PASSWORD: 'password'
+    EDXAPP_MONGO_PORT: 27017
+    EDXAPP_MONGO_USER: 'edxapp'
+    EDXAPP_MONGO_DB_NAME: 'edxapp'
+    EDXAPP_MONGO_USE_SSL: False
+
     # alton_source_repo:
     # alton_version:
     # analytics_source_repo:
@@ -88,7 +111,7 @@
       - lms
     - role: mysql
       when: EDXAPP_MYSQL_HOST == 'localhost'
-####    - edxlocal
+    - edxlocal
     - role: mongo
       when: "'localhost' in EDXAPP_MONGO_HOSTS"
     - { role: 'edxapp', celery_worker: True }
