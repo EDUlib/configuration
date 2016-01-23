@@ -48,6 +48,7 @@ edx_ansible_requirements_files:
   - "{{ edx_ansible_code_dir }}/requirements.txt"
 
 # edX configuration repo
-configuration_version: edulib
+#configuration_version: edulib
+configuration_version: edulib-dogwood-rc
 >>>>>>> Changing repo and version for configuration.
 edx_ansible_var_file: "{{ edx_ansible_app_dir }}/server-vars.yml"
