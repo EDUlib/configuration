@@ -220,6 +220,8 @@ if [[ $TARGET == *dogwood* ]] ; then
       --settings=aws --noinput --fake-initial
   done
 
+  echo "After Running the Django 1.8 faked migrations"
+
   if [[ $CONFIGURATION == fullstack ]] ; then
     sudo -u xqueue \
     SERVICE_VARIANT=xqueue \
@@ -228,6 +230,8 @@ if [[ $TARGET == *dogwood* ]] ; then
     --settings=xqueue.aws_settings --noinput --fake-initial
   fi
 fi
+
+echo "After Target Dogwood before edulib-dogwood-rc"
 
 cd configuration/playbooks
 echo "edx_platform_version: $TARGET" > vars.yml
