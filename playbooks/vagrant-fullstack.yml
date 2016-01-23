@@ -30,7 +30,7 @@
       - lms
       - cms
     - mysql
-    - edxlocal
+#####    - edxlocal
     - mongo
     - edxapp
     - { role: 'edxapp', celery_worker: True }
