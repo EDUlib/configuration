@@ -117,7 +117,7 @@
     - { role: 'edxapp', celery_worker: True }
     - edxapp
     - notifier
-    - analytics_api
+####    - analytics_api
     - edx_notes_api
     - demo
     - oauth_client_setup
