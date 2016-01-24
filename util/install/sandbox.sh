@@ -45,7 +45,7 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
 ##
 ## Forcing OPENEDX_RELEASE to edulib
 ##
-OPENEDX_RELEASE=edulib-cypress
+OPENEDX_RELEASE=edulib-dogwood-rc
 
 ## Did we specify an openedx release?
 if [ -n "$OPENEDX_RELEASE" ]; then
@@ -58,7 +58,7 @@ if [ -n "$OPENEDX_RELEASE" ]; then
   $EXTRA_VARS"
   CONFIG_VER=$OPENEDX_RELEASE
 else
-  CONFIG_VER="edulib-dogwood-rc2"
+  CONFIG_VER="edulib-dogwood-rc"
 fi
 
 ##
