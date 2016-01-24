@@ -30,7 +30,8 @@ MONGO_USERS:
     roles: readWrite
 
 MONGO_CLUSTERED: !!null
-MONGO_BIND_IP: 127.0.0.1
+#MONGO_BIND_IP: 127.0.0.1
+MONGO_BIND_IP: 10.0.1.22
 
 ##
 
