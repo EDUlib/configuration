@@ -178,6 +178,9 @@
 #- name: delete repset script
 #  file: path=/tmp/repset_init.js state=absent
 #  when: MONGO_CLUSTERED
+#  tags:
+#    - install
+#    - install:configuration
 
 - name: Create a mongodb user
   mongodb_user:
