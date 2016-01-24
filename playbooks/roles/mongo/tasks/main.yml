@@ -110,129 +110,129 @@
     - manage
     - manage:start
 
-- name: wait for mongo server to start
-  wait_for: port=27017 delay=2
-  tags:
-    - manage
-    - manage:start
+#- name: wait for mongo server to start
+#  wait_for: port=27017 delay=2
+#  tags:
+#    - manage
+#    - manage:start
 
-- name: drop super user script
-  template: src="create_root.js.j2" dest="/tmp/create_root.js"
-  when: not MONGO_CLUSTERED
-  tags:
-    - install
-    - install:configuration
+#- name: drop super user script
+#  template: src="create_root.js.j2" dest="/tmp/create_root.js"
+#  when: not MONGO_CLUSTERED
+#  tags:
+#    - install
+#    - install:configuration
 
-- name: create super user with js
-  shell: >
-    /usr/bin/mongo admin /tmp/create_root.js
-  when: not MONGO_CLUSTERED
-  tags:
-    - install
-    - install:configuration
+#- name: create super user with js
+#  shell: >
+#    /usr/bin/mongo admin /tmp/create_root.js
+#  when: not MONGO_CLUSTERED
+#  tags:
+#    - install
+#    - install:configuration
 
-- name: delete super user script
-  file: path=/tmp/create_root.js state=absent
-  when: not MONGO_CLUSTERED
-  tags:
-    - install
-    - install:configuration
+#- name: delete super user script
+#  file: path=/tmp/create_root.js state=absent
+#  when: not MONGO_CLUSTERED
+#  tags:
+#    - install
+#    - install:configuration
 
-- name: Create the file to initialize the mongod replica set
-  template: src=repset_init.js.j2 dest=/tmp/repset_init.js
-  when: MONGO_CLUSTERED
-  tags:
-    - install
-    - install:configuration
-
-- name: Initialize the replication set
-  shell: >
-    /usr/bin/mongo /tmp/repset_init.js
-  when: MONGO_CLUSTERED
-  tags:
-    - install
-    - install:configuration
-
-#- name: delete repset script
-#  file: path=/tmp/repset_init.js state=absent
+#- name: Create the file to initialize the mongod replica set
+#  template: src=repset_init.js.j2 dest=/tmp/repset_init.js
 #  when: MONGO_CLUSTERED
+#  tags:
+#    - install
+#    - install:configuration
 
-- name: create a mongodb user
-  mongodb_user: >
-    database={{ item.database }}
-    login_user={{ MONGO_ADMIN_USER }}
-    login_password={{ MONGO_ADMIN_PASSWORD }}
-    name={{ item.user }}
-    password="{{ item.password }}"
-    roles={{ item.roles }}
-    state=present
-  with_items: MONGO_USERS
-  when: not MONGO_CLUSTERED
-  tags:
-    - manage
-    - manage:app-users
+#- name: Initialize the replication set
+#  shell: >
+#    /usr/bin/mongo /tmp/repset_init.js
+#  when: MONGO_CLUSTERED
+#  tags:
+#    - install
+#    - install:configuration
 
-- name: create a mongodb user
-  mongodb_user: >
-    database={{ item.database }}
-    login_user={{ MONGO_ADMIN_USER }}
-    login_password={{ MONGO_ADMIN_PASSWORD }}
-    name={{ item.user }}
-    password="{{ item.password }}"
-    roles={{ item.roles }}
-    state=present
-    replica_set={{ mongo_repl_set }}
-  with_items: MONGO_USERS
-  when: MONGO_CLUSTERED
-  tags:
-    - manage
-    - manage:app-users
+##- name: delete repset script
+##  file: path=/tmp/repset_init.js state=absent
+##  when: MONGO_CLUSTERED
 
-- name: install s3cmd
-  pip: >
-    name="s3cmd"
-    state=present
-    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }}"
-  when: MONGO_S3_BACKUP
-  tags:
-    - install
-    - install:app-requirements
+#- name: create a mongodb user
+#  mongodb_user: >
+#    database={{ item.database }}
+#    login_user={{ MONGO_ADMIN_USER }}
+#    login_password={{ MONGO_ADMIN_PASSWORD }}
+#    name={{ item.user }}
+#    password="{{ item.password }}"
+#    roles={{ item.roles }}
+#    state=present
+#  with_items: MONGO_USERS
+#  when: not MONGO_CLUSTERED
+#  tags:
+#    - manage
+#    - manage:app-users
 
-- name: configure s3cmd
-  template: >
-    dest="{{ MONGO_S3_S3CMD_CONFIG }}"
-    src=mongo-s3-backup-s3cfg.j2
-    owner=root
-    group=root
-    mode=0600
-  when: MONGO_S3_BACKUP
-  tags:
-    - install
-    - install:configuration
+#- name: create a mongodb user
+#  mongodb_user: >
+#    database={{ item.database }}
+#    login_user={{ MONGO_ADMIN_USER }}
+#    login_password={{ MONGO_ADMIN_PASSWORD }}
+#    name={{ item.user }}
+#    password="{{ item.password }}"
+#    roles={{ item.roles }}
+#    state=present
+#    replica_set={{ mongo_repl_set }}
+#  with_items: MONGO_USERS
+#  when: MONGO_CLUSTERED
+#  tags:
+#    - manage
+#    - manage:app-users
 
-- name: install backup-mongo-to-s3 script
-  template: >
-    src=backup-mongo-to-s3.j2
-    dest=/edx/bin/backup-mongo-to-s3.sh
-    owner=root
-    group=root
-    mode=0700
-  when: MONGO_S3_BACKUP
-  tags:
-    - install
-    - install:configuration
+#- name: install s3cmd
+#  pip: >
+#    name="s3cmd"
+#    state=present
+#    extra_args="-i {{ COMMON_PYPI_MIRROR_URL }}"
+#  when: MONGO_S3_BACKUP
+#  tags:
+#    - install
+#    - install:app-requirements
 
-- name: schedule backup-mongo-to-3s crontab
-  cron: 
-    name="backup-mongo-to-s3"
-    job="/edx/bin/backup-mongo-to-s3.sh"
-    backup=yes
-    cron_file=backup-mongo-to-s3
-    user=root
-    hour="{{ MONGO_S3_BACKUP_HOUR }}"
-    minute="0"
-    day="{{ MONGO_S3_BACKUP_DAY }}"
-  when: MONGO_S3_BACKUP
-  tags:
-    - install
-    - install:configuration
+#- name: configure s3cmd
+#  template: >
+#    dest="{{ MONGO_S3_S3CMD_CONFIG }}"
+#    src=mongo-s3-backup-s3cfg.j2
+#    owner=root
+#    group=root
+#    mode=0600
+#  when: MONGO_S3_BACKUP
+#  tags:
+#    - install
+#    - install:configuration
+
+#- name: install backup-mongo-to-s3 script
+#  template: >
+#    src=backup-mongo-to-s3.j2
+#    dest=/edx/bin/backup-mongo-to-s3.sh
+#    owner=root
+#    group=root
+#    mode=0700
+#  when: MONGO_S3_BACKUP
+#  tags:
+#    - install
+#    - install:configuration
+
+#- name: schedule backup-mongo-to-3s crontab
+#  cron: 
+#    name="backup-mongo-to-s3"
+#    job="/edx/bin/backup-mongo-to-s3.sh"
+#    backup=yes
+#    cron_file=backup-mongo-to-s3
+#    user=root
+#    hour="{{ MONGO_S3_BACKUP_HOUR }}"
+#    minute="0"
+#    day="{{ MONGO_S3_BACKUP_DAY }}"
+#  when: MONGO_S3_BACKUP
+#  tags:
+#    - install
+#    - install:configuration
