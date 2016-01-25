@@ -127,9 +127,8 @@
     - role: ecomworker
       when: SANDBOX_ENABLE_ECOMMERCE
     - notifier
-    - analytics_api
-####    - insights
-    - edx_notes_api
+####    - analytics_api
+####    - edx_notes_api
     - demo
     - oauth_client_setup
     - oraclejdk
