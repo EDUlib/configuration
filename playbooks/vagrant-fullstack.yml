@@ -31,6 +31,7 @@
       - cms
     - mysql
 #####    - edxlocal
+##### need to understand why edxlocal does not work during migration
     - mongo
     - edxapp
     - { role: 'edxapp', celery_worker: True }
