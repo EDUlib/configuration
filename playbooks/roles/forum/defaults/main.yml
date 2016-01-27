@@ -14,7 +14,7 @@ forum_path: "{{ forum_code_dir }}/bin:{{ forum_rbenv_bin }}:{{ forum_rbenv_shims
 FORUM_MONGO_USER: "cs_comments_service"
 FORUM_MONGO_PASSWORD: "password"
 FORUM_MONGO_HOSTS:
-  - "10.0.1.22"
+  - "localhost"
 FORUM_MONGO_TAGS: !!null
 FORUM_MONGO_PORT: "27017"
 FORUM_MONGO_DATABASE: "cs_comments_service"
@@ -61,7 +61,7 @@ forum_environment:
 forum_user: "forum"
 forum_ruby_version: "1.9.3-p448"
 forum_source_repo: "https://github.com/EDUlib/cs_comments_service.git"
-forum_version: "edulib"
+forum_version: "edulib-dogwood-rc"
 
 #
 # test config

@@ -25,10 +25,10 @@
     EDXAPP_MYSQL_REPLICA_HOST: "{{ EDXAPP_MYSQL_HOST }}"
     EDXAPP_MYSQL_REPLICA_PORT: "{{ EDXAPP_MYSQL_PORT }}"
 
-    EDXAPP_MYSQL_HOST: '10.0.1.22'
+    EDXAPP_MYSQL_HOST: 'localhost'
     EDXAPP_MYSQL_PORT: '3306'
 
-    EDXAPP_MONGO_HOSTS: ['10.0.1.22']
+    EDXAPP_MONGO_HOSTS: ['localhost']
     EDXAPP_MONGO_PASSWORD: 'password'
     EDXAPP_MONGO_PORT: 27017
     EDXAPP_MONGO_USER: 'edxapp'
@@ -111,14 +111,14 @@
       - lms
     - role: mysql
       when: EDXAPP_MYSQL_HOST == 'localhost'
-####    - edxlocal
+    - edxlocal
     - role: mongo
       when: "'localhost' in EDXAPP_MONGO_HOSTS"
     - { role: 'edxapp', celery_worker: True }
     - edxapp
     - notifier
-####    - analytics_api
-####    - edx_notes_api
+    - analytics_api
+    - edx_notes_api
     - demo
     - oauth_client_setup
     - { role: 'rabbitmq', rabbitmq_ip: '127.0.0.1' }
