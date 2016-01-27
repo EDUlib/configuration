@@ -29,7 +29,7 @@ ANALYTICS_API_DATABASES:
     NAME: '{{ ANALYTICS_API_DEFAULT_DB_NAME }}'
     USER: 'api001'
     PASSWORD: 'password'
-    HOST: '10.0.1.22'
+    HOST: 'localhost'
     PORT: '3306'
   # read-only user
   reports:
@@ -37,7 +37,7 @@ ANALYTICS_API_DATABASES:
     NAME: '{{ ANALYTICS_API_REPORTS_DB_NAME }}'
     USER: 'reports001'
     PASSWORD: 'password'
-    HOST: '10.0.1.22'
+    HOST: 'localhost'
     PORT: '3306'
 
 ANALYTICS_API_VERSION: "master"

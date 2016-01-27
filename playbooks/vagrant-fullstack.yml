@@ -30,7 +30,7 @@
       - lms
       - cms
     - mysql
-#####    - edxlocal
+    - edxlocal
 ##### need to understand why edxlocal does not work during migration
     - mongo
     - edxapp
