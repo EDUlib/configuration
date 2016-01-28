@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 OPENEDX_ROOT="/edx"
+TARGET="edulib-dogwood-rc"
 
 echo "Avant installation de la derniere partie"
 
