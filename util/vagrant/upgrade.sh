@@ -10,8 +10,6 @@ exec > >(sudo tee /var/log/edx/upgrade-$(date +%Y%m%d-%H%M%S).log) 2>&1
 # defaults
 CONFIGURATION="none"
 TARGET="none"
-#####CONFIGURATION="fullstack"
-#####TARGET="edulib-cypress"
 INTERACTIVE=true
 OPENEDX_ROOT="/edx"
 
@@ -298,10 +296,15 @@ echo "Updating to final version of code"
 echo "After Target Dogwood before edulib-dogwood-rc"
 
 cd configuration/playbooks
-echo "edx_platform_version: $TARGET" > vars.yml
+echo "edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'" > vars.yml
+echo "edx_platform_version: $TARGET" >> vars.yml
+echo "ora2_source_repo: 'https://github.com/EDUlib/edx-ora2.git'" >> vars.yml
 echo "ora2_version: $TARGET" >> vars.yml
+echo "CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'" >> vars.yml
 echo "certs_version: $TARGET" >> vars.yml
+echo "forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'" >> vars.yml
 echo "forum_version: $TARGET" >> vars.yml
+echo "xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'" >> vars.yml
 echo "xqueue_version: $TARGET" >> vars.yml
 sudo ansible-playbook \
     --inventory-file=localhost, \
