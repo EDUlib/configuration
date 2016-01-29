@@ -14,6 +14,7 @@
     certs_version: 'edulib-dogwood-rc'
     forum_version: 'edulib-dogwood-rc'
     xqueue_version: 'edulib-dogwood-rc'
+    NOTIFIER_VERSION: 'edulib-dogwood-rc'
   roles:
     - common
     - vhost
@@ -31,10 +32,10 @@
       - cms
     - mysql
     - edxlocal
-##### need to understand why edxlocal does not work during migration
     - mongo
     - edxapp
     - { role: 'edxapp', celery_worker: True }
+    - notifier
     - demo
     - { role: 'rabbitmq', rabbitmq_ip: '127.0.0.1' }
     - oraclejdk
