@@ -242,6 +242,11 @@ echo "forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'" >>
 echo "forum_version: $TARGET" >> vars.yml
 echo "xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'" >> vars.yml
 echo "xqueue_version: $TARGET" >> vars.yml
+echo "NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'" >> vars.yml
+echo "NOTIFIER_VERSION: $TARGET" >> vars.yml
+echo "edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'" >> vars.yml
+echo "configuration_version: $TARGET" >> vars.yml
+
 sudo ansible-playbook \
     --inventory-file=localhost, \
     --connection=local \
