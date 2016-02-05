@@ -240,6 +240,10 @@ EOF
     /edx/app/xqueue/xqueue/manage.py migrate \
     --settings=xqueue.aws_settings --noinput --fake-initial
   fi
+
+  # Run the forums migrations again to catch things made while this script
+  # was running.
+  mongo cs_comments_service migrate-008-context.js
 fi
 
 echo "Updating to final version of code"
