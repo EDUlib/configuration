@@ -105,10 +105,10 @@
   register: supervisor_update
   changed_when: supervisor_update.stdout is defined and supervisor_update.stdout != ""
 
-- name: ensure devpi is started
-  supervisorctl: >
-    state=started
-    supervisorctl_path={{ devpi_supervisor_ctl }}
-    config={{ devpi_supervisor_cfg }}
-    name=devpi-server
-  sudo_user: "{{ devpi_supervisor_user }}"
+#- name: ensure devpi is started
+#  supervisorctl: >
+#    state=started
+#    supervisorctl_path={{ devpi_supervisor_ctl }}
+#    config={{ devpi_supervisor_cfg }}
+#    name=devpi-server
+#  sudo_user: "{{ devpi_supervisor_user }}"
