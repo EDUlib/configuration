@@ -253,7 +253,7 @@ EOF
 fi
 
 echo "Updating to final version of code"
-echo "After Target Dogwood before edulib-dogwood-rc"
+echo "After Target Dogwood before edulib-dogwood"
 
 cd configuration/playbooks
 echo "edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'" > vars.yml
