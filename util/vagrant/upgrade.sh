@@ -279,6 +279,7 @@ if [[ $TARGET == *eucalyptus* ]] ; then
     --inventory-file=localhost, \
     --connection=local \
     $SERVER_VARS \
+    --extra-vars="edx_platform_repo=https://github.com/EDUlib/edx-platform.git" \
     --extra-vars="edx_platform_version=$TARGET" \
     --extra-vars="xqueue_version=$TARGET" \
     --extra-vars="migrate_db=no" \
