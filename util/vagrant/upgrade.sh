@@ -310,7 +310,16 @@ if [[ $TARGET == *eucalyptus* ]] ; then
     $SERVER_VARS \
     --extra-vars="edx_platform_repo=https://github.com/EDUlib/edx-platform.git" \
     --extra-vars="edx_platform_version=$TARGET" \
+    --extra-vars="xqueue_source_repo=https://github.com/EDUlib/xqueue.git" \
     --extra-vars="xqueue_version=$TARGET" \
+    --extra-vars="forum_source_repo=https://github.com/EDUlib/cs_comments_service.git" \
+    --extra-vars="forum_version=$TARGET" \
+    --extra-vars="ora2_source_repo=https://github.com/EDUlib/edx-ora2.git" \
+    --extra-vars="ora2_version=$TARGET" \
+    --extra-vars="CERTS_REPO=https://github.com/EDUlib/edx-certificates.git" \
+    --extra-vars="certs_version=$TARGET" \
+    --extra_vars="NOTIFIER_SOURCE_REPO=https://github.com/EDUlib/notifier.git" \
+    --extra_vars=NOTIFIER_VERSION=$TARGET" \
     --extra-vars="migrate_db=no" \
     --skip-tags="edxapp-sandbox,gather_static_assets" \
     vagrant-$CONFIGURATION-delta.yml
