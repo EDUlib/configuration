@@ -51,6 +51,7 @@
     dest: "{{ xqueue_code_dir }}"
     version: "{{ xqueue_version }}"
     accept_hostkey: yes
+    force: yes
   become_user: "{{ xqueue_user }}"
   register: xqueue_checkout
   tags:
