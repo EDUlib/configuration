@@ -290,7 +290,7 @@ if [[ $TARGET == *eucalyptus* ]] ; then
     --extra-vars="CERTS_REPO=https://github.com/EDUlib/edx-certificates.git" \
     --extra-vars="certs_version=$TARGET" \
     --extra_vars="NOTIFIER_SOURCE_REPO=https://github.com/EDUlib/notifier.git" \
-    --extra_vars=NOTIFIER_VERSION=$TARGET" \
+    --extra_vars="NOTIFIER_VERSION=$TARGET" \
     --extra-vars="migrate_db=no" \
     --skip-tags="edxapp-sandbox,gather_static_assets" \
     vagrant-$CONFIGURATION-delta.yml
