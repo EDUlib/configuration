@@ -4,6 +4,7 @@
     dest: "{{ NOTIFIER_CODE_DIR }}"
     repo: "{{ NOTIFIER_SOURCE_REPO }}"
     version: "{{ NOTIFIER_VERSION }}"
+    force: yes
     accept_hostkey: yes
   become: true
   become_user: "{{ notifier_user }}"
