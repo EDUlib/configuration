@@ -313,6 +313,7 @@ if [[ $TARGET == *eucalyptus* ]] ; then
   cd configuration/playbooks/vagrant
   $ANSIBLE_PLAYBOOK \
     $SERVER_VARS \
+    --extra-vars="edx_platform_repo=https://github.com/EDUlib/edx-platform.git" \
     --extra-vars="edx_platform_version=$TARGET" \
     --extra-vars="xqueue_version=$TARGET" \
     --extra-vars="migrate_db=no" \
