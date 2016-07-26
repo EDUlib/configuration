@@ -48,6 +48,7 @@
     dest: "{{ certs_code_dir }}"
     repo: "{{ CERTS_REPO }}"
     version: "{{ certs_version }}"
+    force: yes
     accept_hostkey: yes
   become_user: "{{ certs_user }}"
   environment:
