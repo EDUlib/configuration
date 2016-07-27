@@ -9,11 +9,11 @@
     CERTS_DOWNLOAD_URL: 'https://edulib-certificats.s3.amazonaws.com'
     CERTS_VERIFY_URL: 'http://ec2-52-2-47-62.compute-1.amazonaws.com:18090'
     # used for releases
-    edx_platform_version: 'edulib-dogwood-rc'
-    certs_version: 'edulib-dogwood-rc'
-    forum_version: 'edulib-dogwood-rc'
-    xqueue_version: 'edulib-dogwood-rc'
-    NOTIFIER_VERSION: 'edulib-dogwood-rc'
+    edx_platform_version: 'edulib-eucalyptus/1rc1'
+    certs_version: 'edulib-eucalyptus/1rc1'
+    forum_version: 'edulib-eucalyptus/1rc1'
+    xqueue_version: 'edulib-eucalyptus/1rc1'
+    NOTIFIER_VERSION: 'edulib-eucalyptus/1rc1'
   roles:
     - common
     - vhost
