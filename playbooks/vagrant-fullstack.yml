@@ -27,6 +27,7 @@
       - forum
       - xqueue
       - certs
+      - ecommerce
       nginx_default_sites:
       - lms
       - cms
@@ -37,6 +38,7 @@
     - { role: 'rabbitmq', rabbitmq_ip: '127.0.0.1' }
     - edxapp
     - { role: 'edxapp', celery_worker: True }
+    - ecommerce
     - notifier
     - demo
     - oraclejdk
