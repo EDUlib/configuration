@@ -352,7 +352,7 @@ echo "forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'" >>
 echo "forum_version: $TARGET" >> vars.yml
 echo "xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'" >> vars.yml
 echo "xqueue_version: $TARGET" >> vars.yml
-echo "demo_source_repo: 'https://github.com/EDUlib/edx-demo-course.git'" >> vars.yml
+echo "demo_repo: 'https://github.com/EDUlib/edx-demo-course.git'" >> vars.yml
 echo "demo_version: $TARGET" >> vars.yml
 echo "NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'" >> vars.yml
 echo "NOTIFIER_VERSION: $TARGET" >> vars.yml
