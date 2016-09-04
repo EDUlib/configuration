@@ -43,7 +43,7 @@
     # as_source_repo:
     # as_version:
     CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
-    certs_version: 'edulib-eucalyptus/1rc1'
+    certs_version: 'edulib-eucalyptus.2'
     # demo_repo:
     # demo_version:
     # discern_source_repo:
@@ -51,33 +51,33 @@
     # discern_ease_source_repo:
     # discern_ease_version:
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
-    configuration_version: 'edulib-eucalyptus/1rc1'
+    configuration_version: 'edulib-eucalyptus.2'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-eucalyptus/1rc1'
+    edx_platform_version: 'edulib-eucalyptus.2'
     # edxapp_theme_source_repo:
     # edxapp_theme_version:
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-eucalyptus/1rc1'
+    forum_version: 'edulib-eucalyptus.2'
     # insights_source_repo:
     # INSIGHTS_VERSION:
     NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
-    NOTIFIER_VERSION: 'edulib-eucalyptus/1rc1'
+    NOTIFIER_VERSION: 'edulib-eucalyptus.2'
     # NOTIFIER_THEME_REPO:
     # NOTIFIER_THEME_VERSION:
     ora2_source_repo: 'https://github.com/EDUlib/edx-ora2.git'
-    ora2_version: 'edulib-eucalyptus/1rc1'
+    ora2_version: 'edulib-eucalyptus.2'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
-    xqueue_version: 'edulib-eucalyptus/1rc1'
+    xqueue_version: 'edulib-eucalyptus.2'
     # xserver_source_repo:
     # xserver_version:
     # XSERVER_GRADER_SOURCE:
     # xserver_grader_version:
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-eucalyptus/1rc1'
+    edx_platform_version: 'edulib-eucalyptus.2'
     # edxapp_theme_source_repo:
     # edxapp_theme_version:
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-eucalyptus/1rc1'
+    forum_version: 'edulib-eucalyptus.2'
     # insights_source_repo:
     # INSIGHTS_VERSION:
     # NOTIFIER_SOURCE_REPO:
