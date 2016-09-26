@@ -34,8 +34,6 @@ if [ -n "$OPENEDX_RELEASE" ]; then
     -e demo_version=$OPENEDX_RELEASE \
     -e NOTIFIER_SOURCE_REPO='https://github.com/EDUlib/notifier.git' \
     -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
-    -e PROGRAMS_SOURCE_REPO='https://github.com/EDUlib/programs.git' \
-    -e PROGRAMS_VERSION=$OPENEDX_RELEASE \
     -e edx_ansible_source_repo='https://github.com/EDUlib/configuration.git' \
     -e configuration_version=$OPENEDX_RELEASE
   "
