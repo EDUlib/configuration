@@ -20,7 +20,6 @@ cd /edx/app/edx_ansible/edx_ansible/playbooks
 
 # Did we specify an openedx release?
 if [ -n "$OPENEDX_RELEASE" ]; then
-
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
     -e edx_platform_repo='https://github.com/EDUlib/edx-platform.git' \
     -e ora2_source_repo='https://github.com/EDUlib/edx-ora2.git' \
