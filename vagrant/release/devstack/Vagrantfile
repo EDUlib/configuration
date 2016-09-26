@@ -180,34 +180,3 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # We can then tell the Vagrant instance to update itself.
   config.vm.provision "shell", inline: $script, args: rel
 end
-
-
-
-
-
-echo "Updating to final version of code"
-cd configuration/playbooks
-echo "edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'" > vars.yml
-echo "edx_platform_version: $TARGET" >> vars.yml
-echo "ora2_source_repo: 'https://github.com/EDUlib/edx-ora2.git'" >> vars.yml
-echo "ora2_version: $TARGET" >> vars.yml
-echo "CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'" >> vars.yml
-echo "certs_version: $TARGET" >> vars.yml
-echo "forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'" >> vars.yml
-echo "forum_version: $TARGET" >> vars.yml
-echo "xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'" >> vars.yml
-echo "xqueue_version: $TARGET" >> vars.yml
-echo "demo_repo: 'https://github.com/EDUlib/edx-demo-course.git'" >> vars.yml
-echo "demo_version: $TARGET" >> vars.yml
-echo "NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'" >> vars.yml
-echo "NOTIFIER_VERSION: $TARGET" >> vars.yml
-echo "PROGRAMS_SOURCE_REPO: 'https://github.com/EDUlib/programs.git'" >> vars.yml
-echo "PROGRAMS_VERSION: $TARGET" >> vars.yml
-echo "edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'" >> vars.yml
-echo "configuration_version: $TARGET" >> vars.yml
-$ANSIBLE_PLAYBOOK \
-    --extra-vars="@vars.yml" \
-    $SERVER_VARS \
-    vagrant-$CONFIGURATION.yml
-cd ../..
-
