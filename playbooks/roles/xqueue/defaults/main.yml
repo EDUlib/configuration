@@ -108,7 +108,7 @@ xqueue_auth_config:
       NAME: "{{ XQUEUE_MYSQL_DB_NAME }}"
       USER: "{{ XQUEUE_MYSQL_USER }}"
       PASSWORD: "{{ XQUEUE_MYSQL_PASSWORD }}"
-      HOST: "{{ XQUEUE_MYSQL_HOST }}"
+      HOST: "10.0.1.232"
       PORT: "{{ XQUEUE_MYSQL_PORT }}"
       ATOMIC_REQUESTS: True
   RABBITMQ_USER: "{{ XQUEUE_RABBITMQ_USER }}"
