@@ -25,7 +25,7 @@
       - cms
       - lms
       - forum
-      - xqueue
+      #####- xqueue
       - certs
       nginx_default_sites:
       - lms
@@ -42,7 +42,7 @@
     - oraclejdk
     - elasticsearch
     - forum
-    - { role: "xqueue", update_users: True }
+    #####- { role: "xqueue", update_users: True }
     - certs
     - role: analytics_api
       when: ANALYTICS_API_GIT_IDENTITY
