@@ -13,5 +13,5 @@
     - common
     - vhost
     - edxapp
-    - xqueue
+    ######- xqueue
     - edxlocal
