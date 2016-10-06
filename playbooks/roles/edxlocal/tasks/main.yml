@@ -15,6 +15,7 @@
     db: "{{ item }}"
     state: present
     encoding: utf8
+    login_host: "10.0.1.232"
   when: item != None and item != ''
   with_items: "{{ edxlocal_databases }}"
 
