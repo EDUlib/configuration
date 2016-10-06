@@ -21,7 +21,7 @@
 
 - name: create database users
   mysql_user:
-    login_host: "{{ item.where }}"
+    login_host: "{{ EDXAPP_MYSQL_HOST }}"
     name: "{{ item.user }}"
     password: "{{ item.pass }}"
     priv: "{{ item.db }}.*:ALL"
