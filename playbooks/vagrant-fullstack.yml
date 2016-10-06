@@ -15,6 +15,7 @@
     xqueue_version: '{{ OPENEDX_RELEASE | default("master") }}'
     demo_version: '{{ OPENEDX_RELEASE | default("master") }}'
     NOTIFIER_VERSION: '{{ OPENEDX_RELEASE | default("master") }}'
+    EDXAPP_MYSQL_HOST: "10.0.1.232"
   roles:
     - common
     - vhost
@@ -31,7 +32,8 @@
       - lms
       - cms
     - mysql
-    - edxlocal
+    - role: edxlocal
+      when: EDXAPP_MYSQL_HOST == 'localhost'
     - memcache
     #- mongo
     - { role: 'rabbitmq', rabbitmq_ip: '127.0.0.1' }
