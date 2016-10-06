@@ -17,4 +17,4 @@
     - vhost
     - edxapp
     - xqueue
-    - edxlocal
+    #######- edxlocal
