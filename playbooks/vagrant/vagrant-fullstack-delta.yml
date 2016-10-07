@@ -17,4 +17,5 @@
     - vhost
     - edxapp
     - xqueue
-    - edxlocal
+    - role: edxlocal
+      when: EDXAPP_MYSQL_HOST == 'localhost'
