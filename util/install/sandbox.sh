@@ -37,8 +37,8 @@ sudo pip install --upgrade setuptools==24.0.3
 sudo -H pip install --upgrade virtualenv==15.0.2
 
 ##### AJOUT PAR EDULIB 20170115
-#####CONFIGURATION_VERSION="edulib-ficus.1rc1"
-#####OPENEDX_RELEASE="edulib-ficus.1rc1"
+CONFIGURATION_VERSION="edulib-ficus.1rc1"
+OPENEDX_RELEASE="edulib-ficus.1rc1"
 ##### AJOUT PAR EDULIB 20170115
 
 
@@ -61,16 +61,16 @@ VERSION_VARS=(
   PROGRAMS_VERSION
 )
 
-EXTRA_VARS="-e SANDBOX_ENABLE_ECOMMERCE=True $EXTRA_VARS"
-for var in ${VERSION_VARS[@]}; do
-  # Each variable can be overridden by a similarly-named environment variable,
-  # or OPENEDX_RELEASE, if provided.
-  ENV_VAR=$(echo $var | tr '[:lower:]' '[:upper:]')
-  eval override=\${$ENV_VAR-\$OPENEDX_RELEASE}
-  if [ -n "$override" ]; then
-    EXTRA_VARS="-e $var=$override $EXTRA_VARS"
-  fi
-done
+#####EXTRA_VARS="-e SANDBOX_ENABLE_ECOMMERCE=True $EXTRA_VARS"
+#####for var in ${VERSION_VARS[@]}; do
+#####  # Each variable can be overridden by a similarly-named environment variable,
+#####  # or OPENEDX_RELEASE, if provided.
+#####  ENV_VAR=$(echo $var | tr '[:lower:]' '[:upper:]')
+#####  eval override=\${$ENV_VAR-\$OPENEDX_RELEASE}
+#####  if [ -n "$override" ]; then
+#####    EXTRA_VARS="-e $var=$override $EXTRA_VARS"
+#####  fi
+#####done
 
 # my-passwords.yml is the file made by generate-passwords.sh.
 if [[ -f my-passwords.yml ]]; then
@@ -79,11 +79,24 @@ fi
 
 #####CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
 
+if [ -n "$OPENEDX_RELEASE" ]; then
+  EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
+    -e certs_version=$OPENEDX_RELEASE \
+    -e forum_version=$OPENEDX_RELEASE \
+    -e xqueue_version=$OPENEDX_RELEASE \
+    -e configuration_version=$OPENEDX_RELEASE \
+    -e demo_version=$OPENEDX_RELEASE \
+    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
+    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
+    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
+  $EXTRA_VARS"
+fi
+
+
 ##
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
-#####git clone https://github.com/edx/configuration
 git clone https://github.com/EDUlib/configuration
 cd configuration
 git checkout $CONFIGURATION_VERSION
