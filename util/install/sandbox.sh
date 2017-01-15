@@ -36,10 +36,9 @@ sudo pip install --upgrade pip==8.1.2
 sudo pip install --upgrade setuptools==24.0.3
 sudo -H pip install --upgrade virtualenv==15.0.2
 
-##### AJOUT PAR EDULIB 20170115
-CONFIGURATION_VERSION="edulib-ficus.1rc1"
-OPENEDX_RELEASE="edulib-ficus.1rc1"
-##### AJOUT PAR EDULIB 20170115
+##### AJOUT PAR EDULIB 20170208
+CONFIGURATION_VERSION="edulib-ficus.1rc3"
+##### AJOUT PAR EDULIB 20170208
 
 
 ##
@@ -92,6 +91,7 @@ if [ -n "$OPENEDX_RELEASE" ]; then
   $EXTRA_VARS"
 fi
 
+CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
 
 ##
 ## Clone the configuration repository and run Ansible
@@ -111,4 +111,4 @@ sudo -H pip install -r requirements.txt
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -v -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
+cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook  -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
