@@ -38,7 +38,6 @@ sudo -H pip install --upgrade virtualenv==15.0.2
 
 ##### AJOUT PAR EDULIB 20170115
 CONFIGURATION_VERSION="edulib-ficus.1rc1"
-OPENEDX_RELEASE="edulib-ficus.1rc1"
 ##### AJOUT PAR EDULIB 20170115
 
 
@@ -61,32 +60,18 @@ VERSION_VARS=(
   PROGRAMS_VERSION
 )
 
-#####EXTRA_VARS="-e SANDBOX_ENABLE_ECOMMERCE=True"
-#####for var in ${VERSION_VARS[@]}; do
-#####  # Each variable can be overridden by a similarly-named environment variable,
-#####  # or OPENEDX_RELEASE, if provided.
-#####  ENV_VAR=$(echo $var | tr '[:lower:]' '[:upper:]')
-#####  eval override=\${$ENV_VAR-\$OPENEDX_RELEASE}
-#####  if [ -n "$override" ]; then
-#####    EXTRA_VARS="-e $var=$override $EXTRA_VARS"
-#####  fi
-#####done
+EXTRA_VARS="-e SANDBOX_ENABLE_ECOMMERCE=True"
+for var in ${VERSION_VARS[@]}; do
+  # Each variable can be overridden by a similarly-named environment variable,
+  # or OPENEDX_RELEASE, if provided.
+  ENV_VAR=$(echo $var | tr '[:lower:]' '[:upper:]')
+  eval override=\${$ENV_VAR-\$OPENEDX_RELEASE}
+  if [ -n "$override" ]; then
+    EXTRA_VARS="-e $var=$override $EXTRA_VARS"
+  fi
+done
 
-#####CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
-
-if [ -n "$OPENEDX_RELEASE" ]; then
-  EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
-    -e certs_version=$OPENEDX_RELEASE \
-    -e forum_version=$OPENEDX_RELEASE \
-    -e xqueue_version=$OPENEDX_RELEASE \
-    -e configuration_version=$OPENEDX_RELEASE \
-    -e demo_version=$OPENEDX_RELEASE \
-    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
-    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
-    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
-  $EXTRA_VARS"
-fi
-
+CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
 
 ##
 ## Clone the configuration repository and run Ansible
@@ -106,4 +91,4 @@ sudo -H pip install -r requirements.txt
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -v -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
+cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook  -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
