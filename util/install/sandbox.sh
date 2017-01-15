@@ -37,8 +37,8 @@ sudo pip install --upgrade setuptools==24.0.3
 sudo -H pip install --upgrade virtualenv==15.0.2
 
 ##### AJOUT PAR EDULIB 20170115
-CONFIGURATION_VERSION="edulib-ficus.1rc1"
-OPENEDX_RELEASE="edulib-ficus.1rc1"
+#####CONFIGURATION_VERSION="edulib-ficus.1rc1"
+#####OPENEDX_RELEASE="edulib-ficus.1rc1"
 ##### AJOUT PAR EDULIB 20170115
 
 
@@ -72,7 +72,7 @@ for var in ${VERSION_VARS[@]}; do
   fi
 done
 
-#####CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
+CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
 
 ##
 ## Clone the configuration repository and run Ansible
