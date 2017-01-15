@@ -38,6 +38,7 @@ sudo -H pip install --upgrade virtualenv==15.0.2
 
 ##### AJOUT PAR EDULIB 20170208
 CONFIGURATION_VERSION="edulib-ficus.1rc3"
+OPENEDX_RELEASE="edulib-ficus.1rc3"
 ##### AJOUT PAR EDULIB 20170208
 
 
@@ -95,6 +96,7 @@ fi
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
+#####git clone https://github.com/edx/configuration
 git clone https://github.com/EDUlib/configuration
 cd configuration
 git checkout $CONFIGURATION_VERSION
