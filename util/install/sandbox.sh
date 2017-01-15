@@ -86,7 +86,6 @@ if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
 
-CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
 
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
@@ -105,7 +104,6 @@ fi
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
-#####git clone https://github.com/edx/configuration
 git clone https://github.com/EDUlib/configuration
 cd configuration
 git checkout $CONFIGURATION_VERSION
