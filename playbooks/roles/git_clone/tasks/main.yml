@@ -73,7 +73,7 @@
 
 - name: Checkout code over https
   git:
-    repo: "https://{{ item.DOMAIN }}/{{ item.PATH }}/{{ item.REPO }}"
+    repo: "https://{{ item.DOMAIN }}/EDUlib/{{ item.REPO }}"
     dest: "{{ item.DESTINATION }}"
     version: "{{ item.VERSION }}"
     depth: 1
