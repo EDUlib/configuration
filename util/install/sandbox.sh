@@ -91,8 +91,6 @@ if [ -n "$OPENEDX_RELEASE" ]; then
   $EXTRA_VARS"
 fi
 
-CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
-
 ##
 ## Clone the configuration repository and run Ansible
 ##
