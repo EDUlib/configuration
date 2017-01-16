@@ -11,9 +11,6 @@ COMMON_BASIC_AUTH_EXCEPTIONS:
   - 192.168.0.0/16
   - 172.16.0.0/12
 
-# Settings to use for calls to edxapp manage.py
-COMMON_EDXAPP_SETTINGS: 'aws'
-
 # Turn on syncing logs on rotation for edx
 # application and tracking logs, must also
 # have the aws or openstack role installed
@@ -45,7 +42,7 @@ common_directories:
   - path: "/etc/logrotate.d/hourly"
   - path: "/etc/rsyslog.d/50-default.conf"
     state: absent
-
+    
 COMMON_ENVIRONMENT: 'default_env'
 COMMON_DEPLOYMENT: 'default_deployment'
 COMMON_PIP_VERBOSITY: ''
@@ -61,8 +58,7 @@ COMMON_EDX_PPA_KEY_ID: "69464050"
 #e.g. https://{{COMMON_GIT_MIRROR}}/{{COMMON_GIT_PATH}}/repo.git
 COMMON_GIT_PROTOCOL: 'https'  # https|ssh
 COMMON_GIT_MIRROR: 'github.com' # git server hostname
-#####COMMON_GIT_PATH: 'edx'  # git path prefix
-COMMON_GIT_PATH: 'EDUlib'  # git path prefix
+COMMON_GIT_PATH: 'edx'  # git path prefix
 
 # override this var to set a different hostname
 COMMON_HOSTNAME: ""
@@ -99,7 +95,6 @@ COMMON_ENABLE_NEWRELIC_APP: False
 COMMON_ENABLE_MINOS: False
 COMMON_TAG_EC2_INSTANCE: False
 common_boto_version: '2.34.0'
-common_node_version: '6.9.4'
 common_redhat_pkgs:
   - ntp
   - lynx
@@ -120,7 +115,7 @@ common_debian_pkgs:
   - python2.7-dev
 
 # Packages that should be installed from our custom PPA, i.e. COMMON_EDX_PPA
-old_python_debian_pkgs:
+common_custom_debian_pkgs:
   - "python2.7=2.7.10-0+{{ ansible_distribution_release }}1"
 
 common_pip_pkgs:
@@ -154,8 +149,8 @@ common_debian_variants:
   - Ubuntu
   - Debian
 
-# We only have to install old Python for these releases:
-old_python_ppa_releases:
+# Only attempt to use our custom PPA for these releases
+common_custom_ppa_releases:
   - precise
   - trusty
 
