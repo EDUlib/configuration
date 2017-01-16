@@ -11,9 +11,6 @@ COMMON_BASIC_AUTH_EXCEPTIONS:
   - 192.168.0.0/16
   - 172.16.0.0/12
 
-# Settings to use for calls to edxapp manage.py
-COMMON_EDXAPP_SETTINGS: 'aws'
-
 # Turn on syncing logs on rotation for edx
 # application and tracking logs, must also
 # have the aws or openstack role installed
@@ -61,8 +58,7 @@ COMMON_EDX_PPA_KEY_ID: "69464050"
 #e.g. https://{{COMMON_GIT_MIRROR}}/{{COMMON_GIT_PATH}}/repo.git
 COMMON_GIT_PROTOCOL: 'https'  # https|ssh
 COMMON_GIT_MIRROR: 'github.com' # git server hostname
-#####COMMON_GIT_PATH: 'edx'  # git path prefix
-COMMON_GIT_PATH: 'EDUlib'  # git path prefix
+COMMON_GIT_PATH: 'edx'  # git path prefix
 
 # override this var to set a different hostname
 COMMON_HOSTNAME: ""
