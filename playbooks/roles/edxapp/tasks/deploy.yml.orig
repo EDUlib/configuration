@@ -1,7 +1,7 @@
 ---
 - name: create edxapp configuration dir
   file:
-    path: "{{ EDXAPP_CFG_DIR }}"
+    path: "{{ EDXAPP_CFG_DIR }}" 
     state: directory
     owner: "{{ edxapp_user }}"
     group: "{{ common_web_group }}"
@@ -13,7 +13,7 @@
   template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
-    owner: "{{ item.owner }}"
+    owner: "{{ item.owner }}"  
     group: "{{ item.group }}"
     mode: "{{ item.mode }}"
   with_items:
@@ -50,7 +50,6 @@
     repo: "{{ edx_platform_repo }}"
     version: "{{ edx_platform_version }}"
     accept_hostkey: yes
-    force: yes
   become_user: "{{ edxapp_user }}"
   environment:
     GIT_SSH: "{{ edxapp_git_ssh }}"
@@ -212,10 +211,12 @@
     - install:app-requirements
 
 - name: create nodeenv
-  shell: "{{ edxapp_venv_dir }}/bin/nodeenv {{ edxapp_nodeenv_dir }} --node={{ edxapp_node_version }} --prebuilt --force"
+  shell: "{{ edxapp_venv_dir }}/bin/nodeenv {{ edxapp_nodeenv_dir }} --node={{ edxapp_node_version }} --prebuilt"
+  args:
+    creates: "{{ edxapp_nodeenv_dir }}"
   tags:
     - install
-    - install:system-requirements
+    - install:app-requirements
 
 # Set the npm registry
 # This needs to be done as root since npm is weird about
@@ -244,7 +245,6 @@
     executable: "{{ edxapp_nodeenv_bin }}/npm"
     path: "{{ edxapp_code_dir }}"
     production: yes
-    state: latest
   environment: "{{ edxapp_environment }}"
   become_user: "{{ edxapp_user }}"
   tags:
