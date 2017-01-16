@@ -79,6 +79,7 @@
   register: code_checkout
   when: item.PROTOCOL == "https" and GIT_REPOS is defined
   with_items: "{{ GIT_REPOS }}"
+  no_log: true
   tags:
     - install
     - install:code
