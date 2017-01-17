@@ -1,0 +1,147 @@
+---
+
+# Example sandbox configuration
+# for single server community
+# installs
+
+- name: Configure instance(s)
+  hosts: all
+  become: True
+  gather_facts: True
+  vars:
+    migrate_db: "yes"
+    EDXAPP_LMS_NGINX_PORT: '80'
+
+    EDXAPP_MYSQL_DB_NAME: 'edxapp'
+    EDXAPP_MYSQL_USER: 'edxapp001'
+    EDXAPP_MYSQL_USER_ADMIN: 'root'
+    EDXAPP_MYSQL_PASSWORD: 'password'
+    EDXAPP_MYSQL_PASSWORD_READ_ONLY: 'password'
+    EDXAPP_MYSQL_PASSWORD_ADMIN: 'password'
+    EDXAPP_MYSQL_REPLICA_DB_NAME: "{{ EDXAPP_MYSQL_DB_NAME }}"
+    EDXAPP_MYSQL_REPLICA_USER: "{{ EDXAPP_MYSQL_USER }}"
+    EDXAPP_MYSQL_REPLICA_PASSWORD: "{{ EDXAPP_MYSQL_PASSWORD }}"
+    EDXAPP_MYSQL_REPLICA_HOST: "{{ EDXAPP_MYSQL_HOST }}"
+    EDXAPP_MYSQL_REPLICA_PORT: "{{ EDXAPP_MYSQL_PORT }}"
+
+    EDXAPP_MYSQL_HOST: '10.0.1.232'
+    EDXAPP_MYSQL_PORT: '3306'
+
+    EDXAPP_MONGO_HOSTS: ['10.0.1.232']
+    EDXAPP_MONGO_PASSWORD: 'password'
+    EDXAPP_MONGO_PORT: 27017
+    EDXAPP_MONGO_USER: 'edxapp'
+    EDXAPP_MONGO_DB_NAME: 'edxapp'
+    EDXAPP_MONGO_USE_SSL: False
+
+    # alton_source_repo:
+    # alton_version:
+    # analytics_source_repo:
+    # analytics_version:
+    # analytics_api_source_repo:
+    # ANALYTICS_API_VERSION:
+    # as_source_repo:
+    # as_version:
+    CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
+    certs_version: 'edulib-eucalyptus.2'
+    # demo_repo:
+    # demo_version:
+    # discern_source_repo:
+    # discern_version:
+    # discern_ease_source_repo:
+    # discern_ease_version:
+    edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
+    configuration_version: 'edulib-eucalyptus.2'
+    edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
+    edx_platform_version: 'edulib-eucalyptus.2'
+    # edxapp_theme_source_repo:
+    # edxapp_theme_version:
+    forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
+    forum_version: 'edulib-eucalyptus.2'
+    # insights_source_repo:
+    # INSIGHTS_VERSION:
+    NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
+    NOTIFIER_VERSION: 'edulib-eucalyptus.2'
+    # NOTIFIER_THEME_REPO:
+    # NOTIFIER_THEME_VERSION:
+    ora2_source_repo: 'https://github.com/EDUlib/edx-ora2.git'
+    ora2_version: 'edulib-eucalyptus.2'
+    xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
+    xqueue_version: 'edulib-eucalyptus.2'
+    # xserver_source_repo:
+    # xserver_version:
+    # XSERVER_GRADER_SOURCE:
+    # xserver_grader_version:
+    edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
+    edx_platform_version: 'edulib-eucalyptus.2'
+    # edxapp_theme_source_repo:
+    # edxapp_theme_version:
+    forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
+    forum_version: 'edulib-eucalyptus.2'
+    # insights_source_repo:
+    # INSIGHTS_VERSION:
+    # NOTIFIER_SOURCE_REPO:
+    # NOTIFIER_VERSION:
+    # NOTIFIER_THEME_REPO:
+    # NOTIFIER_THEME_VERSION:
+    # ora_source_repo:
+    # ora_version: 
+    # xqueue_source_repo:
+    # xqueue_version:
+    # xserver_source_repo:
+    # xserver_version:
+    # XSERVER_GRADER_SOURCE:
+    # xserver_grader_version:
+    # Set to false if deployed behind another proxy/load balancer.
+    NGINX_SET_X_FORWARDED_HEADERS: True
+    # These should stay false for the public AMI
+    COMMON_ENABLE_DATADOG: False
+    SANDBOX_ENABLE_ECOMMERCE: False
+    COMMON_ENABLE_SPLUNKFORWARDER: False
+  roles:
+    - { role: swapfile, SWAPFILE_SIZE: "2GB" }
+    - role: nginx
+      nginx_sites:
+      - certs
+      - cms
+      - lms
+      - forum
+      - xqueue
+      nginx_default_sites:
+      - lms
+    - role: nginx
+      nginx_sites:
+      - ecommerce
+      when: SANDBOX_ENABLE_ECOMMERCE
+    - role: edxlocal
+      when: EDXAPP_MYSQL_HOST == 'localhost'
+    - role: memcache
+      when: "'localhost' in ' '.join(EDXAPP_MEMCACHE)"
+    - role: mongo
+      when: "'localhost' in EDXAPP_MONGO_HOSTS"
+    - { role: 'rabbitmq', rabbitmq_ip: '127.0.0.1' }
+    - { role: 'edxapp', celery_worker: True }
+    - edxapp
+    - role: ecommerce
+      when: SANDBOX_ENABLE_ECOMMERCE
+    - role: ecomworker
+      when: SANDBOX_ENABLE_ECOMMERCE
+    - notifier
+    - analytics_api
+    # not ready yet: - edx_notes_api
+    - demo
+    - oauth_client_setup
+    - oraclejdk
+    - role: elasticsearch
+      when: "'localhost' in EDXAPP_ELASTIC_SEARCH_CONFIG|map(attribute='host')"
+    - forum
+    - { role: notifier, NOTIFIER_DIGEST_TASK_INTERVAL: "5" }
+    - { role: "xqueue", update_users: True }
+    - certs
+    - edx_ansible
+    - role: datadog
+      when: COMMON_ENABLE_DATADOG
+    - role: splunkforwarder
+      when: COMMON_ENABLE_SPLUNKFORWARDER
+    - role: newrelic
+      when: COMMON_ENABLE_NEWRELIC
