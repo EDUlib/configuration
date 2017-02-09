@@ -63,14 +63,15 @@
     - role: edxapp
       celery_worker: True
     - edxapp
-    - role: ecommerce
-      when: SANDBOX_ENABLE_ECOMMERCE
-    - role: ecomworker
-      ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
-      when: SANDBOX_ENABLE_ECOMMERCE
-    - programs
+    # EDULIB not installing ecommerce ecomworker programs insights locally
+    #- role: ecommerce
+    #  when: SANDBOX_ENABLE_ECOMMERCE
+    #- role: ecomworker
+    #  ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
+    #  when: SANDBOX_ENABLE_ECOMMERCE
+    #- programs
     - analytics_api
-    - insights
+    #- insights
     # not ready yet: - edx_notes_api
     - demo
     - oauth_client_setup
