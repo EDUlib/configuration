@@ -46,6 +46,7 @@ OPENEDX_RELEASE="edulib-ficus.1rc3"
 ## Overridable version variables in the playbooks. Each can be overridden
 ## individually, or with $OPENEDX_RELEASE.
 ##
+### EDULIB NOT INSTALLING PROGRAMS_VERSION
 VERSION_VARS=(
   edx_platform_version
   certs_version
@@ -58,7 +59,6 @@ VERSION_VARS=(
   ANALYTICS_API_VERSION
   ECOMMERCE_VERSION
   ECOMMERCE_WORKER_VERSION
-  PROGRAMS_VERSION
 )
 
 #####EXTRA_VARS="-e SANDBOX_ENABLE_ECOMMERCE=True $EXTRA_VARS"
@@ -88,7 +88,6 @@ if [ -n "$OPENEDX_RELEASE" ]; then
     -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
     -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
     -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
-    -e PROGRAMS_VERSION=$OPENEDX_RELEASE \
   $EXTRA_VARS"
 fi
 
