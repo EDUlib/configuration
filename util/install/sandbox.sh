@@ -36,10 +36,10 @@ sudo pip install --upgrade pip==8.1.2
 sudo pip install --upgrade setuptools==24.0.3
 sudo -H pip install --upgrade virtualenv==15.0.2
 
-##### AJOUT PAR EDULIB 20170208
-CONFIGURATION_VERSION="edulib-ficus.1rc3"
-OPENEDX_RELEASE="edulib-ficus.1rc3"
-##### AJOUT PAR EDULIB 20170208
+##### AJOUT PAR EDULIB 20170216
+CONFIGURATION_VERSION="edulib-ficus.1rc4"
+OPENEDX_RELEASE="edulib-ficus.1rc4"
+##### AJOUT PAR EDULIB 20170216
 
 
 ##
