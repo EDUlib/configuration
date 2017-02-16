@@ -20,17 +20,17 @@
     EDXAPP_LMS_NGINX_PORT: '80'
 
     CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
-    certs_version: 'edulib-ficus.1rc3'
+    certs_version: 'edulib-ficus.1rc4'
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
-    configuration_version: 'edulib-ficus.1rc3'
+    configuration_version: 'edulib-ficus.1rc4'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-ficus.1rc3'
+    edx_platform_version: 'edulib-ficus.1rc4'
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-ficus.1rc3'
+    forum_version: 'edulib-ficus.1rc4'
     NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
-    NOTIFIER_VERSION: 'edulib-ficus.1rc3'
+    NOTIFIER_VERSION: 'edulib-ficus.1rc4'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
-    xqueue_version: 'edulib-ficus.1rc3'
+    xqueue_version: 'edulib-ficus.1rc4'
 
     ##### ORIG ##### edx_platform_version: 'master'
 
