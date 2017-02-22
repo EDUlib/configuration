@@ -71,7 +71,7 @@
     #  when: SANDBOX_ENABLE_ECOMMERCE
     #- programs
     - analytics_api
-    #- insights
+    - insights
     # not ready yet: - edx_notes_api
     - demo
     - oauth_client_setup
