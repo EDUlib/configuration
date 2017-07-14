@@ -1,3 +1,6 @@
+- Role: forum
+  - Added `FORUM_REBUILD_INDEX` to rebuild the ElasticSearch index from the database, when enabled.  Default: `False`.
+
 - Role: edxapp
   - Moved `PASSWORD_MIN_LENGTH`, `PASSWORD_MAX_LENGTH`, and `PASSWORD_COMPLEXITY` to generic_env_config to allow CMS and LMS to share these configurations
 
