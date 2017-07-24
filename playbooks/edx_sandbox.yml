@@ -63,6 +63,7 @@
       rabbitmq_ip: 127.0.0.1
     - role: edxapp
       celery_worker: True
+      drop_djcelery_tables: True 
     - edxapp
 #    - role: ecommerce
 #      when: SANDBOX_ENABLE_ECOMMERCE
