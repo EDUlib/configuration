@@ -94,19 +94,25 @@ if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
 
+INTER_RELEASE="edulib-release-2017-06-21-12.22"
 
 if [ -n "$OPENEDX_RELEASE" ]; then
-  EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
-    -e certs_version=$OPENEDX_RELEASE \
-    -e forum_version=$OPENEDX_RELEASE \
-    -e xqueue_version=$OPENEDX_RELEASE \
-    -e configuration_version=$OPENEDX_RELEASE \
-    -e demo_version=$OPENEDX_RELEASE \
-    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
-    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
-    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
+  EXTRA_VARS="-e edx_platform_version=$INTER_RELEASE \
   $EXTRA_VARS"
 fi
+
+#if [ -n "$OPENEDX_RELEASE" ]; then
+#  EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
+#    -e certs_version=$OPENEDX_RELEASE \
+#    -e forum_version=$OPENEDX_RELEASE \
+#    -e xqueue_version=$OPENEDX_RELEASE \
+#    -e configuration_version=$OPENEDX_RELEASE \
+#    -e demo_version=$OPENEDX_RELEASE \
+#    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
+#    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
+#    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
+#  $EXTRA_VARS"
+#fi
 
 ##
 ## Clone the configuration repository and run Ansible
