@@ -86,10 +86,8 @@ if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
 
-INTER_RELEASE="edulib-release-2017-06-21-12.22"
-
 if [ -n "$OPENEDX_RELEASE" ]; then
-  EXTRA_VARS="-e edx_platform_version=$INTER_RELEASE \
+  EXTRA_VARS="-e edx_platform_version="edulib-release-2017-06-21-12.22" \
     -e certs_version=$OPENEDX_RELEASE \
     -e forum_version=$OPENEDX_RELEASE \
     -e xqueue_version=$OPENEDX_RELEASE \
@@ -132,5 +130,4 @@ sudo -H pip install -r requirements.txt
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook  -c local ./inter_sandbox.yml -i "localhost," $EXTRA_VARS
-#cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook  -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
+cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook  -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS
