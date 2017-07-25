@@ -19,41 +19,28 @@
     migrate_db: "yes"
     EDXAPP_LMS_NGINX_PORT: '80'
 
-##### Modifs par EDULIB 20190121
     CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
-    certs_version: 'edulib-ironwood.master'
+    certs_version: 'edulib-ginkgo.1rc1'
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
-    configuration_version: 'edulib-ironwood.master'
+    configuration_version: 'edulib-ginkgo.1rc1'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-ironwood.master'
+    edx_platform_version: 'edulib-ginkgo.1rc1'
+    #####edx_platform_version: 'edulib-release-2017-06-21-12.22'
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-ironwood.master'
+    forum_version: 'edulib-ginkgo.1rc1'
     NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
-    NOTIFIER_VERSION: 'edulib-ironwood.master'
+    NOTIFIER_VERSION: 'edulib-ginkgo.1rc1'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
-    xqueue_version: 'edulib-ironwood.master'
-    XQUEUE_VERSION: 'edulib-ironwood.master'
-    ECOMMERCE_VERSION: 'edulib-ironwood.master'
-    ECOMMERCE_WORKER_VERSION: 'edulib-ironwood.master'
-    DISCOVERY_VERSION: 'edulib-ironwood.master'
-##### Modifs par EDULIB 20190121
+    xqueue_version: 'edulib-ginkgo.1rc1'
+
+    ##### ORIG ##### edx_platform_version: 'master'
 
     # Set to false if deployed behind another proxy/load balancer.
     NGINX_SET_X_FORWARDED_HEADERS: True
     DISCOVERY_URL_ROOT: 'http://localhost:{{ DISCOVERY_NGINX_PORT }}'
-    ecommerce_create_demo_data: true
-    credentials_create_demo_data: true
-    SANDBOX_ENABLE_DISCOVERY: true
-    SANDBOX_ENABLE_ECOMMERCE: true
-    SANDBOX_ENABLE_ANALYTICS_API: true
-    SANDBOX_ENABLE_INSIGHTS: true
-    SANDBOX_ENABLE_RABBITMQ: true
-    JOURNALS_ENABLED: false
   roles:
     - role: swapfile
       SWAPFILE_SIZE: 4GB
-    - role: aws
-      when: COMMON_ENABLE_AWS_INTEGRATION
     - role: nginx
       nginx_sites:
       - certs
@@ -61,45 +48,41 @@
       - lms
       - forum
       - xqueue
+      ###########- ecommerce
       nginx_default_sites:
       - lms
     - role: edxlocal
       when: EDXAPP_MYSQL_HOST == 'localhost'
     - role: memcache
       when: "'localhost' in ' '.join(EDXAPP_MEMCACHE)"
-    - role: mongo_3_2
+    - role: mongo
       when: "'localhost' in EDXAPP_MONGO_HOSTS"
     - role: rabbitmq
       rabbitmq_ip: 127.0.0.1
-      when: SANDBOX_ENABLE_RABBITMQ
     - role: edxapp
       celery_worker: True
       drop_djcelery_tables: False 
     - edxapp
+    ##########- ecommerce
+    ##########- role: ecomworker
+    ##########  ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
+    # EDULIB not installing ecommerce ecomworker programs insights locally
     #- role: ecommerce
     #  when: SANDBOX_ENABLE_ECOMMERCE
     #- role: ecomworker
     #  ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
     #  when: SANDBOX_ENABLE_ECOMMERCE
-    - role: analytics_api
-      when: SANDBOX_ENABLE_ANALYTICS_API
-    #- role: insights
-    #  when: SANDBOX_ENABLE_INSIGHTS
-    # not ready yet: - edx_notes_api
+    #- programs
     - analytics_api
-    - demo
+    - insights
     # not ready yet: - edx_notes_api
-##### Installed separately at EDUlib
-#    - oauth_client_setup
-##### Installed separately at EDUlib
+    - demo
+    - oauth_client_setup
     - oraclejdk
     - role: elasticsearch
       when: "'localhost' in EDXAPP_ELASTIC_SEARCH_CONFIG|map(attribute='host')"
     - forum
-    #- role: discovery
-    #  when: SANDBOX_ENABLE_DISCOVERY
-    #- role: journals
-    #  when: JOURNALS_ENABLED
+    - discovery
     - role: notifier
       NOTIFIER_DIGEST_TASK_INTERVAL: 5
     - role: xqueue
@@ -110,7 +93,7 @@
       when: COMMON_ENABLE_DATADOG
     - role: splunkforwarder
       when: COMMON_ENABLE_SPLUNKFORWARDER
+    - role: newrelic
+      when: COMMON_ENABLE_NEWRELIC
     - role: postfix_queue
       when: POSTFIX_QUEUE_EXTERNAL_SMTP_HOST != ''
-    - role: datadog-uninstall
-      when: not COMMON_ENABLE_DATADOG
