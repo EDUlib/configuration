@@ -37,9 +37,9 @@ sudo pip install --upgrade setuptools==24.0.3
 sudo -H pip install --upgrade virtualenv==15.0.2
 
 ##### AJOUT PAR EDULIB 20170720
-CONFIGURATION_VERSION="edulib-ginkgo.1rc1"
-OPENEDX_RELEASE="edulib-ginkgo.1rc1"
-##### AJOUT PAR EDULIB 2017072o
+CONFIGURATION_VERSION="edulib-ginkgo.master.1"
+OPENEDX_RELEASE="edulib-ginkgo.master.1"
+##### AJOUT PAR EDULIB 20170720
 
 
 ##
