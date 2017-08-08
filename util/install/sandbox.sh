@@ -37,9 +37,9 @@ sudo pip install --upgrade setuptools==24.0.3
 sudo -H pip install --upgrade virtualenv==15.0.2
 
 ##### AJOUT PAR EDULIB 20170720
-CONFIGURATION_VERSION="edulib-ginkgo.1rc1"
-OPENEDX_RELEASE="edulib-ginkgo.1rc1"
-##### AJOUT PAR EDULIB 2017072o
+CONFIGURATION_VERSION="edulib-ginkgo.master.1"
+OPENEDX_RELEASE="edulib-ginkgo.master.1"
+##### AJOUT PAR EDULIB 20170720
 
 
 ##
@@ -86,21 +86,8 @@ if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
 
-#if [ -n "$OPENEDX_RELEASE" ]; then
-#  EXTRA_VARS="-e edx_platform_version="edulib-release-2017-06-21-12.22" \
-#    -e certs_version=$OPENEDX_RELEASE \
-#    -e forum_version=$OPENEDX_RELEASE \
-#    -e xqueue_version=$OPENEDX_RELEASE \
-#    -e configuration_version=$OPENEDX_RELEASE \
-#    -e demo_version=$OPENEDX_RELEASE \
-#    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
-#    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
-#    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
-#  $EXTRA_VARS"
-#fi
-
 if [ -n "$OPENEDX_RELEASE" ]; then
-  EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
+  EXTRA_VARS="-e edx_platform_version="edulib-release-2017-06-21-12.22" \
     -e certs_version=$OPENEDX_RELEASE \
     -e forum_version=$OPENEDX_RELEASE \
     -e xqueue_version=$OPENEDX_RELEASE \
@@ -111,6 +98,19 @@ if [ -n "$OPENEDX_RELEASE" ]; then
     -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
   $EXTRA_VARS"
 fi
+
+#if [ -n "$OPENEDX_RELEASE" ]; then
+#  EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
+#    -e certs_version=$OPENEDX_RELEASE \
+#    -e forum_version=$OPENEDX_RELEASE \
+#    -e xqueue_version=$OPENEDX_RELEASE \
+#    -e configuration_version=$OPENEDX_RELEASE \
+#    -e demo_version=$OPENEDX_RELEASE \
+#    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
+#    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
+#    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
+#  $EXTRA_VARS"
+#fi
 
 ##
 ## Clone the configuration repository and run Ansible
