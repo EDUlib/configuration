@@ -72,7 +72,7 @@
       when: SANDBOX_ENABLE_RABBITMQ
     - role: edxapp
       celery_worker: True
-      drop_djcelery_tables: False 
+      drop_djcelery_tables: True 
     - edxapp
     #- role: ecommerce
     #  when: SANDBOX_ENABLE_ECOMMERCE
