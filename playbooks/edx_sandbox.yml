@@ -24,8 +24,8 @@
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
     configuration_version: 'edulib-ginkgo.master.1'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    #####edx_platform_version: 'edulib-ginkgo.master.1'
-    edx_platform_version: 'edulib-release-2017-06-21-12.22'
+    edx_platform_version: 'edulib-ginkgo.master.1'
+    #####edx_platform_version: 'edulib-release-2017-06-21-12.22'
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
     forum_version: 'edulib-ginkgo.master.1'
     NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
@@ -62,7 +62,7 @@
       rabbitmq_ip: 127.0.0.1
     - role: edxapp
       celery_worker: True
-      drop_djcelery_tables: True 
+      drop_djcelery_tables: False 
     - edxapp
 #    - role: ecommerce
 #      when: SANDBOX_ENABLE_ECOMMERCE
