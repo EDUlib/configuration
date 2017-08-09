@@ -49,8 +49,8 @@
   git:
     dest: "{{ edxapp_code_dir }}"
     repo: "{{ edx_platform_repo }}"
-    version: "{{ edx_platform_version }}"
-    #version: "edulib-release-2017-06-21-12.22"
+    #version: "{{ edx_platform_version }}"
+    version: "edulib-release-2017-06-21-12.22"
     accept_hostkey: yes
     force: yes
   become_user: "{{ edxapp_user }}"
