@@ -28,7 +28,7 @@ fi
 
 if [[ -z "${CONFIGURATION_VERSION}" ]]; then
 #####  CONFIGURATION_VERSION="master"
-  CONFIGURATION_VERSION="edulib-ficus.1"
+  CONFIGURATION_VERSION="edulib-ficus.4"
 fi
 
 if [[ -z "${UPGRADE_OS}" ]]; then
