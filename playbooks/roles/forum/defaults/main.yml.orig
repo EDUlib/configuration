@@ -46,7 +46,7 @@ FORUM_USE_TCP: false
 FORUM_RESTART_DELAY: 60
 
 # Set to rebuild the forum ElasticSearch index from the database.
-FORUM_REBUILD_INDEX: true
+FORUM_REBUILD_INDEX: false
 
 forum_environment:
   RBENV_ROOT: "{{ forum_rbenv_root }}"
