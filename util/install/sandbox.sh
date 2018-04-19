@@ -37,8 +37,8 @@ sudo pip install --upgrade setuptools==39.0.1
 sudo -H pip install --upgrade virtualenv==15.2.0
 
 ##### AJOUT PAR EDULIB 20170720
-CONFIGURATION_VERSION="edulib-ginkgo.master.1"
-OPENEDX_RELEASE="edulib-ginkgo.master.1"
+CONFIGURATION_VERSION="edulib-hawthorn-beta.1"
+OPENEDX_RELEASE="edulib-hawthorn-beta.1"
 ##### AJOUT PAR EDULIB 20170720
 
 
@@ -71,34 +71,11 @@ for var in ${VERSION_VARS[@]}; do
     EXTRA_VARS="-e $var=$override $EXTRA_VARS"
   fi
 done
-#####EXTRA_VARS="-e SANDBOX_ENABLE_ECOMMERCE=True $EXTRA_VARS"
-#####for var in ${VERSION_VARS[@]}; do
-#####  # Each variable can be overridden by a similarly-named environment variable,
-#####  # or OPENEDX_RELEASE, if provided.
-#####  ENV_VAR=$(echo $var | tr '[:lower:]' '[:upper:]')
-#####  eval override=\${$ENV_VAR-\$OPENEDX_RELEASE}
-#####  if [ -n "$override" ]; then
-#####    EXTRA_VARS="-e $var=$override $EXTRA_VARS"
-#####  fi
-#####done
 
 # my-passwords.yml is the file made by generate-passwords.sh.
 if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
-
-#if [ -n "$OPENEDX_RELEASE" ]; then
-#  EXTRA_VARS="-e edx_platform_version="edulib-release-2017-06-21-12.22" \
-#    -e certs_version=$OPENEDX_RELEASE \
-#    -e forum_version=$OPENEDX_RELEASE \
-#    -e xqueue_version=$OPENEDX_RELEASE \
-#    -e configuration_version=$OPENEDX_RELEASE \
-#    -e demo_version=$OPENEDX_RELEASE \
-#    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
-#    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
-#    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
-#  $EXTRA_VARS"
-#fi
 
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
