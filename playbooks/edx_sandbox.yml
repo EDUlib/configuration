@@ -72,13 +72,13 @@
     - insights
     # not ready yet: - edx_notes_api
     - demo
-    - oauth_client_setup
+#    - oauth_client_setup
     - oraclejdk
     - role: elasticsearch
       when: "'localhost' in EDXAPP_ELASTIC_SEARCH_CONFIG|map(attribute='host')"
     - forum
-    - role: discovery
-      when: SANDBOX_ENABLE_DISCOVERY
+#    - role: discovery
+#      when: SANDBOX_ENABLE_DISCOVERY
     - role: notifier
       NOTIFIER_DIGEST_TASK_INTERVAL: 5
     - role: xqueue
