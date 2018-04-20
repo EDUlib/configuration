@@ -115,4 +115,5 @@ sudo -H pip install -r requirements.txt
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -v -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS "$@"
+####cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -v -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS "$@"
+cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -vvv -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS "$@"
