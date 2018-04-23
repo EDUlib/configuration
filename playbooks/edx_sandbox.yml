@@ -19,19 +19,20 @@
     migrate_db: "yes"
     EDXAPP_LMS_NGINX_PORT: '80'
 
+##### Modifs par EDULIB 20180423
     CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
     certs_version: 'edulib-hawthorn-beta.1'
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
     configuration_version: 'edulib-hawthorn-beta.1'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
     edx_platform_version: 'edulib-hawthorn-beta.1'
-    #####edx_platform_version: 'edulib-release-2017-06-21-12.22'
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
     forum_version: 'edulib-hawthorn-beta.1'
     NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
     NOTIFIER_VERSION: 'edulib-hawthorn-beta.1'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
     xqueue_version: 'edulib-hawthorn-beta.1'
+##### Modifs par EDULIB 20180423
 
     # Set to false if deployed behind another proxy/load balancer.
     NGINX_SET_X_FORWARDED_HEADERS: True
@@ -79,7 +80,10 @@
     #  when: SANDBOX_ENABLE_INSIGHTS
     # not ready yet: - edx_notes_api
     - demo
+##### Modifs par EDULIB 20180423
+##### Not working during Hawthorn tests
 #    - oauth_client_setup
+##### Modifs par EDULIB 20180423
     - oraclejdk
     - role: elasticsearch
       when: "'localhost' in EDXAPP_ELASTIC_SEARCH_CONFIG|map(attribute='host')"
