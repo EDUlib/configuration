@@ -42,17 +42,16 @@ sudo pip install --upgrade pip==9.0.3
 sudo pip install --upgrade setuptools==39.0.1
 sudo -H pip install --upgrade virtualenv==15.2.0
 
-##### AJOUT PAR EDULIB 20170720
+##### MODIFS PAR EDULIB 20180423
 CONFIGURATION_VERSION="edulib-hawthorn-beta.1"
 OPENEDX_RELEASE="edulib-hawthorn-beta.1"
-##### AJOUT PAR EDULIB 20170720
+##### MODIFS PAR EDULIB 20180423
 
 
 ##
 ## Overridable version variables in the playbooks. Each can be overridden
 ## individually, or with $OPENEDX_RELEASE.
 ##
-### EDULIB NOT INSTALLING PROGRAMS_VERSION
 VERSION_VARS=(
   edx_platform_version
   certs_version
@@ -84,6 +83,8 @@ if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
 
+##### MODIFS PAR EDULIB 20180423
+##### CONFIGURATION_VERSION=${CONFIGURATION_VERSION-${OPENEDX_RELEASE-master}}
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
     -e certs_version=$OPENEDX_RELEASE \
@@ -96,12 +97,16 @@ if [ -n "$OPENEDX_RELEASE" ]; then
     -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
   $EXTRA_VARS"
 fi
+##### MODIFS PAR EDULIB 20180423
 
 ##
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
+##### MODIFS PAR EDULIB 20180423
+##### git clone https://github.com/edx/configuration
 git clone https://github.com/EDUlib/configuration
+##### MODIFS PAR EDULIB 20180423
 cd configuration
 git checkout $CONFIGURATION_VERSION
 git pull
@@ -115,5 +120,7 @@ sudo -H pip install -r requirements.txt
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
 ##
-####cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -v -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS "$@"
+##### MODIFS PAR EDULIB 20180423
+##### cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -v -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS "$@"
 cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -vvv -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS "$@"
+##### MODIFS PAR EDULIB 20180423
