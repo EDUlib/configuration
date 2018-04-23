@@ -59,6 +59,7 @@
     repo: "{{ CERTS_REPO }}"
     version: "{{ certs_version }}"
     accept_hostkey: yes
+    force: yes
   become_user: "{{ certs_user }}"
   environment:
     GIT_SSH: "{{ certs_git_ssh }}"
@@ -71,6 +72,7 @@
     repo: "{{ CERTS_REPO }}"
     version: "{{ certs_version }}"
     accept_hostkey: yes
+    force: yes
   become_user: "{{ certs_user }}"
   register: certs_checkout
   when: CERTS_GIT_IDENTITY == "none"
