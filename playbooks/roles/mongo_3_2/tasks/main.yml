@@ -129,7 +129,7 @@
 - name: set facts that default to not initializing a replica set
   set_fact:
     initialize_replica_set: false
-    skip_replica_set: false
+    skip_replica_set: true
   tags:
     - "install"
     - "install:app-configuration"
@@ -239,7 +239,7 @@
 # a replica set in the 'determine if there is a replica set already' task.
 - name: Unset our skip initializing replica set fact so that mongod.conf gets a replica set
   set_fact:
-    skip_replica_set: false
+    skip_replica_set: true
   when: initialize_replica_set
   tags:
     - "manage"
