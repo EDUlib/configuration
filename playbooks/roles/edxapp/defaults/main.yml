@@ -906,7 +906,6 @@ edxapp_helper_scripts:
     - edxapp-migrate
     - edxapp-runserver
     - edxapp-shell
-    - edxapp-drop-djcelery-tables
 
 edxapp_environment_default:
   LANG: "{{ EDXAPP_LANG }}"
