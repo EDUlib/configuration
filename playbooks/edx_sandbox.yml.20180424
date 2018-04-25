@@ -32,9 +32,6 @@
     NOTIFIER_VERSION: 'edulib-hawthorn-beta.1'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
     xqueue_version: 'edulib-hawthorn-beta.1'
-    ECOMMERCE_VERSION: 'edulib-hawthorn-beta.1'
-    ECOMMERCE_WORKER_VERSION: 'edulib-hawthorn-beta.1'
-    DISCOVERY_VERSION: 'edulib-hawthorn-beta.1'
 ##### Modifs par EDULIB 20180423
 
     # Set to false if deployed behind another proxy/load balancer.
@@ -89,8 +86,8 @@
     - forum
 ##### Modifs par EDULIB 20180423
 ##### Installed separately
-    - role: discovery
-      when: SANDBOX_ENABLE_DISCOVERY
+#    - role: discovery
+#      when: SANDBOX_ENABLE_DISCOVERY
 ##### Modifs par EDULIB 20180423
     - role: notifier
       NOTIFIER_DIGEST_TASK_INTERVAL: 5
