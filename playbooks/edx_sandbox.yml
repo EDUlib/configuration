@@ -32,6 +32,9 @@
     NOTIFIER_VERSION: 'edulib-hawthorn-beta.1'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
     xqueue_version: 'edulib-hawthorn-beta.1'
+    ECOMMERCE_VERSION: 'edulib-hawthorn-beta.1'
+    ECOMMERCE_WORKER_VERSION: 'edulib-hawthorn-beta.1'
+    DISCOVERY_VERSION: 'edulib-hawthorn-beta.1'
 ##### Modifs par EDULIB 20180423
 
     # Set to false if deployed behind another proxy/load balancer.
