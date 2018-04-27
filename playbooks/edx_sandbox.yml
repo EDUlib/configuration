@@ -69,11 +69,11 @@
     - edxapp
 ##### Modifs par EDULIB 20180423
 ##### Installed separately
-    - role: ecommerce
-      when: SANDBOX_ENABLE_ECOMMERCE
-    - role: ecomworker
-      ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
-      when: SANDBOX_ENABLE_ECOMMERCE
+#    - role: ecommerce
+#      when: SANDBOX_ENABLE_ECOMMERCE
+#    - role: ecomworker
+#      ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
+#      when: SANDBOX_ENABLE_ECOMMERCE
 ##### Modifs par EDULIB 20180423
     - analytics_api
     - insights
@@ -89,8 +89,8 @@
     - forum
 ##### Modifs par EDULIB 20180423
 ##### Installed separately
-    - role: discovery
-      when: SANDBOX_ENABLE_DISCOVERY
+#    - role: discovery
+#      when: SANDBOX_ENABLE_DISCOVERY
 ##### Modifs par EDULIB 20180423
     - role: notifier
       NOTIFIER_DIGEST_TASK_INTERVAL: 5
