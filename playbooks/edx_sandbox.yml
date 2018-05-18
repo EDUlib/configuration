@@ -84,6 +84,7 @@
     #- role: insights
     #  when: SANDBOX_ENABLE_INSIGHTS
     # not ready yet: - edx_notes_api
+    - analytics_api
     - demo
 ##### Modifs par EDULIB 20180423
 ##### Not working during Hawthorn tests
