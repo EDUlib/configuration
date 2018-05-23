@@ -67,32 +67,28 @@
     - role: edxapp
       celery_worker: True
     - edxapp
-##### Modifs par EDULIB 20180423
-##### Installed separately
+##### Installed separately at EDUlib
 #    - role: ecommerce
 #      when: SANDBOX_ENABLE_ECOMMERCE
-#    - role: ecomworker
-#      ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
-#      when: SANDBOX_ENABLE_ECOMMERCE
-#    - analytics_api
 #    - insights
-##### Modifs par EDULIB 20180423
-    # not ready yet: - edx_notes_api
+##### Installed separately at EDUlib
+    - role: ecomworker
+      ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
+      when: SANDBOX_ENABLE_ECOMMERCE
     - analytics_api
     - demo
-##### Modifs par EDULIB 20180423
-##### Not working during Hawthorn tests
+    # not ready yet: - edx_notes_api
+##### Installed separately at EDUlib
 #    - oauth_client_setup
-##### Modifs par EDULIB 20180423
+##### Installed separately at EDUlib
     - oraclejdk
     - role: elasticsearch
       when: "'localhost' in EDXAPP_ELASTIC_SEARCH_CONFIG|map(attribute='host')"
     - forum
-##### Modifs par EDULIB 20180423
-##### Installed separately
+##### Installed separately at EDUlib
 #    - role: discovery
 #      when: SANDBOX_ENABLE_DISCOVERY
-##### Modifs par EDULIB 20180423
+##### Installed separately at EDUlib
     - role: discovery
       when: SANDBOX_ENABLE_DISCOVERY
     - role: notifier
@@ -111,4 +107,3 @@
       when: POSTFIX_QUEUE_EXTERNAL_SMTP_HOST != ''
     - role: datadog-uninstall
       when: not COMMON_ENABLE_DATADOG
-
