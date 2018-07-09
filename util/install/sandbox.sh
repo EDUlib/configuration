@@ -42,10 +42,10 @@ sudo pip install --upgrade pip==9.0.3
 sudo pip install --upgrade setuptools==39.0.1
 sudo -H pip install --upgrade virtualenv==15.2.0
 
-##### MODIFS PAR EDULIB 20180423
-CONFIGURATION_VERSION="edulib-hawthorn-beta.1"
-OPENEDX_RELEASE="edulib-hawthorn-beta.1"
-##### MODIFS PAR EDULIB 20180423
+##### MODIFS PAR EDULIB 20180709
+CONFIGURATION_VERSION="edulib-hawthorn.1rc1"
+OPENEDX_RELEASE="edulib-hawthorn.1rc1"
+##### MODIFS PAR EDULIB 20180709
 
 
 ##
