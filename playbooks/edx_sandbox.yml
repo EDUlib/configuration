@@ -32,6 +32,7 @@
     NOTIFIER_VERSION: 'edulib-hawthorn.1rc1'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
     xqueue_version: 'edulib-hawthorn.1rc1'
+    XQUEUE_VERSION: 'edulib-hawthorn.1rc1'
     ECOMMERCE_VERSION: 'edulib-hawthorn.1rc1'
     ECOMMERCE_WORKER_VERSION: 'edulib-hawthorn.1rc1'
     DISCOVERY_VERSION: 'edulib-hawthorn.1rc1'
