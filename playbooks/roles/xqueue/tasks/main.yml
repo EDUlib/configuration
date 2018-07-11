@@ -62,20 +62,6 @@
     - install
     - install:configuration
 
-# Do A Checkout
-#- name: "Git checkout xqueue repo into {{ xqueue_code_dir }}"
-#  git:
-#    repo: "{{ xqueue_source_repo }}"
-#    dest: "{{ xqueue_code_dir }}"
-#    version: "{{ xqueue_version }}"
-#    accept_hostkey: yes
-#    force: yes
-#  become_user: "{{ xqueue_user }}"
-#  register: xqueue_checkout
-#  tags:
-#    - install
-#    - install:code
-#
 # Install the python requirements into {{ xqueue_venv_dir }}
 - name: "Install python requirements"
   pip:
