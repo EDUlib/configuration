@@ -1,3 +1,5 @@
+- Use Ansible 2.3.1.0 so that we can do shallow clones of tags.
+
 - Open edX
   - native.sh needed to uninstall pyyaml to proceed
   - no longer install certs
