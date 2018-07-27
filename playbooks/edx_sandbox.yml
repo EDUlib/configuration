@@ -21,21 +21,21 @@
 
 ##### Modifs par EDULIB 20180709
     CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
-    certs_version: 'edulib-hawthorn.1rc1'
+    certs_version: 'edulib-hawthorn.1rc3'
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
-    configuration_version: 'edulib-hawthorn.1rc1'
+    configuration_version: 'edulib-hawthorn.1rc3'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-hawthorn.1rc1'
+    edx_platform_version: 'edulib-hawthorn.1rc3'
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-hawthorn.1rc1'
+    forum_version: 'edulib-hawthorn.1rc3'
     NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
-    NOTIFIER_VERSION: 'edulib-hawthorn.1rc1'
+    NOTIFIER_VERSION: 'edulib-hawthorn.1rc3'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
-    xqueue_version: 'edulib-hawthorn.1rc1'
-    XQUEUE_VERSION: 'edulib-hawthorn.1rc1'
-    ECOMMERCE_VERSION: 'edulib-hawthorn.1rc1'
-    ECOMMERCE_WORKER_VERSION: 'edulib-hawthorn.1rc1'
-    DISCOVERY_VERSION: 'edulib-hawthorn.1rc1'
+    xqueue_version: 'edulib-hawthorn.1rc3'
+    XQUEUE_VERSION: 'edulib-hawthorn.1rc3'
+    ECOMMERCE_VERSION: 'edulib-hawthorn.1rc3'
+    ECOMMERCE_WORKER_VERSION: 'edulib-hawthorn.1rc3'
+    DISCOVERY_VERSION: 'edulib-hawthorn.1rc3'
 ##### Modifs par EDULIB 20180709
 
     # Set to false if deployed behind another proxy/load balancer.
