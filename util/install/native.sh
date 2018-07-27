@@ -62,8 +62,8 @@ sudo -H pip install --upgrade virtualenv==15.2.0
 ##
 ## MODIFS PAR EDULIB 20180716
 ##
-CONFIGURATION_VERSION="edulib-hawthorn.master"
-OPENEDX_RELEASE="edulib-hawthorn.master"
+CONFIGURATION_VERSION="edulib-hawthorn.1rc3"
+OPENEDX_RELEASE="edulib-hawthorn.1rc3"
 
 ##
 ## Overridable version variables in the playbooks. Each can be overridden
