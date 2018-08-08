@@ -68,7 +68,7 @@ EDXAPP_XQUEUE_DJANGO_AUTH:
 EDXAPP_XQUEUE_URL: 'http://localhost:18040'
 
 # Comma-separated list of hosts/ips
-EDXAPP_MONGO_HOSTS: '10.0.1.224'
+EDXAPP_MONGO_HOSTS: '10.0.1.165'
 EDXAPP_MONGO_PASSWORD: 'password'
 EDXAPP_MONGO_PORT: 27017
 EDXAPP_MONGO_USER: 'edxapp'
@@ -108,7 +108,7 @@ EDXAPP_MYSQL_CSMH_OPTIONS: "{{ EDXAPP_MYSQL_OPTIONS }}"
 # This is Django's default https://docs.djangoproject.com/en/1.8/ref/settings/#conn-max-age
 EDXAPP_MYSQL_CONN_MAX_AGE: 0
 
-EDXAPP_MYSQL_HOST: '10.0.1.224'
+EDXAPP_MYSQL_HOST: '10.0.1.165'
 EDXAPP_MYSQL_PORT: '3306'
 
 EDXAPP_SEARCH_HOST: 'localhost'
@@ -258,8 +258,8 @@ EDXAPP_SOCIAL_AUTH_OAUTH_SECRETS: ""
 
 EDXAPP_ACE_CHANNEL_SAILTHRU_API_KEY: ""
 EDXAPP_ACE_CHANNEL_SAILTHRU_API_SECRET: ""
-EDXAPP_ACE_ENABLED_CHANNELS: ['django_email']
-EDXAPP_ACE_ENABLED_POLICIES: ['bulk_email_optout']
+EDXAPP_ACE_ENABLED_CHANNELS: []
+EDXAPP_ACE_ENABLED_POLICIES: []
 EDXAPP_ACE_CHANNEL_SAILTHRU_DEBUG: True
 EDXAPP_ACE_CHANNEL_SAILTHRU_TEMPLATE_NAME: !!null
 EDXAPP_ACE_ROUTING_KEY: 'edx.lms.core.default'
@@ -795,14 +795,6 @@ EDXAPP_SOCIAL_AUTH_SAML_SP_PUBLIC_CERT_DICT: {}
 EDXAPP_SESSION_SAVE_EVERY_REQUEST: false
 
 EDXAPP_SESSION_COOKIE_SECURE: false
-
-# Optionally add a cron job to run the "clearsessions" management command to delete expired sessions
-# Hours and minutes follow cron syntax.
-# E.g. "15,19" hours and "0" minutes will run it at 15:00 and 19:00.
-#      "*" hours and "5" minutes  will run it every hour at past 5 minutes.
-EDXAPP_CLEARSESSIONS_CRON_ENABLED: false
-EDXAPP_CLEARSESSIONS_CRON_HOURS: "14"
-EDXAPP_CLEARSESSIONS_CRON_MINUTES: "0"
 
 EDXAPP_VIDEO_IMAGE_MAX_AGE: 31536000
 
