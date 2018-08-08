@@ -27,7 +27,7 @@ if [[ -z "${CONFIGURATION_REPO}" ]]; then
 fi
 
 if [[ -z "${CONFIGURATION_VERSION}" ]]; then
-  CONFIGURATION_VERSION="edulib-hawthorn.1rc3"
+  CONFIGURATION_VERSION="edulib-hawthorn.1"
 fi
 
 if [[ -z "${UPGRADE_OS}" ]]; then
