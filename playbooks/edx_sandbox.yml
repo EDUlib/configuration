@@ -19,7 +19,7 @@
     migrate_db: "yes"
     EDXAPP_LMS_NGINX_PORT: '80'
 
-##### Modifs par EDULIB 20190128
+##### Modifs par EDULIB 20190121
     CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
     certs_version: 'edulib-ironwood.master'
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
@@ -36,8 +36,7 @@
     ECOMMERCE_VERSION: 'edulib-ironwood.master'
     ECOMMERCE_WORKER_VERSION: 'edulib-ironwood.master'
     DISCOVERY_VERSION: 'edulib-ironwood.master'
-    JOURNALS_VERSION: 'edulib-ironwood.master'
-##### Modifs par EDULIB 20190128
+##### Modifs par EDULIB 20190121
 
     # Set to false if deployed behind another proxy/load balancer.
     NGINX_SET_X_FORWARDED_HEADERS: True
@@ -49,7 +48,7 @@
     SANDBOX_ENABLE_ANALYTICS_API: true
     SANDBOX_ENABLE_INSIGHTS: true
     SANDBOX_ENABLE_RABBITMQ: true
-    JOURNALS_ENABLED: true
+    JOURNALS_ENABLED: false
   roles:
     - role: swapfile
       SWAPFILE_SIZE: 4GB
@@ -96,10 +95,10 @@
     - role: elasticsearch
       when: "'localhost' in EDXAPP_ELASTIC_SEARCH_CONFIG|map(attribute='host')"
     - forum
-    - role: discovery
-      when: SANDBOX_ENABLE_DISCOVERY
-    - role: journals
-      when: JOURNALS_ENABLED
+    #- role: discovery
+    #  when: SANDBOX_ENABLE_DISCOVERY
+    #- role: journals
+    #  when: JOURNALS_ENABLED
     - role: notifier
       NOTIFIER_DIGEST_TASK_INTERVAL: 5
     - role: xqueue
