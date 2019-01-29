@@ -43,7 +43,7 @@ JOURNALS_NGINX_PORT: "1{{ journals_gunicorn_port }}"
 JOURNALS_SSL_NGINX_PORT: "4{{ journals_gunicorn_port }}"
 
 JOURNALS_DEFAULT_DB_NAME: "{{ 'journals' if JOURNALS_ENABLED else '' }}"
-JOURNALS_MYSQL: '10.0.1.165'
+JOURNALS_MYSQL: 'localhost'
 # MySQL usernames are limited to 16 characters
 JOURNALS_MYSQL_USER: 'journ001'
 JOURNALS_MYSQL_PASSWORD: 'password'
@@ -62,14 +62,14 @@ JOURNALS_LOGOUT_URL: '{{ JOURNALS_URL_ROOT }}/logout/'
 
 JOURNALS_SECRET_KEY: 'Your secret key here'
 
-JOURNALS_LANGUAGE_CODE: 'fr'
+JOURNALS_LANGUAGE_CODE: 'en'
 
 ## Configuration for django-parler package. For more information visit
 ## https://django-parler.readthedocs.io/en/latest/configuration.html#parler-languages
 JOURNALS_PARLER_DEFAULT_LANGUAGE_CODE: '{{JOURNALS_LANGUAGE_CODE}}'
 JOURNALS_PARLER_LANGUAGES :
   1:
-    - code: 'fr'
+    - code: 'en'
   default:
     fallbacks:
       - '{{JOURNALS_PARLER_DEFAULT_LANGUAGE_CODE}}'

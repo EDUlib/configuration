@@ -40,7 +40,7 @@ DISCOVERY_NGINX_PORT: "1{{ discovery_gunicorn_port }}"
 DISCOVERY_SSL_NGINX_PORT: "4{{ discovery_gunicorn_port }}"
 
 DISCOVERY_DEFAULT_DB_NAME: 'discovery'
-DISCOVERY_MYSQL: '10.0.1.165'
+DISCOVERY_MYSQL: '10.0.1.224'
 # MySQL usernames are limited to 16 characters
 DISCOVERY_MYSQL_USER: 'discov001'
 DISCOVERY_MYSQL_PASSWORD: 'password'
@@ -60,14 +60,14 @@ DISCOVERY_LOGOUT_URL: '{{ DISCOVERY_URL_ROOT }}/logout/'
 
 DISCOVERY_SECRET_KEY: 'Your secret key here'
 
-DISCOVERY_LANGUAGE_CODE: 'fr'
+DISCOVERY_LANGUAGE_CODE: 'en'
 
 ## Configuration for django-parler package. For more information visit
 ## https://django-parler.readthedocs.io/en/latest/configuration.html#parler-languages
 DISCOVERY_PARLER_DEFAULT_LANGUAGE_CODE: '{{DISCOVERY_LANGUAGE_CODE}}'
 DISCOVERY_PARLER_LANGUAGES :
   1:
-    - code: 'fr'
+    - code: 'en'
   default:
     fallbacks:
       - '{{DISCOVERY_PARLER_DEFAULT_LANGUAGE_CODE}}'
