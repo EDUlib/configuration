@@ -30,7 +30,10 @@ mongodb_debian_pkgs:
   - "mongodb-org-tools={{ mongo_version }}"
 
 
+##### MODIFS BY EDULIB 20200421
+##### mongo_configure_replica_set: true
 mongo_configure_replica_set: false
+##### MODIFS BY EDULIB 20200421
 
 # Vars Meant to be overridden
 MONGO_ADMIN_USER: 'admin'

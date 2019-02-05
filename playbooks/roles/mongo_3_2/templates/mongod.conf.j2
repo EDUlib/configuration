@@ -31,8 +31,8 @@ systemLog:
   logRotate: {{ mongo_logrotate }}
 
 {% if not skip_replica_set %}
-replication:
-  replSetName: {{ MONGO_REPL_SET }}
+#####replication:
+#####  replSetName: {{ MONGO_REPL_SET }}
 
 #####security:
 #####  authorization: {{ MONGO_AUTH | ternary("enabled", "disabled") }}
