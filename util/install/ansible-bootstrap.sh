@@ -22,11 +22,12 @@ if [[ -z "${ANSIBLE_VERSION}" ]]; then
 fi
 
 if [[ -z "${CONFIGURATION_REPO}" ]]; then
-  CONFIGURATION_REPO="https://github.com/edx/configuration.git"
+  CONFIGURATION_REPO="https://github.com/EDUlib/configuration.git"
 fi
 
 if [[ -z "${CONFIGURATION_VERSION}" ]]; then
-    CONFIGURATION_VERSION=${OPENEDX_RELEASE-master}
+#####    CONFIGURATION_VERSION=${OPENEDX_RELEASE-master}
+  CONFIGURATION_VERSION="edulib-ironwood.1rc2"
 fi
 
 if [[ -z "${UPGRADE_OS}" ]]; then

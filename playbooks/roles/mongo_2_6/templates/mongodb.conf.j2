@@ -39,7 +39,8 @@ replSet = {{ mongo_repl_set }}
 #cpu = true
 
 # Turn on/off security.  On is currently the default
-auth = {{ MONGO_AUTH | ternary("true", "false") }}
+#auth = {{ MONGO_AUTH | ternary("true", "false") }}
+auth = false
 
 # Verbose logging output.
 #verbose = true
