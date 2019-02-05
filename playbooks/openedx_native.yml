@@ -24,21 +24,21 @@
 
 ##### Modifs par EDULIB 20200522
     CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
-    certs_version: 'edulib-ironwood.master'
+    certs_version: 'edulib-juniper.rc3'
     edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
-    configuration_version: 'edulib-ironwood.master'
+    configuration_version: 'edulib-juniper.rc3'
     edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-ironwood.master'
+    edx_platform_version: 'edulib-juniper.rc3'
     forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-ironwood.master'
+    forum_version: 'edulib-juniper.rc3'
     NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
-    NOTIFIER_VERSION: 'edulib-ironwood.master'
+    NOTIFIER_VERSION: 'edulib-juniper.rc3'
     xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
-    xqueue_version: 'edulib-ironwood.master'
-    XQUEUE_VERSION: 'edulib-ironwood.master'
-    ECOMMERCE_VERSION: 'edulib-ironwood.master'
-    ECOMMERCE_WORKER_VERSION: 'edulib-ironwood.master'
-    DISCOVERY_VERSION: 'edulib-ironwood.master'
+    xqueue_version: 'edulib-juniper.rc3'
+    XQUEUE_VERSION: 'edulib-juniper.rc3'
+    ECOMMERCE_VERSION: 'edulib-juniper.rc3'
+    ECOMMERCE_WORKER_VERSION: 'edulib-juniper.rc3'
+    DISCOVERY_VERSION: 'edulib-juniper.rc3'
 ##### Modifs par EDULIB 20200522
 
 >>>>>>> one commit edulib-ironwood.1rc1
