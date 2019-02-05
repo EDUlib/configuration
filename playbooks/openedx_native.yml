@@ -20,9 +20,9 @@
     EDXAPP_LMS_BASE_SCHEME: http
     EDXAPP_LMS_NGINX_PORT: '80'
 
-##### Modifs par EDULIB 20191223
+##### Modifs par EDULIB 20200421
     repo_edulib: "EDUlib"
-    version_edulib: "edulib-juniper.alpha1"
+    version_edulib: "edulib-juniper.rc1"
 
     CERTS_REPO: 'https://github.com/{{ repo_edulib }}/edx-certificates.git'
     certs_version: "{{ version_edulib }}"
@@ -44,7 +44,7 @@
     INSIGHTS_VERSION: "{{ version_edulib }}"
     ANALYTICS_API_VERSION: "{{ version_edulib }}"
     THEMES_VERSION: "{{ version_edulib }}"
-##### Modifs par EDULIB 20191223
+##### Modifs par EDULIB 20200421
 
     # Set to false if deployed behind another proxy/load balancer.
     NGINX_SET_X_FORWARDED_HEADERS: True
