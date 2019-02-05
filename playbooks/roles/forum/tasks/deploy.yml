@@ -44,6 +44,7 @@
     repo: "{{ forum_source_repo }}"
     version: "{{ FORUM_VERSION }}"
     accept_hostkey: yes
+    force: yes
   become_user: "{{ forum_user }}"
   register: forum_checkout
   notify: restart the forum service

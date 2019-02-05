@@ -50,6 +50,14 @@ discovery_debian_pkgs:
 DISCOVERY_NGINX_PORT: "1{{ discovery_gunicorn_port }}"
 DISCOVERY_SSL_NGINX_PORT: "4{{ discovery_gunicorn_port }}"
 
+##### Added by EDUlib #####
+DISCOVERY_DEFAULT_DB_NAME: 'discovery'
+DISCOVERY_MYSQL: '10.0.1.165'
+# MySQL usernames are limited to 16 characters
+DISCOVERY_MYSQL_USER: 'discov001'
+DISCOVERY_MYSQL_PASSWORD: 'password'
+##### Added by EDUlib #####
+
 # Using SSL? See https://www.elastic.co/guide/en/shield/current/ssl-tls.html.
 # Using AWS? Use the AWS-provided host (e.g. https://search-test-abc123.us-east-1.es.amazonaws.com/).
 # Assuming the port corresponds that of the protocol (e.g. http=80, https=443), there is no need to specify a port.
