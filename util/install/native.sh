@@ -107,10 +107,10 @@ sudo pip install --upgrade setuptools==44.1.0
 sudo -H pip install --upgrade virtualenv==16.7.10
 
 ##
-## MODIFS PAR EDULIB 20190321
+## MODIFS PAR EDULIB 20200421
 ##
-CONFIGURATION_VERSION="edulib-juniper.alpha1"
-OPENEDX_RELEASE="edulib-juniper.alpha1"
+CONFIGURATION_VERSION="edulib-juniper.rc1"
+OPENEDX_RELEASE="edulib-juniper.rc1"
 
 ##
 ## Overridable version variables in the playbooks. Each can be overridden
@@ -149,7 +149,30 @@ if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
 
-EXTRA_VARS="-e@$(pwd)/config.yml $EXTRA_VARS"
+#####EXTRA_VARS="-e@$(pwd)/config.yml $EXTRA_VARS"
+
+#####CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
+
+##
+## MODIFS PAR EDULIB 20180716
+##
+#####CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
+if [ -n "$OPENEDX_RELEASE" ]; then
+  EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
+    -e certs_version=$OPENEDX_RELEASE \
+    -e forum_version=$OPENEDX_RELEASE \
+    -e xqueue_version=$OPENEDX_RELEASE \
+    -e configuration_version=$OPENEDX_RELEASE \
+    -e demo_version=$OPENEDX_RELEASE \
+    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
+    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
+    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
+    -e ECOMMERCE_VERSION=$OPENEDX_RELEASE \
+    -e ECOMMERCE_WORKER_VERSION=$OPENEDX_RELEASE \
+    -e DISCOVERY_VERSION=$OPENEDX_RELEASE \
+    -e THEMES_VERSION=$OPENEDX_RELEASE \
+  $EXTRA_VARS"
+fi
 
 #####CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
 
@@ -171,7 +194,8 @@ sudo -H pip3 install -r requirements.txt
 ##
 ## Run the openedx_native.yml playbook in the configuration/playbooks directory
 ##
-cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./openedx_native.yml -i "localhost," $EXTRA_VARS "$@"
+#####cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./openedx_native.yml -i "localhost," $EXTRA_VARS "$@"
+cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -vvv -c local ./edx_sandbox.yml -i "localhost," $EXTRA_VARS "$@"
 ansible_status=$?
 
 if [[ $ansible_status -ne 0 ]]; then
