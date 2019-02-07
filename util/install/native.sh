@@ -155,23 +155,6 @@ fi
 ## MODIFS PAR EDULIB 20180716
 ##
 #####CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
-if [ -n "$OPENEDX_RELEASE" ]; then
-  EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
-    -e certs_version=$OPENEDX_RELEASE \
-    -e forum_version=$OPENEDX_RELEASE \
-    -e xqueue_version=$OPENEDX_RELEASE \
-    -e configuration_version=$OPENEDX_RELEASE \
-    -e demo_version=$OPENEDX_RELEASE \
-    -e NOTIFIER_VERSION=$OPENEDX_RELEASE \
-    -e INSIGHTS_VERSION=$OPENEDX_RELEASE \
-    -e ANALYTICS_API_VERSION=$OPENEDX_RELEASE \
-    -e ECOMMERCE_VERSION=$OPENEDX_RELEASE \
-    -e ECOMMERCE_WORKER_VERSION=$OPENEDX_RELEASE \
-    -e DISCOVERY_VERSION=$OPENEDX_RELEASE \
-    -e THEMES_VERSION=$OPENEDX_RELEASE \
-  $EXTRA_VARS"
-fi
-
 
 ##
 ## Clone the configuration repository and run Ansible
