@@ -82,11 +82,13 @@
     - role: edxapp
       celery_worker: True
     - edxapp
-    - role: ecommerce
-      when: SANDBOX_ENABLE_ECOMMERCE
-    - role: ecomworker
-      ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
-      when: SANDBOX_ENABLE_ECOMMERCE
+##### Installed separately at EDUlib
+#####    - role: ecommerce
+#####      when: SANDBOX_ENABLE_ECOMMERCE
+#####    - role: ecomworker
+#####      ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
+#####      when: SANDBOX_ENABLE_ECOMMERCE
+##### Installed separately at EDUlib
     - role: analytics_api
       when: SANDBOX_ENABLE_ANALYTICS_API
     #- role: insights
