@@ -29,7 +29,7 @@ ECOMMERCE_DATABASE_PASSWORD: password
 ECOMMERCE_DATABASE_HOST: localhost
 
 #####ECOMMERCE_VERSION: "master"
-ECOMMERCE_VERSION: "edulib-ironwood.1rc1"
+ECOMMERCE_VERSION: "edulib-ironwood.1rc2"
 #####ECOMMERCE_DJANGO_SETTINGS_MODULE: "ecommerce.settings.production"
 ECOMMERCE_DJANGO_SETTINGS_MODULE: "ecommerce.settings.local"
 
