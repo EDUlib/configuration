@@ -28,7 +28,7 @@ fi
 if [[ -z "${CONFIGURATION_VERSION}" ]]; then
 #####    CONFIGURATION_VERSION=${OPENEDX_RELEASE-master}
 #####  CONFIGURATION_VERSION="edulib-ironwood.1rc2"
-  CONFIGURATION_VERSION="open-release/ironwood.1rc3"
+  CONFIGURATION_VERSION="open-release/ironwood.1rc2"
 fi
 
 if [[ -z "${UPGRADE_OS}" ]]; then
