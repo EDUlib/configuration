@@ -21,8 +21,10 @@
     EDXAPP_LMS_NGINX_PORT: '80'
 
 ##### Modifs par EDULIB 20190225
-    repo_edulib: "EDUlib"
-    version_edulib: "edulib-ironwood.1rc2"
+    #repo_edulib: "EDUlib"
+    #version_edulib: "edulib-ironwood.1rc2"
+    repo_edulib: "edx"
+    version_edulib: "ironwood.1rc3"
 
     CERTS_REPO: 'https://github.com/{{ repo_edulib }}/edx-certificates.git'
     certs_version: "{{ version_edulib }}"
