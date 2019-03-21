@@ -107,10 +107,10 @@ sudo pip install --upgrade setuptools==39.0.1
 sudo -H pip install --upgrade virtualenv==15.2.0
 
 ##
-## MODIFS PAR EDULIB 20190318
+## MODIFS PAR EDULIB 20190321
 ##
-CONFIGURATION_VERSION="edulib-ironwood.1rc4"
-OPENEDX_RELEASE="edulib-ironwood.1rc4"
+CONFIGURATION_VERSION="edulib-ironwood.1"
+OPENEDX_RELEASE="edulib-ironwood.1"
 
 ##
 ## Overridable version variables in the playbooks. Each can be overridden
