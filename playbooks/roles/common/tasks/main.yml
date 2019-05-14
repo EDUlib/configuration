@@ -80,11 +80,11 @@
     ansible_distribution in common_debian_variants and
     ansible_distribution_release != 'bionic'
 
-#- name: Update expired apt keys
-#  shell: apt-key adv --recv-keys --keyserver {{ COMMON_EDX_PPA_KEY_SERVER }} {{ COMMON_EDX_PPA_KEY_ID }}
-#  when: >
-#    ansible_distribution in common_debian_variants and
-#    ansible_distribution_release != 'bionic'
+- name: Update expired apt keys
+  shell: apt-key adv --recv-keys --keyserver {{ COMMON_EDX_PPA_KEY_SERVER }} {{ COMMON_EDX_PPA_KEY_ID }}
+  when: >
+    ansible_distribution in common_debian_variants and
+    ansible_distribution_release != 'bionic'
 
 
 - name: Add custom edX PPA
