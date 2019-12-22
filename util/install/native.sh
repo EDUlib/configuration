@@ -109,8 +109,8 @@ sudo -H pip install --upgrade virtualenv==16.7.10
 ##
 ## MODIFS PAR EDULIB 20190321
 ##
-CONFIGURATION_VERSION="edulib-ironwood.1"
-OPENEDX_RELEASE="edulib-ironwood.1"
+CONFIGURATION_VERSION="edulib-juniper.alpha1"
+OPENEDX_RELEASE="edulib-juniper.alpha1"
 
 ##
 ## Overridable version variables in the playbooks. Each can be overridden
