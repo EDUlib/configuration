@@ -22,23 +22,29 @@
     EDX_PLATFORM_VERSION: 'edulib-koa.test01'
     edx_platform_version: "{{ EDX_PLATFORM_VERSION }}"
 
-##### Modifs par EDULIB 20200522
-    CERTS_REPO: 'https://github.com/EDUlib/edx-certificates.git'
-    certs_version: 'edulib-juniper.rc3'
-    edx_ansible_source_repo: 'https://github.com/EDUlib/configuration.git'
-    configuration_version: 'edulib-juniper.rc3'
-    edx_platform_repo: 'https://github.com/EDUlib/edx-platform.git'
-    edx_platform_version: 'edulib-juniper.rc3'
-    forum_source_repo: 'https://github.com/EDUlib/cs_comments_service.git'
-    forum_version: 'edulib-juniper.rc3'
-    NOTIFIER_SOURCE_REPO: 'https://github.com/EDUlib/notifier.git'
-    NOTIFIER_VERSION: 'edulib-juniper.rc3'
-    xqueue_source_repo: 'https://github.com/EDUlib/xqueue.git'
-    xqueue_version: 'edulib-juniper.rc3'
-    XQUEUE_VERSION: 'edulib-juniper.rc3'
-    ECOMMERCE_VERSION: 'edulib-juniper.rc3'
-    ECOMMERCE_WORKER_VERSION: 'edulib-juniper.rc3'
-    DISCOVERY_VERSION: 'edulib-juniper.rc3'
+    repo_edulib: "EDUlib"
+    version_edulib: "edulib-koa.test01"
+
+    CERTS_REPO: 'https://github.com/{{ repo_edulib }}/edx-certificates.git'
+    certs_version: "{{ version_edulib }}"
+    edx_ansible_source_repo: 'https://github.com/{{ repo_edulib }}/configuration.git'
+    configuration_version: "{{ version_edulib }}" 
+    edx_platform_repo: 'https://github.com/{{ repo_edulib }}/edx-platform.git'
+    edx_platform_version: "{{ version_edulib }}"
+    forum_source_repo: 'https://github.com/{{ repo_edulib }}/cs_comments_service.git'
+    forum_version: "{{ version_edulib }}"
+    NOTIFIER_SOURCE_REPO: 'https://github.com/{{ repo_edulib }}/notifier.git'
+    NOTIFIER_VERSION: "{{ version_edulib }}" 
+    xqueue_source_repo: 'https://github.com/{{ repo_edulib }}/xqueue.git'
+    xqueue_version: "{{ version_edulib }}"
+    XQUEUE_VERSION: "{{ version_edulib }}"
+    ECOMMERCE_VERSION: "{{ version_edulib }}"
+    ECOMMERCE_WORKER_VERSION: "{{ version_edulib }}"
+    DISCOVERY_VERSION: "{{ version_edulib }}"
+    demo_version: "{{ version_edulib }}"
+    INSIGHTS_VERSION: "{{ version_edulib }}"
+    ANALYTICS_API_VERSION: "{{ version_edulib }}"
+    THEMES_VERSION: "{{ version_edulib }}"
 ##### Modifs par EDULIB 20200522
 
 >>>>>>> one commit edulib-ironwood.1rc1
