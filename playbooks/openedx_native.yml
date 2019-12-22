@@ -20,9 +20,9 @@
     EDXAPP_LMS_BASE_SCHEME: http
     EDXAPP_LMS_NGINX_PORT: '80'
 
-##### Modifs par EDULIB 20190321
+##### Modifs par EDULIB 20191222
     repo_edulib: "EDUlib"
-    version_edulib: "edulib-ironwood.1"
+    version_edulib: "edulib-juniper.alpha1"
 
     CERTS_REPO: 'https://github.com/{{ repo_edulib }}/edx-certificates.git'
     certs_version: "{{ version_edulib }}"
