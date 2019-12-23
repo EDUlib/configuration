@@ -115,26 +115,26 @@
     - "manage"
     - "manage:db-replication"
 
-# If either auth or unauthed access comes back with a replica set, we
-# do not want to initialize one.  Since initialization requires a bunch
-# of extra templating and restarting, it's not something we want to do on
-# existing boxes.
-- name: track if you have a replica set
-  set_fact:
-    initialize_replica_set: true
-    skip_replica_set: true
-  when: authed_replica_set_already_configured.status is not defined
-        and unauthed_replica_set_already_configured.status is not defined
-  tags:
-    - "manage"
-    - "manage:db-replication"
+## If either auth or unauthed access comes back with a replica set, we
+## do not want to initialize one.  Since initialization requires a bunch
+## of extra templating and restarting, it's not something we want to do on
+## existing boxes.
+#- name: track if you have a replica set
+#  set_fact:
+#    initialize_replica_set: true
+#    skip_replica_set: true
+#  when: authed_replica_set_already_configured.status is not defined
+#        and unauthed_replica_set_already_configured.status is not defined
+#  tags:
+#    - "manage"
+#    - "manage:db-replication"
 
-- name: warn about unconfigured replica sets
-  debug: msg="You do not appear to have a Replica Set configured, deploying one for you"
-  when: initialize_replica_set
-  tags:
-    - "manage"
-    - "manage:db-replication"
+#- name: warn about unconfigured replica sets
+#  debug: msg="You do not appear to have a Replica Set configured, deploying one for you"
+#  when: initialize_replica_set
+#  tags:
+#    - "manage"
+#    - "manage:db-replication"
 
 - name: copy mongodb key file
   copy:
