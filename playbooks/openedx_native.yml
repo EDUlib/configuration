@@ -25,7 +25,7 @@
     version_edulib: "edulib-juniper.rc1"
 
     CERTS_REPO: 'https://github.com/{{ repo_edulib }}/edx-certificates.git'
-    certs_version: "{{ version_edulib }}"
+    #####certs_version: "{{ version_edulib }}"
     edx_ansible_source_repo: 'https://github.com/{{ repo_edulib }}/configuration.git'
     configuration_version: "{{ version_edulib }}" 
     edx_platform_repo: 'https://github.com/{{ repo_edulib }}/edx-platform.git'
@@ -72,7 +72,7 @@
       when: COMMON_ENABLE_AWS_ROLE
     - role: nginx
       nginx_sites:
-      - certs
+      #####- certs
       - cms
       - lms
       - forum
