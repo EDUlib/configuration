@@ -53,7 +53,6 @@
     version: "{{ CERTS_VERSION }}"
     accept_hostkey: yes
     key_file: "{{ certs_git_identity }}"
-    force: yes
   become_user: "{{ certs_user }}"
   register: certs_checkout
   when: CERTS_GIT_IDENTITY != "none"
@@ -64,7 +63,6 @@
     repo: "{{ CERTS_REPO }}"
     version: "{{ CERTS_VERSION }}"
     accept_hostkey: yes
-    force: yes
   become_user: "{{ certs_user }}"
   register: certs_checkout
   when: CERTS_GIT_IDENTITY == "none"
