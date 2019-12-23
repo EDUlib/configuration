@@ -5,7 +5,6 @@
     repo: "{{ NOTIFIER_SOURCE_REPO }}"
     version: "{{ NOTIFIER_VERSION }}"
     accept_hostkey: yes
-    force: yes
   become: true
   become_user: "{{ notifier_user }}"
   tags:
