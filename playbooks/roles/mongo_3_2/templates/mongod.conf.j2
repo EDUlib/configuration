@@ -4,8 +4,8 @@
 
 storage:
   # Where to store the data.
-  #####dbPath: {{ mongo_dbpath }}
-  dbPath: /databases/wiredTiger
+  dbPath: {{ mongo_dbpath }}
+  #####dbPath: /databases/wiredTiger
   # Storage Engine
   engine: {{ MONGO_STORAGE_ENGINE }}
   # Enable journaling, http://www.mongodb.org/display/DOCS/Journaling
