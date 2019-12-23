@@ -68,7 +68,8 @@ EDXAPP_XQUEUE_DJANGO_AUTH:
 EDXAPP_XQUEUE_URL: 'http://localhost:18040'
 
 # Comma-separated list of hosts/ips
-EDXAPP_MONGO_HOSTS: '10.0.1.165'
+####EDXAPP_MONGO_HOSTS: '10.0.1.165'
+EDXAPP_MONGO_HOSTS: 'localhost'
 EDXAPP_MONGO_PASSWORD: 'password'
 EDXAPP_MONGO_PORT: 27017
 EDXAPP_MONGO_USER: 'edxapp'
@@ -109,7 +110,8 @@ EDXAPP_MYSQL_CSMH_OPTIONS: "{{ EDXAPP_MYSQL_OPTIONS }}"
 # This is Django's default https://docs.djangoproject.com/en/1.8/ref/settings/#conn-max-age
 EDXAPP_MYSQL_CONN_MAX_AGE: 0
 
-EDXAPP_MYSQL_HOST: '10.0.1.165'
+####EDXAPP_MYSQL_HOST: '10.0.1.165'
+EDXAPP_MYSQL_HOST: 'localhost'
 EDXAPP_MYSQL_PORT: '3306'
 
 EDXAPP_SEARCH_HOST: 'localhost'
