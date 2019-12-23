@@ -147,7 +147,7 @@ if [[ -f my-passwords.yml ]]; then
     EXTRA_VARS="-e@$(pwd)/my-passwords.yml $EXTRA_VARS"
 fi
 
-#####EXTRA_VARS="-e@$(pwd)/config.yml $EXTRA_VARS"
+EXTRA_VARS="-e@$(pwd)/config.yml $EXTRA_VARS"
 
 #####CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
 
