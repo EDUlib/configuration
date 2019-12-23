@@ -124,7 +124,7 @@
       NOTIFIER_DIGEST_TASK_INTERVAL: 5
     - role: xqueue
       update_users: True
-    - certs
+    #####- certs
     - edx_ansible
     - role: datadog
       when: COMMON_ENABLE_DATADOG
