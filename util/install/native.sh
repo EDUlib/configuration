@@ -195,7 +195,7 @@ sudo -H pip3 install -r requirements.txt
 ## Run the openedx_native.yml playbook in the configuration/playbooks directory
 ##
 #####cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./openedx_native.yml -i "localhost," $EXTRA_VARS "$@"
-cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -vvv -c local ./openedx_native.yml -i "localhost," $EXTRA_VARS "$@"
+cd /var/tmp/configuration/playbooks && sudo -E ansible-playbook -c local ./openedx_native.yml -i "localhost," $EXTRA_VARS "$@"
 ansible_status=$?
 
 if [[ $ansible_status -ne 0 ]]; then
