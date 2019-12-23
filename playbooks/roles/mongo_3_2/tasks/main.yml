@@ -78,30 +78,30 @@
     - "install"
     - "install:app-configuration"
 
-# This will error when run on a new replica set, so we ignore_errors
-# and connect anonymously next.
-- name: determine if there is a replica set already
-  mongodb_rs_status:
-    host: "{{ ansible_lo['ipv4']['address'] }}"
-    username: "{{ MONGO_ADMIN_USER }}"
-    password: "{{ MONGO_ADMIN_PASSWORD }}"
-  run_once: true
-  register: authed_replica_set_already_configured
-  ignore_errors: true
-  tags:
-    - "manage"
-    - "manage:db-replication"
+## This will error when run on a new replica set, so we ignore_errors
+## and connect anonymously next.
+#- name: determine if there is a replica set already
+#  mongodb_rs_status:
+#    host: "{{ ansible_lo['ipv4']['address'] }}"
+#    username: "{{ MONGO_ADMIN_USER }}"
+#    password: "{{ MONGO_ADMIN_PASSWORD }}"
+#  run_once: true
+#  register: authed_replica_set_already_configured
+#  ignore_errors: true
+#  tags:
+#    - "manage"
+#    - "manage:db-replication"
 
-- name: Try checking the replica set with no user/pass in case this is a new box
-  mongodb_rs_status:
-    host: "{{ ansible_lo['ipv4']['address'] }}"
-  run_once: true
-  register: unauthed_replica_set_already_configured
-  when: authed_replica_set_already_configured.failed is defined
-  ignore_errors: true
-  tags:
-    - "manage"
-    - "manage:db-replication"
+#- name: Try checking the replica set with no user/pass in case this is a new box
+#  mongodb_rs_status:
+#    host: "{{ ansible_lo['ipv4']['address'] }}"
+#  run_once: true
+#  register: unauthed_replica_set_already_configured
+#  when: authed_replica_set_already_configured.failed is defined
+#  ignore_errors: true
+#  tags:
+#    - "manage"
+#    - "manage:db-replication"
 
 # We use these in the templates but also to control a whole bunch of logic
 - name: set facts that default to not initializing a replica set
