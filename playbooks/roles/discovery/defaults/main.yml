@@ -51,7 +51,8 @@ DISCOVERY_SSL_NGINX_PORT: "4{{ discovery_gunicorn_port }}"
 
 ##### Added by EDUlib #####
 DISCOVERY_DEFAULT_DB_NAME: 'discovery'
-DISCOVERY_MYSQL: '10.0.1.165'
+##########DISCOVERY_MYSQL: '10.0.1.165'
+DISCOVERY_MYSQL: 'localhost'
 # MySQL usernames are limited to 16 characters
 DISCOVERY_MYSQL_USER: 'discov001'
 DISCOVERY_MYSQL_PASSWORD: 'password'
@@ -65,7 +66,7 @@ DISCOVERY_ELASTICSEARCH_INDEX_NAME: 'catalog'
 
 DISCOVERY_MEMCACHE: [ 'memcache' ]
 
-DISCOVERY_VERSION: "edulib-ironwood.1"
+DISCOVERY_VERSION: "edulib-juniper.alpha11"
 DISCOVERY_DJANGO_SETTINGS_MODULE: "course_discovery.settings.production"
 DISCOVERY_URL_ROOT: 'http://discovery:{{ DISCOVERY_NGINX_PORT }}'
 DISCOVERY_LOGOUT_URL: '{{ DISCOVERY_URL_ROOT }}/logout/'
