@@ -20,12 +20,14 @@ discovery_service_name: "discovery"
 discovery_gunicorn_port: 8381
 
 DISCOVERY_DEFAULT_DB_NAME: 'discovery'
-DISCOVERY_MYSQL: 'localhost'
+#####DISCOVERY_MYSQL: 'localhost'
+DISCOVERY_MYSQL: '10.0.1.165'
 # MySQL usernames are limited to 16 characters
 DISCOVERY_MYSQL_USER: 'discov001'
 DISCOVERY_MYSQL_PASSWORD: 'password'
-DISCOVERY_MYSQL_REPLICA_HOST: 'localhost'
 DISCOVERY_MYSQL_CONN_MAX_AGE: 60
+#####DISCOVERY_MYSQL_REPLICA_HOST: 'localhost'
+DISCOVERY_MYSQL_REPLICA_HOST: '10.0.1.165'
 
 discovery_environment:
   DISCOVERY_CFG: "{{ COMMON_CFG_DIR }}/{{ discovery_service_name }}.yml"
