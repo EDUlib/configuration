@@ -52,8 +52,8 @@ DISCOVERY_SSL_NGINX_PORT: "4{{ discovery_gunicorn_port }}"
 
 ##### Added by EDUlib #####
 DISCOVERY_DEFAULT_DB_NAME: 'discovery'
-##########DISCOVERY_MYSQL: '10.0.1.165'
-DISCOVERY_MYSQL: 'localhost'
+DISCOVERY_MYSQL: '10.0.1.165'
+#####DISCOVERY_MYSQL: 'localhost'
 # MySQL usernames are limited to 16 characters
 DISCOVERY_MYSQL_USER: 'discov001'
 DISCOVERY_MYSQL_PASSWORD: 'password'
