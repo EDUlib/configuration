@@ -100,8 +100,8 @@
       when: SANDBOX_ENABLE_ECOMMERCE
     - role: analytics_api
       when: SANDBOX_ENABLE_ANALYTICS_API
-    - role: insights
-      when: SANDBOX_ENABLE_INSIGHTS
+#####    - role: insights
+#####      when: SANDBOX_ENABLE_INSIGHTS
     - role: edx_notes_api
       when: SANDBOX_ENABLE_NOTES
       # Run the nginx role to install edx_notes_api config since the app role
@@ -112,7 +112,7 @@
       when: SANDBOX_ENABLE_NOTES
     - role: demo
       when: DEMO_ROLE_ENABLED
-    - oauth_client_setup
+#####    - oauth_client_setup
     - oraclejdk
     - role: elasticsearch
       when: EDXAPP_ENABLE_ELASTIC_SEARCH
