@@ -107,7 +107,7 @@
 - name: set facts that default to not initializing a replica set
   set_fact:
     initialize_replica_set: false
-    skip_replica_set: false
+    skip_replica_set: true
   tags:
     - "install"
     - "install:app-configuration"
@@ -129,12 +129,12 @@
     - "manage"
     - "manage:db-replication"
 
-#- name: warn about unconfigured replica sets
-#  debug: msg="You do not appear to have a Replica Set configured, deploying one for you"
-#  when: initialize_replica_set
-#  tags:
-#    - "manage"
-#    - "manage:db-replication"
+- name: warn about unconfigured replica sets
+  debug: msg="You do not appear to have a Replica Set configured, deploying one for you"
+  when: initialize_replica_set
+  tags:
+    - "manage"
+    - "manage:db-replication"
 
 - name: copy mongodb key file
   copy:
@@ -282,7 +282,7 @@
 # a replica set in the 'determine if there is a replica set already' task.
 - name: Unset our skip initializing replica set fact so that mongod.conf gets a replica set
   set_fact:
-    skip_replica_set: false
+    skip_replica_set: true
   when: initialize_replica_set
   tags:
     - "manage"
@@ -316,39 +316,39 @@
     - "manage"
     - "manage:db-replication"
 
-- name: configure replica set
-  mongodb_replica_set:
-    username: "{{ MONGO_ADMIN_USER }}"
-    password: "{{ MONGO_ADMIN_PASSWORD }}"
-    rs_config: "{{ MONGO_RS_CONFIG }}"
-  run_once: true
-  register: replset_status
-  when: mongo_configure_replica_set
-  tags:
-    - "manage"
-    - "manage:db"
-    - "manage:db-replication"
-    - "manage:db-replication-configuration"
+#- name: configure replica set
+#  mongodb_replica_set:
+#    username: "{{ MONGO_ADMIN_USER }}"
+#    password: "{{ MONGO_ADMIN_PASSWORD }}"
+#    rs_config: "{{ MONGO_RS_CONFIG }}"
+#  run_once: true
+#  register: replset_status
+#  when: mongo_configure_replica_set
+#  tags:
+#    - "manage"
+#    - "manage:db"
+#    - "manage:db-replication"
+#    - "manage:db-replication-configuration"
 
 # During initial replica set configuration, it can take a few seconds to vote
 # a primary and for all members to reflect that status.  During that window,
 # use creation or other writes can fail.  The best wait/check seems to be repeatedly
 # checking the replica set status until we see a PRIMARY in the results.
-- name: Wait for the replica set to update and (if needed) elect a primary
-  mongodb_rs_status:
-      host: "{{ ansible_lo['ipv4']['address'] }}"
-      username: "{{ MONGO_ADMIN_USER }}"
-      password: "{{ MONGO_ADMIN_PASSWORD }}"
-  register: status
-  until: status.status is defined and 'PRIMARY' in status.status.members|map(attribute='stateStr')|list
-  when: mongo_configure_replica_set
-  retries: 5
-  delay: 2
-  run_once: true
-  tags:
-    - "manage"
-    - "manage:db"
-    - "manage:db-replication"
+#- name: Wait for the replica set to update and (if needed) elect a primary
+#  mongodb_rs_status:
+#      host: "{{ ansible_lo['ipv4']['address'] }}"
+#      username: "{{ MONGO_ADMIN_USER }}"
+#      password: "{{ MONGO_ADMIN_PASSWORD }}"
+#  register: status
+#  until: status.status is defined and 'PRIMARY' in status.status.members|map(attribute='stateStr')|list
+#  when: mongo_configure_replica_set
+#  retries: 5
+#  delay: 2
+#  run_once: true
+#  tags:
+#    - "manage"
+#    - "manage:db"
+#    - "manage:db-replication"
 
 - name: create mongodb users in a replica set
   mongodb_user:
@@ -360,10 +360,10 @@
     password: "{{ item.password }}"
     roles: "{{ item.roles }}"
     state: present
-    replica_set: "{{ MONGO_REPL_SET }}"
+#    replica_set: "{{ MONGO_REPL_SET }}"
   with_items: "{{ MONGO_USERS }}"
   run_once: true
-  when: mongo_configure_replica_set
+#  when: mongo_configure_replica_set
   tags:
     - "manage"
     - "manage:db"
