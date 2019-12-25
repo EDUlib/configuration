@@ -4,8 +4,8 @@
 
 storage:
   # Where to store the data.
-  dbPath: {{ mongo_dbpath }}
-  #####dbPath: /databases/wiredTiger
+  #####  dbPath: {{ mongo_dbpath }}
+  dbPath: /databases/wiredTiger
   # Storage Engine
   engine: {{ MONGO_STORAGE_ENGINE }}
   # Enable journaling, http://www.mongodb.org/display/DOCS/Journaling
@@ -31,12 +31,12 @@ systemLog:
   logRotate: {{ mongo_logrotate }}
 
 {% if not skip_replica_set %}
-replication:
-  replSetName: {{ MONGO_REPL_SET }}
+#####replication:
+#####  replSetName: {{ MONGO_REPL_SET }}
 
-security:
-  authorization: {{ MONGO_AUTH | ternary("enabled", "disabled") }}
-  keyFile: {{ mongo_key_file }}
+#####security:
+#####  authorization: {{ MONGO_AUTH | ternary("enabled", "disabled") }}
+#####  keyFile: {{ mongo_key_file }}
 
 {% endif %}
 net:
