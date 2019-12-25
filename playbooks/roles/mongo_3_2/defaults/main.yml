@@ -32,7 +32,7 @@ mongodb_debian_pkgs:
 
 ##### MODIFS BY EDULIB 20180423
 ##### mongo_configure_replica_set: true
- mongo_configure_replica_set: false
+mongo_configure_replica_set: false
 ##### MODIFS BY EDULIB 20180423
 
 # Vars Meant to be overridden
