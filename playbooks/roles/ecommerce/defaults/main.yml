@@ -16,6 +16,7 @@ ECOMMERCE_GIT_IDENTITY: !!null
 ECOMMERCE_REPOS:
   - PROTOCOL: "{{ COMMON_GIT_PROTOCOL }}"
     DOMAIN: "{{ COMMON_GIT_MIRROR }}"
+#    PATH: "{{ COMMON_GIT_PATH }}"
     PATH: "EDUlib"
     REPO: "ecommerce.git"
     VERSION: "edulib-juniper.alpha1"
@@ -55,6 +56,13 @@ ECOMMERCE_LMS_URL_ROOT: 'https://cours-virginie.edulib.org'
 ECOMMERCE_JWT_ALGORITHM: 'HS256'
 ECOMMERCE_JWT_VERIFY_EXPIRATION: true
 ECOMMERCE_JWT_DECODE_HANDLER: 'ecommerce.extensions.api.handlers.jwt_decode_handler'
+#####ECOMMERCE_JWT_ISSUERS:
+#####  - ISSUER: "{{ COMMON_JWT_ISSUER }}"
+#####    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
+#####    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
+#####  - ISSUER: 'ecommerce_worker'  # Must match the value of JWT_ISSUER configured for the ecommerce worker.
+#####    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
+#####    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
 ECOMMERCE_JWT_ISSUERS:
   - ISSUER: "https://cours-virginie.edulib.org/oauth2"
     AUDIENCE: "lms-key"
@@ -77,10 +85,14 @@ ECOMMERCE_SAILTHRU_KEY: 'sailthru key here'
 ECOMMERCE_SAILTHRU_SECRET: 'sailthru secret here'
 
 # Used to automatically configure OAuth2 Client
-ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY: 'ecommerce-sso-key'
-ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET: 'ecommerce-sso-secret'
-ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY: 'ecommerce-backend-service-key'
-ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_SECRET: 'ecommerce-backend-service-secret'
+#####ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY: 'ecommerce-sso-key'
+#####ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET: 'ecommerce-sso-secret'
+#####ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY: 'ecommerce-backend-service-key'
+#####ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_SECRET: 'ecommerce-backend-service-secret'
+ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY: 'AXoSzcku16IoVyjWFaDKxU9O4UCGpUn89e4sowtq'
+ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET: 'tGxCEQkJ6ajDgWtcF11GNgaE6aZLY8zbx7bkbjp9kCghhp1HKd8LoqyUJ6ApRcHEZAuS0EFmKcOozmmLgHzRYnyCvoTNxaPqHK9ORoByMKgGl7UZ5lCETAqWFokzPCpU'
+ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY: 'AXoSzcku16IoVyjWFaDKxU9O4UCGpUn89e4sowtq'
+ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_SECRET: 'tGxCEQkJ6ajDgWtcF11GNgaE6aZLY8zbx7bkbjp9kCghhp1HKd8LoqyUJ6ApRcHEZAuS0EFmKcOozmmLgHzRYnyCvoTNxaPqHK9ORoByMKgGl7UZ5lCETAqWFokzPCpU'
 ECOMMERCE_SOCIAL_AUTH_REDIRECT_IS_HTTPS: false
 
 # Settings for affiliate cookie tracking
