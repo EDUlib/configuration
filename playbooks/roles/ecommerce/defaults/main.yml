@@ -19,7 +19,7 @@ ECOMMERCE_REPOS:
 #    PATH: "{{ COMMON_GIT_PATH }}"
     PATH: "EDUlib"
     REPO: "ecommerce.git"
-    VERSION: "{{ ECOMMERCE_VERSION }}"
+    VERSION: "edulib-juniper.alpha1"
     DESTINATION: "{{ ecommerce_code_dir }}"
     SSH_KEY: "{{ ECOMMERCE_GIT_IDENTITY }}"
 
@@ -52,7 +52,8 @@ ECOMMERCE_SECRET_KEY: 'Your secret key here'
 #####ECOMMERCE_LANGUAGE_CODE: 'en'
 ECOMMERCE_LANGUAGE_CODE: 'fr'
 ECOMMERCE_LANGUAGE_COOKIE_NAME: 'openedx-language-preference'
-ECOMMERCE_EDX_API_KEY: 'PUT_YOUR_API_KEY_HERE'  # This should match the value set for edxapp
+#####ECOMMERCE_EDX_API_KEY: 'PUT_YOUR_API_KEY_HERE'  # This should match the value set for edxapp
+ECOMMERCE_EDX_API_KEY: 'abcd1234.12345.12345'  # This should match the value set for edxapp
 ECOMMERCE_ECOMMERCE_URL_ROOT: 'http://localhost:8002'
 ECOMMERCE_LOGOUT_URL: '{{ ECOMMERCE_ECOMMERCE_URL_ROOT }}/logout/'
 #####ECOMMERCE_LMS_URL_ROOT: 'http://127.0.0.1:8000'
@@ -190,7 +191,6 @@ ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
       receipt_path: '{{ ECOMMERCE_PAYSAFE_RECEIPT_PATH }}'
       cancel_checkout_path: '{{ ECOMMERCE_PAYSAFE_CANCEL_CHECKOUT_PATH }}'
       cancel_ecommerce_path: '{{ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH }}'
-
 # JWT payload user attribute mapping
 ECOMMERCE_EDX_DRF_EXTENSIONS:
   JWT_PAYLOAD_USER_ATTRIBUTE_MAPPING:
