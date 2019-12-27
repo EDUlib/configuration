@@ -16,9 +16,9 @@ ECOMMERCE_GIT_IDENTITY: !!null
 ECOMMERCE_REPOS:
   - PROTOCOL: "{{ COMMON_GIT_PROTOCOL }}"
     DOMAIN: "{{ COMMON_GIT_MIRROR }}"
-    PATH: "EDUlib"
+    PATH: "{{ COMMON_GIT_PATH }}"
     REPO: "ecommerce.git"
-    VERSION: "edulib-juniper.alpha1"
+    VERSION: "{{ ECOMMERCE_VERSION }}"
     DESTINATION: "{{ ecommerce_code_dir }}"
     SSH_KEY: "{{ ECOMMERCE_GIT_IDENTITY }}"
 
@@ -32,14 +32,10 @@ ECOMMERCE_SSL_NGINX_PORT: 48130
 ECOMMERCE_MEMCACHE:
   - localhost:11211
 
-#####ECOMMERCE_DATABASE_NAME: ecommerce
-#####ECOMMERCE_DATABASE_USER: ecomm001
-ECOMMERCE_DATABASE_NAME: ecommerce200
-ECOMMERCE_DATABASE_USER: discov001
+ECOMMERCE_DATABASE_NAME: ecommerce
+ECOMMERCE_DATABASE_USER: ecomm001
 ECOMMERCE_DATABASE_PASSWORD: password
-ECOMMERCE_DATABASE_CONN_MAX_AGE: 60
-#####ECOMMERCE_DATABASE_HOST: localhost
-ECOMMERCE_DATABASE_HOST: 10.0.1.165
+ECOMMERCE_DATABASE_HOST: localhost
 
 #####ECOMMERCE_VERSION: "master"
 ECOMMERCE_VERSION: "edulib-juniper.alpha1"
@@ -48,31 +44,21 @@ ECOMMERCE_DJANGO_SETTINGS_MODULE: "ecommerce.settings.local"
 
 ECOMMERCE_SESSION_EXPIRE_AT_BROWSER_CLOSE: false
 ECOMMERCE_SECRET_KEY: 'Your secret key here'
-#####ECOMMERCE_LANGUAGE_CODE: 'en'
-ECOMMERCE_LANGUAGE_CODE: 'fr'
+ECOMMERCE_LANGUAGE_CODE: 'en'
 ECOMMERCE_LANGUAGE_COOKIE_NAME: 'openedx-language-preference'
-#####ECOMMERCE_EDX_API_KEY: 'PUT_YOUR_API_KEY_HERE'  # This should match the value set for edxapp
-ECOMMERCE_EDX_API_KEY: 'abcd1234.12345.12345'  # This should match the value set for edxapp
+ECOMMERCE_EDX_API_KEY: 'PUT_YOUR_API_KEY_HERE'  # This should match the value set for edxapp
 ECOMMERCE_ECOMMERCE_URL_ROOT: 'http://localhost:8002'
 ECOMMERCE_LOGOUT_URL: '{{ ECOMMERCE_ECOMMERCE_URL_ROOT }}/logout/'
-#####ECOMMERCE_LMS_URL_ROOT: 'http://127.0.0.1:8000'
-ECOMMERCE_LMS_URL_ROOT: 'https://cours-virginie.edulib.org'
+ECOMMERCE_LMS_URL_ROOT: 'http://127.0.0.1:8000'
 ECOMMERCE_JWT_ALGORITHM: 'HS256'
 ECOMMERCE_JWT_VERIFY_EXPIRATION: true
 ECOMMERCE_JWT_DECODE_HANDLER: 'ecommerce.extensions.api.handlers.jwt_decode_handler'
-#####ECOMMERCE_JWT_ISSUERS:
-#####  - ISSUER: "{{ COMMON_JWT_ISSUER }}"
-#####    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
-#####    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
-#####  - ISSUER: 'ecommerce_worker'  # Must match the value of JWT_ISSUER configured for the ecommerce worker.
-#####    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
-#####    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
 ECOMMERCE_JWT_ISSUERS:
-  - ISSUER: "https://cours-virginie.edulib.org/oauth2"
-    AUDIENCE: "lms-key"
-    SECRET_KEY: "abcd1234.12345.12345"
+  - ISSUER: "{{ COMMON_JWT_ISSUER }}"
+    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
+    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
   - ISSUER: 'ecommerce_worker'  # Must match the value of JWT_ISSUER configured for the ecommerce worker.
-    AUDIENCE: "lms-key"
+    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
     SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
 
 ECOMMERCE_JWT_LEEWAY: 1
@@ -89,21 +75,19 @@ ECOMMERCE_SAILTHRU_KEY: 'sailthru key here'
 ECOMMERCE_SAILTHRU_SECRET: 'sailthru secret here'
 
 # Used to automatically configure OAuth2 Client
-#####ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY: 'ecommerce-sso-key'
-#####ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET: 'ecommerce-sso-secret'
-#####ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY: 'ecommerce-backend-service-key'
-#####ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_SECRET: 'ecommerce-backend-service-secret'
 ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY: 'ecommerce-sso-key'
 ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET: 'ecommerce-sso-secret'
 ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY: 'ecommerce-backend-service-key'
 ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_SECRET: 'ecommerce-backend-service-secret'
 ECOMMERCE_SOCIAL_AUTH_REDIRECT_IS_HTTPS: false
+# NOTE: Deprecate these OIDC settings post-DOP-removal for ecommerce.
+ECOMMERCE_SOCIAL_AUTH_EDX_OIDC_KEY: 'ecommerce-key'
+ECOMMERCE_SOCIAL_AUTH_EDX_OIDC_SECRET: 'ecommerce-secret'
 
 # Settings for affiliate cookie tracking
 ECOMMERCE_AFFILIATE_COOKIE_NAME: '{{ EDXAPP_AFFILIATE_COOKIE_NAME | default("dev_affiliate_id") }}'
 
-#####ECOMMERCE_OSCAR_FROM_EMAIL: 'oscar@example.com'
-ECOMMERCE_OSCAR_FROM_EMAIL: 'facturation@edulib.org'
+ECOMMERCE_OSCAR_FROM_EMAIL: 'oscar@example.com'
 
 # NOTE: The contents of the certificates should be set in private configuration
 ecommerce_apple_pay_merchant_certificate_directory: '/edx/etc/ssl'
@@ -143,15 +127,6 @@ ECOMMERCE_PAYPAL_RECEIPT_URL: '/checkout/receipt/'
 ECOMMERCE_PAYPAL_CANCEL_URL: '/checkout/cancel-checkout/'
 ECOMMERCE_PAYPAL_ERROR_URL: '/checkout/error/'
 
-# Paysafe
-ECOMMERCE_PAYSAFE_API_KEY: 'SET-ME-PLEASE'
-ECOMMERCE_PAYSAFE_API_PASSWORD: 'SET-ME-PLEASE'
-ECOMMERCE_PAYSAFE_ACCOUNT_NUMBER: 'SET-ME-PLEASE'
-ECOMMERCE_PAYSAFE_ENVIRONMENT: 'SET-ME-PLEASE'
-ECOMMERCE_PAYSAFE_RECEIPT_PATH: 'PAYMENT_PROCESSOR_RECEIPT_PATH'
-ECOMMERCE_PAYSAFE_CANCEL_CHECKOUT_PATH: 'PAYMENT_PROCESSOR_CANCEL_PATH'
-ECOMMERCE_PAYSAFE_ECOMMERCE_PATH: 'SET-ME-PLEASE'
-
 ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
   edx:
     cybersource:
@@ -182,14 +157,7 @@ ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
       receipt_url: '{{ ECOMMERCE_PAYPAL_RECEIPT_URL }}'
       cancel_checkout_path: '{{ ECOMMERCE_PAYPAL_CANCEL_URL }}'
       error_url: '{{ ECOMMERCE_PAYPAL_ERROR_URL }}'
-    paysafe: '{{ }}'
-      api_key: '{{ ECOMMERCE_PAYSAFE_API_KEY }}'
-      api_password: '{{ ECOMMERCE_PAYSAFE_API_PASSWORD }}'
-      account_number: '{{ ECOMMERCE_PAYSAFE_ACCOUNT_NUMBER }}'
-      environment: '{{ ECOMMERCE_PAYSAFE_ENVIRONMENT }}'
-      receipt_path: '{{ ECOMMERCE_PAYSAFE_RECEIPT_PATH }}'
-      cancel_checkout_path: '{{ ECOMMERCE_PAYSAFE_CANCEL_CHECKOUT_PATH }}'
-      cancel_ecommerce_path: '{{ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH }}'
+
 # JWT payload user attribute mapping
 ECOMMERCE_EDX_DRF_EXTENSIONS:
   JWT_PAYLOAD_USER_ATTRIBUTE_MAPPING:
@@ -200,7 +168,7 @@ ECOMMERCE_EDX_DRF_EXTENSIONS:
     user_id: 'lms_user_id'
   JWT_PAYLOAD_MERGEABLE_USER_ATTRIBUTES:
     - 'tracking_context'
-  OAUTH2_USER_INFO_URL: '{{ edx_django_service_oauth2_url_root }}/user_info'
+  OAUTH2_USER_INFO_URL: '{{ edx_django_service_oidc_url_root }}/user_info'
 
 # Theming
 ECOMMERCE_PLATFORM_NAME: 'Your Platform Name Here'
@@ -224,7 +192,7 @@ ECOMMERCE_BROKER_URL: '{{ ECOMMERCE_BROKER_TRANSPORT }}://{{ ECOMMERCE_BROKER_US
 ECOMMERCE_DISCOVERY_SERVICE_URL: 'http://localhost:8008'
 ECOMMERCE_ENTERPRISE_URL: '{{ ECOMMERCE_LMS_URL_ROOT }}'
 
-#####ECOMMERCE_CORS_ORIGIN_WHITELIST: []
+ECOMMERCE_CORS_ORIGIN_WHITELIST: []
 ECOMMERCE_CORS_URLS_REGEX: ''
 ECOMMERCE_CORS_ALLOW_CREDENTIALS: false
 
@@ -272,7 +240,7 @@ ecommerce_service_config_overrides:
   CSRF_COOKIE_SECURE: "{{ ECOMMERCE_CSRF_COOKIE_SECURE }}"
   SESSION_COOKIE_SECURE: '{{ ECOMMERCE_SESSION_COOKIE_SECURE}}'
 
-#####  CORS_ORIGIN_WHITELIST: "{{ ECOMMERCE_CORS_ORIGIN_WHITELIST }}"
+  CORS_ORIGIN_WHITELIST: "{{ ECOMMERCE_CORS_ORIGIN_WHITELIST }}"
   CORS_URLS_REGEX: "{{ ECOMMERCE_CORS_URLS_REGEX }}"
   CORS_ALLOW_CREDENTIALS: "{{ ECOMMERCE_CORS_ALLOW_CREDENTIALS }}"
 
@@ -350,7 +318,7 @@ ecommerce_redhat_pkgs: []
 ecommerce_post_migrate_commands:
   - command: './manage.py oscar_populate_countries --initial-only'
     when: true
-  - command: './manage.py create_or_update_site --site-id=1 --site-domain={{ ECOMMERCE_ECOMMERCE_URL_ROOT.split("://")[1] }} --partner-code=edX --partner-name="Open edX" --lms-url-root={{ ECOMMERCE_LMS_URL_ROOT }} --client-side-payment-processor=cybersource --payment-processors=cybersource,paypal --sso-client-id={{ ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY }} --sso-client-secret={{ ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET }} --backend-service-client-id={{ ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY }} --backend-service-client-secret={{ ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_SECRET }} --from-email staff@example.com --discovery_api_url={{ ECOMMERCE_DISCOVERY_SERVICE_URL }}/api/v1/'
+  - command: './manage.py create_or_update_site --site-id=1 --site-domain={{ ECOMMERCE_ECOMMERCE_URL_ROOT.split("://")[1] }} --partner-code=edX --partner-name="Open edX" --lms-url-root={{ ECOMMERCE_LMS_URL_ROOT }} --client-side-payment-processor=cybersource --payment-processors=cybersource,paypal --client-id={{ ECOMMERCE_SOCIAL_AUTH_EDX_OIDC_KEY }} --client-secret={{ ECOMMERCE_SOCIAL_AUTH_EDX_OIDC_SECRET }} --sso-client-id={{ ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY }} --sso-client-secret={{ ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET }} --backend-service-client-id={{ ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY }} --backend-service-client-secret={{ ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_SECRET }} --from-email staff@example.com --discovery_api_url={{ ECOMMERCE_DISCOVERY_SERVICE_URL }}/api/v1/'
     when: '{{ ecommerce_create_demo_data }}'
   - command: './manage.py create_demo_data --partner=edX'
     when: '{{ ecommerce_create_demo_data }}'
