@@ -55,13 +55,6 @@ ECOMMERCE_LMS_URL_ROOT: 'https://cours-virginie.edulib.org'
 ECOMMERCE_JWT_ALGORITHM: 'HS256'
 ECOMMERCE_JWT_VERIFY_EXPIRATION: true
 ECOMMERCE_JWT_DECODE_HANDLER: 'ecommerce.extensions.api.handlers.jwt_decode_handler'
-#####ECOMMERCE_JWT_ISSUERS:
-#####  - ISSUER: "{{ COMMON_JWT_ISSUER }}"
-#####    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
-#####    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
-#####  - ISSUER: 'ecommerce_worker'  # Must match the value of JWT_ISSUER configured for the ecommerce worker.
-#####    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
-#####    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
 ECOMMERCE_JWT_ISSUERS:
   - ISSUER: "https://cours-virginie.edulib.org/oauth2"
     AUDIENCE: "lms-key"
@@ -84,10 +77,6 @@ ECOMMERCE_SAILTHRU_KEY: 'sailthru key here'
 ECOMMERCE_SAILTHRU_SECRET: 'sailthru secret here'
 
 # Used to automatically configure OAuth2 Client
-#####ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY: 'ecommerce-sso-key'
-#####ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET: 'ecommerce-sso-secret'
-#####ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY: 'ecommerce-backend-service-key'
-#####ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_SECRET: 'ecommerce-backend-service-secret'
 ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY: 'ecommerce-sso-key'
 ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET: 'ecommerce-sso-secret'
 ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY: 'ecommerce-backend-service-key'
@@ -149,14 +138,6 @@ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH: 'SET-ME-PLEASE'
 
 ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
   edx:
-    paysafe:
-      api_key: '{{ ECOMMERCE_PAYSAFE_API_KEY }}'
-      api_password: '{{ ECOMMERCE_PAYSAFE_API_PASSWORD }}'
-      account_number: '{{ ECOMMERCE_PAYSAFE_ACCOUNT_NUMBER }}'
-      environment: '{{ ECOMMERCE_PAYSAFE_ENVIRONMENT }}'
-      receipt_path: '{{ ECOMMERCE_PAYSAFE_RECEIPT_PATH }}'
-      cancel_checkout_path: '{{ ECOMMERCE_PAYSAFE_CANCEL_CHECKOUT_PATH }}'
-      cancel_ecommerce_path: '{{ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH }}'
     cybersource:
       merchant_id: '{{ ECOMMERCE_CYBERSOURCE_MERCHANT_ID }}'
       profile_id: '{{ ECOMMERCE_CYBERSOURCE_PROFILE_ID }}'
@@ -185,7 +166,14 @@ ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
       receipt_url: '{{ ECOMMERCE_PAYPAL_RECEIPT_URL }}'
       cancel_checkout_path: '{{ ECOMMERCE_PAYPAL_CANCEL_URL }}'
       error_url: '{{ ECOMMERCE_PAYPAL_ERROR_URL }}'
-
+    paysafe:
+      api_key: '{{ ECOMMERCE_PAYSAFE_API_KEY }}'
+      api_password: '{{ ECOMMERCE_PAYSAFE_API_PASSWORD }}'
+      account_number: '{{ ECOMMERCE_PAYSAFE_ACCOUNT_NUMBER }}'
+      environment: '{{ ECOMMERCE_PAYSAFE_ENVIRONMENT }}'
+      receipt_path: '{{ ECOMMERCE_PAYSAFE_RECEIPT_PATH }}'
+      cancel_checkout_path: '{{ ECOMMERCE_PAYSAFE_CANCEL_CHECKOUT_PATH }}'
+      cancel_ecommerce_path: '{{ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH }}'
 # JWT payload user attribute mapping
 ECOMMERCE_EDX_DRF_EXTENSIONS:
   JWT_PAYLOAD_USER_ATTRIBUTE_MAPPING:
