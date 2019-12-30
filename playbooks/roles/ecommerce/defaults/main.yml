@@ -149,6 +149,14 @@ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH: 'SET-ME-PLEASE'
 
 ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
   edx:
+    paysafe:
+      api_key: '{{ ECOMMERCE_PAYSAFE_API_KEY }}'
+      api_password: '{{ ECOMMERCE_PAYSAFE_API_PASSWORD }}'
+      account_number: '{{ ECOMMERCE_PAYSAFE_ACCOUNT_NUMBER }}'
+      environment: '{{ ECOMMERCE_PAYSAFE_ENVIRONMENT }}'
+      receipt_path: '{{ ECOMMERCE_PAYSAFE_RECEIPT_PATH }}'
+      cancel_checkout_path: '{{ ECOMMERCE_PAYSAFE_CANCEL_CHECKOUT_PATH }}'
+      cancel_ecommerce_path: '{{ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH }}'
     cybersource:
       merchant_id: '{{ ECOMMERCE_CYBERSOURCE_MERCHANT_ID }}'
       profile_id: '{{ ECOMMERCE_CYBERSOURCE_PROFILE_ID }}'
@@ -177,14 +185,7 @@ ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
       receipt_url: '{{ ECOMMERCE_PAYPAL_RECEIPT_URL }}'
       cancel_checkout_path: '{{ ECOMMERCE_PAYPAL_CANCEL_URL }}'
       error_url: '{{ ECOMMERCE_PAYPAL_ERROR_URL }}'
-    paysafe:
-      api_key: '{{ ECOMMERCE_PAYSAFE_API_KEY }}'
-      api_password: '{{ ECOMMERCE_PAYSAFE_API_PASSWORD }}'
-      account_number: '{{ ECOMMERCE_PAYSAFE_ACCOUNT_NUMBER }}'
-      environment: '{{ ECOMMERCE_PAYSAFE_ENVIRONMENT }}'
-      receipt_path: '{{ ECOMMERCE_PAYSAFE_RECEIPT_PATH }}'
-      cancel_checkout_path: '{{ ECOMMERCE_PAYSAFE_CANCEL_CHECKOUT_PATH }}'
-      cancel_ecommerce_path: '{{ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH }}'
+
 # JWT payload user attribute mapping
 ECOMMERCE_EDX_DRF_EXTENSIONS:
   JWT_PAYLOAD_USER_ATTRIBUTE_MAPPING:
