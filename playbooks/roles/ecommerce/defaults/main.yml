@@ -33,8 +33,6 @@ ECOMMERCE_SSL_NGINX_PORT: 48130
 ECOMMERCE_MEMCACHE:
   - localhost:11211
 
-#####ECOMMERCE_DATABASE_NAME: ecommerce
-#####ECOMMERCE_DATABASE_USER: ecomm001
 ECOMMERCE_DATABASE_NAME: ecommerce200
 ECOMMERCE_DATABASE_USER: discov001
 ECOMMERCE_DATABASE_PASSWORD: password
@@ -42,10 +40,8 @@ ECOMMERCE_DATABASE_CONN_MAX_AGE: 60
 #####ECOMMERCE_DATABASE_HOST: localhost
 ECOMMERCE_DATABASE_HOST: 10.0.1.165
 
-#####ECOMMERCE_VERSION: "master"
 ECOMMERCE_VERSION: "edulib-juniper.alpha1"
-#####ECOMMERCE_DJANGO_SETTINGS_MODULE: "ecommerce.settings.production"
-ECOMMERCE_DJANGO_SETTINGS_MODULE: "ecommerce.settings.local"
+ECOMMERCE_DJANGO_SETTINGS_MODULE: "ecommerce.settings.production"
 
 ECOMMERCE_SESSION_EXPIRE_AT_BROWSER_CLOSE: false
 ECOMMERCE_SECRET_KEY: 'Your secret key here'
@@ -56,18 +52,10 @@ ECOMMERCE_LANGUAGE_COOKIE_NAME: 'openedx-language-preference'
 ECOMMERCE_EDX_API_KEY: 'abcd1234.12345.12345'  # This should match the value set for edxapp
 ECOMMERCE_ECOMMERCE_URL_ROOT: 'http://localhost:8002'
 ECOMMERCE_LOGOUT_URL: '{{ ECOMMERCE_ECOMMERCE_URL_ROOT }}/logout/'
-#####ECOMMERCE_LMS_URL_ROOT: 'http://127.0.0.1:8000'
 ECOMMERCE_LMS_URL_ROOT: 'https://cours-virginie.edulib.org'
 ECOMMERCE_JWT_ALGORITHM: 'HS256'
 ECOMMERCE_JWT_VERIFY_EXPIRATION: true
 ECOMMERCE_JWT_DECODE_HANDLER: 'ecommerce.extensions.api.handlers.jwt_decode_handler'
-#####ECOMMERCE_JWT_ISSUERS:
-#####  - ISSUER: "{{ COMMON_JWT_ISSUER }}"
-#####    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
-#####    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
-#####  - ISSUER: 'ecommerce_worker'  # Must match the value of JWT_ISSUER configured for the ecommerce worker.
-#####    AUDIENCE: "{{ COMMON_JWT_AUDIENCE }}"
-#####    SECRET_KEY: "{{ COMMON_JWT_SECRET_KEY }}"
 ECOMMERCE_JWT_ISSUERS:
   - ISSUER: "https://cours-virginie.edulib.org/oauth2"
     AUDIENCE: "lms-key"
@@ -155,14 +143,6 @@ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH: 'SET-ME-PLEASE'
 
 ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
   edx:
-    paysafe:
-      api_key: '{{ ECOMMERCE_PAYSAFE_API_KEY }}'
-      api_password: '{{ ECOMMERCE_PAYSAFE_API_PASSWORD }}'
-      account_number: '{{ ECOMMERCE_PAYSAFE_ACCOUNT_NUMBER }}'
-      environment: '{{ ECOMMERCE_PAYSAFE_ENVIRONMENT }}'
-      receipt_path: '{{ ECOMMERCE_PAYSAFE_RECEIPT_PATH }}'
-      cancel_checkout_path: '{{ ECOMMERCE_PAYSAFE_CANCEL_CHECKOUT_PATH }}'
-      cancel_ecommerce_path: '{{ ECOMMERCE_PAYSAFE_ECOMMERCE_PATH }}'
     cybersource:
       merchant_id: '{{ ECOMMERCE_CYBERSOURCE_MERCHANT_ID }}'
       profile_id: '{{ ECOMMERCE_CYBERSOURCE_PROFILE_ID }}'
@@ -191,34 +171,7 @@ ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
       receipt_url: '{{ ECOMMERCE_PAYPAL_RECEIPT_URL }}'
       cancel_checkout_path: '{{ ECOMMERCE_PAYPAL_CANCEL_URL }}'
       error_url: '{{ ECOMMERCE_PAYPAL_ERROR_URL }}'
-
-# JWT payload user attribute mapping
-ECOMMERCE_EDX_DRF_EXTENSIONS:
-      secret_key: '{{ ECOMMERCE_CYBERSOURCE_SECRET_KEY }}'
-      transaction_key: '{{ ECOMMERCE_CYBERSOURCE_TRANSACTION_KEY }}'
-      payment_page_url: '{{ ECOMMERCE_CYBERSOURCE_PAYMENT_PAGE_URL }}'
-      receipt_page_url: '{{ ECOMMERCE_CYBERSOURCE_RECEIPT_PAGE_URL }}'
-      cancel_page_url: '{{ ECOMMERCE_CYBERSOURCE_CANCEL_PAGE_URL }}'
-      soap_api_url: '{{ ECOMMERCE_CYBERSOURCE_SOAP_API_URL }}'
-      send_level_2_3_details: '{{ ECOMMERCE_CYBERSOURCE_SEND_LEVEL_2_3_DETAILS }}'
-      sop_profile_id: '{{ ECOMMERCE_CYBERSOURCE_SOP_PROFILE_ID }}'
-      sop_access_key: '{{ ECOMMERCE_CYBERSOURCE_SOP_ACCESS_KEY }}'
-      sop_secret_key: '{{ ECOMMERCE_CYBERSOURCE_SOP_SECRET_KEY }}'
-      sop_payment_page_url: '{{ ECOMMERCE_CYBERSOURCE_SOP_PAYMENT_PAGE_URL }}'
-      # NOTE: These are simple placeholders meant to show what keys are needed for Apple Pay. These values
-      # should be overwritten in private configuration.
-      apple_pay_merchant_identifier: '{{ ECOMMERCE_APPLE_PAY_MERCHANT_IDENTIFIER }}'
-      apple_pay_merchant_id_domain_association: '{{ ECOMMERCE_APPLE_PAY_MERCHANT_ID_DOMAIN_ASSOCIATION }}'
-      apple_pay_merchant_id_certificate_path: '{{ ecommerce_apple_pay_merchant_certificate_path }}'
-      apple_pay_country_code: '{{ ECOMMERCE_APPLE_PAY_COUNTRY_CODE }}'
-    paypal:
-      mode: '{{ ECOMMERCE_PAYPAL_MODE }}'
-      client_id: '{{ ECOMMERCE_PAYPAL_CLIENT_ID }}'
-      client_secret: '{{ ECOMMERCE_PAYPAL_CLIENT_SECRET }}'
-      receipt_url: '{{ ECOMMERCE_PAYPAL_RECEIPT_URL }}'
-      cancel_checkout_path: '{{ ECOMMERCE_PAYPAL_CANCEL_URL }}'
-      error_url: '{{ ECOMMERCE_PAYPAL_ERROR_URL }}'
-    paysafe: '{{ }}'
+    paysafe:
       api_key: '{{ ECOMMERCE_PAYSAFE_API_KEY }}'
       api_password: '{{ ECOMMERCE_PAYSAFE_API_PASSWORD }}'
       account_number: '{{ ECOMMERCE_PAYSAFE_ACCOUNT_NUMBER }}'
