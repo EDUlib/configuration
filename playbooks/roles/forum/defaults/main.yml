@@ -24,9 +24,11 @@ FORUM_MONGO_AUTH_DB: ""
 # Can be one of :scram, :mongodb_cr, :mongodb_x509, :plain, or empty string "" if no credentials.
 FORUM_MONGO_AUTH_MECH: ":scram"
 FORUM_MONGO_USE_SSL: false
-FORUM_MONGO_URL: "mongodb://{{ FORUM_MONGO_USER }}:{{ FORUM_MONGO_PASSWORD }}@10.0.1.165:{{ FORUM_MONGO_PORT }}/{{ FORUM_MONGO_DATABASE }}"
-FORUM_SINATRA_ENV: "development"
-FORUM_RACK_ENV: "development"
+#####FORUM_MONGO_URL: "mongodb://{{ FORUM_MONGO_USER }}:{{ FORUM_MONGO_PASSWORD }}@10.0.1.165:{{ FORUM_MONGO_PORT }}/{{ FORUM_MONGO_DATABASE }}"
+#####FORUM_MONGO_URL: "mongodb://{{ FORUM_MONGO_USER }}:{{ FORUM_MONGO_PASSWORD }}@10.0.1.165:{{ FORUM_MONGO_PORT }}/{{ FORUM_MONGO_DATABASE }}"
+FORUM_MONGO_URL: "mongodb://{{ FORUM_MONGO_USER }}:{{ FORUM_MONGO_PASSWORD }}@{%- for host in FORUM_MONGO_HOSTS -%}{{ host }}:{{ FORUM_MONGO_PORT }}{%- if not loop.last -%},{%- endif -%}{%- endfor -%}/{{ FORUM_MONGO_DATABASE }}{%- if FORUM_MONGO_TAGS -%}?tags={{ FORUM_MONGO_TAGS }}{%- endif -%}"
+FORUM_SINATRA_ENV: "production"
+FORUM_RACK_ENV: "production"
 FORUM_NGINX_PORT: "18080"
 # FORUM_API_KEY must match EDXAPP_COMMENTS_SERVICE_KEY
 FORUM_API_KEY: "password"
@@ -82,8 +84,8 @@ forum_env:
   <<: *forum_base_env
 devstack_forum_env:
   <<: *forum_base_env
-  RACK_ENV: "development"
-  SINATRA_ENV: "development"
+  RACK_ENV: "production"
+  SINATRA_ENV: "production"
   SEARCH_SERVER: "http://edx.devstack.elasticsearch:9200/"
   SEARCH_SERVER_ES7: "http://edx.devstack.elasticsearch7:9200/"
   MONGOHQ_URL: "mongodb://cs_comments_service:password@edx.devstack.mongo:27017/cs_comments_service"
