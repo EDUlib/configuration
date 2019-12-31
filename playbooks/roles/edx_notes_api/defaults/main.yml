@@ -63,9 +63,9 @@ EDX_NOTES_API_DISABLE_TOKEN_CHECK: False
 EDX_NOTES_API_REPOS:
   - PROTOCOL: "{{ COMMON_GIT_PROTOCOL }}"
     DOMAIN: "{{ COMMON_GIT_MIRROR }}"
-    PATH: "{{ COMMON_GIT_PATH }}"
+    PATH: "EDUlib"
     REPO: edx-notes-api.git
-    VERSION: "{{ EDX_NOTES_API_VERSION }}"
+    VERSION: "edulib-juniper.alpha1"
     DESTINATION: "{{ edx_notes_api_code_dir }}"
     SSH_KEY: "{{ EDX_NOTES_API_GIT_SSH_KEY }}"
 
