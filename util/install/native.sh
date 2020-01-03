@@ -118,6 +118,7 @@ OPENEDX_RELEASE="edulib-juniper.alpha1"
 ##
 VERSION_VARS=(
     edx_platform_version
+    certs_version
     forum_version
     xqueue_version
     configuration_version
