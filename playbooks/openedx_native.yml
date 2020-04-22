@@ -51,16 +51,14 @@
     DISCOVERY_URL_ROOT: 'http://localhost:{{ DISCOVERY_NGINX_PORT }}'
     AWS_GATHER_FACTS: false
     COMMON_ENABLE_AWS_ROLE: false
-    ##### no ecommerce to start juniper.rc1 testing
-    #####ecommerce_create_demo_data: true
-    ##### no ecommerce to start juniper.rc1 testing
+    ecommerce_create_demo_data: false
     credentials_create_demo_data: true
     CONFIGURE_JWTS: true
     SANDBOX_ENABLE_BLOCKSTORE: false
     SANDBOX_ENABLE_DISCOVERY: true
-    SANDBOX_ENABLE_ECOMMERCE: true
+    SANDBOX_ENABLE_ECOMMERCE: false
     SANDBOX_ENABLE_ANALYTICS_API: true
-    SANDBOX_ENABLE_INSIGHTS: true
+    SANDBOX_ENABLE_INSIGHTS: false
     SANDBOX_ENABLE_RABBITMQ: true
     SANDBOX_ENABLE_NOTES: true
     DEMO_ROLE_ENABLED: true
@@ -95,17 +93,15 @@
     - edxapp
     - role: blockstore
       when: SANDBOX_ENABLE_BLOCKSTORE
-    ##### no ecommerce to start juniper.rc1 testing
-    #####- role: ecommerce
-    #####  when: SANDBOX_ENABLE_ECOMMERCE
-    #####- role: ecomworker
-    #####  ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
-    #####  when: SANDBOX_ENABLE_ECOMMERCE
-    ##### no ecommerce to start juniper.rc1 testing
+    - role: ecommerce
+      when: SANDBOX_ENABLE_ECOMMERCE
+    - role: ecomworker
+      ECOMMERCE_WORKER_BROKER_HOST: 127.0.0.1
+      when: SANDBOX_ENABLE_ECOMMERCE
     - role: analytics_api
       when: SANDBOX_ENABLE_ANALYTICS_API
-#####    - role: insights
-#####      when: SANDBOX_ENABLE_INSIGHTS
+    - role: insights
+      when: SANDBOX_ENABLE_INSIGHTS
     - role: edx_notes_api
       when: SANDBOX_ENABLE_NOTES
       # Run the nginx role to install edx_notes_api config since the app role
