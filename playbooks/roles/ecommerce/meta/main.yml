@@ -46,7 +46,7 @@ dependencies:
         CONN_MAX_AGE: '{{ ECOMMERCE_DATABASE_CONN_MAX_AGE }}'
         OPTIONS:
           connect_timeout: 10
-          init_command: "SET sql_mode='STRICT_TRANS_TABLES'"`
+          init_command: "SET sql_mode='STRICT_TRANS_TABLES'"
     edx_django_service_social_auth_edx_oauth2_key: '{{ ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_KEY }}'
     edx_django_service_social_auth_edx_oauth2_secret: '{{ ECOMMERCE_SOCIAL_AUTH_EDX_OAUTH2_SECRET }}'
     edx_django_service_backend_service_edx_oauth2_key: '{{ ECOMMERCE_BACKEND_SERVICE_EDX_OAUTH2_KEY }}'
