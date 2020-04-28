@@ -18,7 +18,7 @@ ECOMMERCE_REPOS:
     DOMAIN: "{{ COMMON_GIT_MIRROR }}"
     PATH: "EDUlib"
     REPO: "ecommerce.git"
-    VERSION: "edulib-juniper.alpha1"
+    VERSION: "edulib-juniper.rc1"
     DESTINATION: "{{ ecommerce_code_dir }}"
     SSH_KEY: "{{ ECOMMERCE_GIT_IDENTITY }}"
 
