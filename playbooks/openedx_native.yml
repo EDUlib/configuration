@@ -52,12 +52,12 @@
     DISCOVERY_URL_ROOT: 'http://localhost:{{ DISCOVERY_NGINX_PORT }}'
     AWS_GATHER_FACTS: false
     COMMON_ENABLE_AWS_ROLE: false
-    ecommerce_create_demo_data: false
+    ecommerce_create_demo_data: true
     credentials_create_demo_data: true
     CONFIGURE_JWTS: true
     SANDBOX_ENABLE_BLOCKSTORE: false
     SANDBOX_ENABLE_DISCOVERY: true
-    SANDBOX_ENABLE_ECOMMERCE: false
+    SANDBOX_ENABLE_ECOMMERCE: true
     SANDBOX_ENABLE_ANALYTICS_API: true
     SANDBOX_ENABLE_INSIGHTS: false
     SANDBOX_ENABLE_RABBITMQ: true
