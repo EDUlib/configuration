@@ -1,4 +1,6 @@
 ---
+# This file is created and updated by ansible, edit at your peril
+
 
 AFFILIATE_COOKIE_KEY: dev_affiliate_id
 API_ROOT: null
@@ -12,12 +14,11 @@ CACHES:
         BACKEND: django.core.cache.backends.memcached.MemcachedCache
         KEY_PREFIX: ecommerce
         LOCATION:
-        - edx.devstack.memcached:11211
+        - localhost:11211
 COMPREHENSIVE_THEME_DIRS:
 - /edx/var/edx-themes/edx-themes/ecommerce
 - /edx/app/ecommerce/ecommerce/ecommerce/themes
 CORS_ALLOW_CREDENTIALS: false
-CORS_ORIGIN_WHITELIST: []
 CORS_URLS_REGEX: ''
 CSRF_COOKIE_SECURE: false
 DATABASES:
@@ -25,17 +26,17 @@ DATABASES:
         ATOMIC_REQUESTS: true
         CONN_MAX_AGE: 60
         ENGINE: django.db.backends.mysql
-        HOST: edx.devstack.mysql
-        NAME: ecommerce
+        HOST: 10.0.1.165
+        NAME: ecommerce200
         OPTIONS:
             connect_timeout: 10
             init_command: SET sql_mode='STRICT_TRANS_TABLES'
         PASSWORD: password
         PORT: '3306'
-        USER: ecomm001
+        USER: discov001
 DEFAULT_SITE_THEME: null
-ECOMMERCE_URL_ROOT: http://localhost:18130
-EDX_API_KEY: PUT_YOUR_API_KEY_HERE
+ECOMMERCE_URL_ROOT: https://cours-virginie.edulib.org:18130
+EDX_API_KEY: abcd1234.12345.12345
 EDX_DRF_EXTENSIONS:
     JWT_PAYLOAD_MERGEABLE_USER_ATTRIBUTES:
     - tracking_context
@@ -45,29 +46,33 @@ EDX_DRF_EXTENSIONS:
         full_name: full_name
         tracking_context: tracking_context
         user_id: lms_user_id
-    OAUTH2_USER_INFO_URL: http://edx.devstack.lms:18000/oauth2/user_info
+    OAUTH2_USER_INFO_URL: https://cours-virginie.edulib.org/oauth2/user_info
+EMAIL_BACKEND: django.core.mail.backends.smtp.EmailBackend
+EMAIL_HOST: localhost
+EMAIL_PORT: 25
+EMAIL_USE_TLS: false
 ENABLE_COMPREHENSIVE_THEMING: false
 ENROLLMENT_FULFILLMENT_TIMEOUT: 7
-ENTERPRISE_SERVICE_URL: http://edx.devstack.lms:18000/enterprise/
-ENTERPRISE_LEARNER_PORTAL_HOSTNAME: localhost:8734
+ENTERPRISE_SERVICE_URL: https://cours-virginie.edulib.org/enterprise/
 EXTRA_APPS: []
 JWT_AUTH:
     JWT_ALGORITHM: HS256
     JWT_AUTH_COOKIE_HEADER_PAYLOAD: edx-jwt-cookie-header-payload
     JWT_AUTH_COOKIE_SIGNATURE: edx-jwt-cookie-signature
+    JWT_AUTH_REFRESH_COOKIE: edx-jwt-refresh-cookie
     JWT_DECODE_HANDLER: ecommerce.extensions.api.handlers.jwt_decode_handler
     JWT_ISSUERS:
     -   AUDIENCE: lms-key
-        ISSUER: http://localhost:18000/oauth2
-        SECRET_KEY: lms-secret
+        ISSUER: https://cours-virginie.edulib.org/oauth2
+        SECRET_KEY: abcd1234.12345.12345
     -   AUDIENCE: lms-key
         ISSUER: ecommerce_worker
-        SECRET_KEY: lms-secret
+        SECRET_KEY: SET-ME-PLEASE
     JWT_LEEWAY: 1
-    JWT_PUBLIC_SIGNING_JWK_SET: ''
-    JWT_SECRET_KEY: lms-secret
+    JWT_PUBLIC_SIGNING_JWK_SET: '{"keys": [{"kty": "RSA", "n": "ixnKKGZyAYF2xVXLsrYZ1hGWefVejeAo6dZLWslEiIY6HFXa9Kgtzojed257Qo9QAPBJJh0MLw6ghXRHqYM2O96erKdMbzI73ZiprDrq2rVcCwE5UL9M2YASEEcpN7zyZ6ks-x0RHBWZY90AKiYWXjQJZGbeCYZlkIpt-XQMGZUDEdHtmUuNJDetj_kgqcNyHT8kXr0rxUCNHtpVkQKFXcbtXIrJ1Nqgp7jPCBD4LtN4KyJcfo1SpGsyhEuSOJZyrsyOzZUhtcnWp0gLpS7v6Zr2sNEVsDbjhEymiPRIErAkFamgkJLlT7_HW-0evsRhNdNjp9vt6uFyOY9uFes-xw", "kid": "DBZH67WQ", "e": "AQAB"}]}'
+    JWT_SECRET_KEY: abcd1234.12345.12345
     JWT_VERIFY_EXPIRATION: true
-LANGUAGE_CODE: en
+LANGUAGE_CODE: fr
 LANGUAGE_COOKIE_NAME: openedx-language-preference
 LOGGING_ROOT_OVERRIDES: {}
 LOGGING_SUBSECTION_OVERRIDES: {}
@@ -75,7 +80,7 @@ MEDIA_STORAGE_BACKEND:
     DEFAULT_FILE_STORAGE: django.core.files.storage.FileSystemStorage
     MEDIA_ROOT: /edx/var/ecommerce/media
     MEDIA_URL: /media/
-OSCAR_FROM_EMAIL: oscar@example.com
+OSCAR_FROM_EMAIL: facturation@edulib.org
 PAYMENT_MICROFRONTEND_URL: null
 PAYMENT_PROCESSOR_CONFIG:
     edx:
@@ -104,12 +109,21 @@ PAYMENT_PROCESSOR_CONFIG:
             sop_secret_key: SET-ME-PLEASE
             transaction_key: SET-ME-PLEASE
         paypal:
-            cancel_url: /checkout/cancel-checkout/
+            cancel_checkout_path: /checkout/cancel-checkout/
             client_id: SET-ME-PLEASE
             client_secret: SET-ME-PLEASE
             error_url: /checkout/error/
             mode: sandbox
             receipt_url: /checkout/receipt/
+        paysafe:
+            api_key: devcentre4133
+            api_password: B-qa2-0-54b640bb-302c0214635160e36f364d9f710be900436db25cc5cb0efe021448eb9731ced8a09cb73283050d48a8acb5c4e395
+            account_number: 89983967
+            environment: TEST
+            receipt_path: PAYMENT_PROCESSOR_RECEIPT_PATH
+            cancel_checkout_path: PAYMENT_PROCESSOR_CANCEL_PATH
+            cancel_ecommerce_path: SET-ME-PLEASE
+            ecommerce_path: https://cours-virginie.edulib.org:18130
 PLATFORM_NAME: Your Platform Name Here
 SAILTHRU_KEY: sailthru key here
 SAILTHRU_SECRET: sailthru secret here
@@ -117,15 +131,20 @@ SECRET_KEY: Your secret key here
 SESSION_COOKIE_SECURE: true
 SESSION_EXPIRE_AT_BROWSER_CLOSE: false
 SOCIAL_AUTH_EDX_OAUTH2_ISSUER: http://127.0.0.1:8000
-SOCIAL_AUTH_EDX_OAUTH2_KEY: ecommerce-sso-key
-SOCIAL_AUTH_EDX_OAUTH2_LOGOUT_URL: http://localhost:18000/logout
-SOCIAL_AUTH_EDX_OAUTH2_SECRET: ecommerce-sso-secret
+SOCIAL_AUTH_EDX_OAUTH2_KEY: AXoSzcku16IoVyjWFaDKxU9O4UCGpUn89e4sowtq
+SOCIAL_AUTH_EDX_OAUTH2_LOGOUT_URL: http://127.0.0.1:8000/logout
+SOCIAL_AUTH_EDX_OAUTH2_SECRET: tGxCEQkJ6ajDgWtcF11GNgaE6aZLY8zbx7bkbjp9kCghhp1HKd8LoqyUJ6ApRcHEZAuS0EFmKcOozmmLgHzRYnyCvoTNxaPqHK9ORoByMKgGl7UZ5lCETAqWFokzPCpU
 SOCIAL_AUTH_EDX_OAUTH2_URL_ROOT: http://127.0.0.1:8000
+SOCIAL_AUTH_EDX_OIDC_ID_TOKEN_DECRYPTION_KEY: ecommerce-secret
+SOCIAL_AUTH_EDX_OIDC_ISSUER: http://127.0.0.1:8000/oauth2
+SOCIAL_AUTH_EDX_OIDC_KEY: ecommerce-key
+SOCIAL_AUTH_EDX_OIDC_LOGOUT_URL: http://127.0.0.1:8000/logout
+SOCIAL_AUTH_EDX_OIDC_PUBLIC_URL_ROOT: http://127.0.0.1:8000/oauth2
+SOCIAL_AUTH_EDX_OIDC_SECRET: ecommerce-secret
+SOCIAL_AUTH_EDX_OIDC_URL_ROOT: http://127.0.0.1:8000/oauth2
 SOCIAL_AUTH_REDIRECT_IS_HTTPS: false
 STATICFILES_STORAGE: ecommerce.theming.storage.ThemeStorage
 STATIC_ROOT: /edx/var/ecommerce/staticfiles
 THEME_SCSS: sass/themes/default.scss
 TIME_ZONE: UTC
 USERNAME_REPLACEMENT_WORKER: OVERRIDE THIS WITH A VALID USERNAME
-SDN_CHECK_API_URL: https://api.trade.gov/gateway/v1/consolidated_screening_list/search
-SDN_CHECK_API_KEY: sdn search key here
