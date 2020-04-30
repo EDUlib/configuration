@@ -266,14 +266,10 @@ COMMON_DECRYPT_CONFIG_ENABLED: false
 COMMON_COPY_CONFIG_ENABLED: false
 
 # Disable logging of config rendering which has secrets
-#####COMMON_CONFIG_NO_LOGGING: True
-COMMON_CONFIG_NO_LOGGING: False
+COMMON_CONFIG_NO_LOGGING: True
 
 # Default sandbox build flag to false
-SANDBOX_CONFIG: False
-
-# Should we create the JWT settings?
-CONFIGURE_JWTS: false
+COMMON_SANDBOX_BUILD: False
 
 # Variable to control setting up the retirement services
 COMMON_RETIREMENT_SERVICE_SETUP: false
