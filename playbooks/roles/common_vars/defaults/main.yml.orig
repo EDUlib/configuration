@@ -105,10 +105,8 @@ COMMON_ENABLE_NEWRELIC_INFRASTRUCTURE: False
 COMMON_ENABLE_NEWRELIC_APP: False
 COMMON_ENABLE_MINOS: False
 COMMON_TAG_EC2_INSTANCE: False
-COMMON_BOTO_VERSION: '2.48.0'
-common_boto_version: "{{ COMMON_BOTO_VERSION }}"
-COMMON_NODE_VERSION: '12.13.0'
-common_node_version: "{{ COMMON_NODE_VERSION }}"
+common_boto_version: '2.48.0'
+common_node_version: '12.13.0'
 common_redhat_pkgs:
   - ntp
   - lynx
@@ -138,13 +136,13 @@ old_python_debian_pkgs:
   - "python2.7=2.7.10-0+{{ ansible_distribution_release }}1"
 
 
-COMMON_PIP_VERSION: '20.0.2'
-common_pip_version: "{{ COMMON_PIP_VERSION }}"
+common_pip_version: '19.3.1'
 
 common_pip_pkgs:
   - pip=={{ common_pip_version }}
-  - setuptools==44.1.0
-  - virtualenv==16.7.10
+  - setuptools==39.0.1
+  - virtualenv==15.2.0
+  - virtualenvwrapper==4.8.2
   - boto3
 
 common_web_user: www-data
@@ -268,17 +266,10 @@ COMMON_DECRYPT_CONFIG_ENABLED: false
 COMMON_COPY_CONFIG_ENABLED: false
 
 # Disable logging of config rendering which has secrets
-#####COMMON_CONFIG_NO_LOGGING: True
-COMMON_CONFIG_NO_LOGGING: False
+COMMON_CONFIG_NO_LOGGING: True
 
 # Default sandbox build flag to false
-SANDBOX_CONFIG: False
-
-# Should we create the JWT settings?
-CONFIGURE_JWTS: false
+COMMON_SANDBOX_BUILD: False
 
 # Variable to control setting up the retirement services
 COMMON_RETIREMENT_SERVICE_SETUP: false
-
-# How to log in as "lms" to xqueue.
-COMMON_XQUEUE_LMS_PASSWORD: password
