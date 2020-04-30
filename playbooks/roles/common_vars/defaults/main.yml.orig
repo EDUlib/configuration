@@ -55,7 +55,7 @@ COMMON_NPM_MIRROR_URL: 'https://registry.npmjs.org'
 COMMON_UBUNTU_APT_KEYSERVER: "http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search="
 
 common_digicert_name: "DigiCertSHA2SecureServerCA.crt"
-common_digicert_base_url: "https://cacerts.digicert.com/"
+common_digicert_base_url: "https://dl.cacerts.digicert.com/"
 
 COMMON_EDX_PPA: "deb http://ppa.edx.org {{ ansible_distribution_release }} main"
 COMMON_EDX_PPA_KEY_SERVER: "keyserver.ubuntu.com"
@@ -105,8 +105,8 @@ COMMON_ENABLE_NEWRELIC_INFRASTRUCTURE: False
 COMMON_ENABLE_NEWRELIC_APP: False
 COMMON_ENABLE_MINOS: False
 COMMON_TAG_EC2_INSTANCE: False
-COMMON_BOTO_VERSION: '2.48.0'
-COMMON_NODE_VERSION: '12.13.0'
+common_boto_version: '2.48.0'
+common_node_version: '12.13.0'
 common_redhat_pkgs:
   - ntp
   - lynx
@@ -115,8 +115,7 @@ common_redhat_pkgs:
   - git
   - unzip
   - acl
-
-common_debian_pkgs_default:
+common_debian_pkgs:
   - apt-transport-https
   - ntp
   - acl
@@ -126,20 +125,8 @@ common_debian_pkgs_default:
   - rsyslog
   - git
   - unzip
-  - net-tools
-  - python3-pip
-
-common_release_specific_debian_pkgs:
-  xenial:
-    - python-pip
-    - python2.7-dev
-  bionic:
-    - python-pip
-    - python3.5-dev
-  focal:
-    - python3.5-dev
-
-common_debian_pkgs: "{{ common_debian_pkgs_default + common_release_specific_debian_pkgs[ansible_distribution_release] }}"
+  - python-pip
+  - python2.7-dev
 
 common_debian_devstack_pkgs:
   - watchman
@@ -149,12 +136,13 @@ old_python_debian_pkgs:
   - "python2.7=2.7.10-0+{{ ansible_distribution_release }}1"
 
 
-COMMON_PIP_VERSION: '20.0.2'
+common_pip_version: '19.3.1'
 
 common_pip_pkgs:
-  - pip=={{ COMMON_PIP_VERSION }}
-  - setuptools==44.1.0
-  - virtualenv==16.7.10
+  - pip=={{ common_pip_version }}
+  - setuptools==39.0.1
+  - virtualenv==15.2.0
+  - virtualenvwrapper==4.8.2
   - boto3
 
 common_web_user: www-data
@@ -278,17 +266,10 @@ COMMON_DECRYPT_CONFIG_ENABLED: false
 COMMON_COPY_CONFIG_ENABLED: false
 
 # Disable logging of config rendering which has secrets
-#####COMMON_CONFIG_NO_LOGGING: True
-COMMON_CONFIG_NO_LOGGING: False
+COMMON_CONFIG_NO_LOGGING: True
 
 # Default sandbox build flag to false
-SANDBOX_CONFIG: False
-
-# Should we create the JWT settings?
-CONFIGURE_JWTS: false
+COMMON_SANDBOX_BUILD: False
 
 # Variable to control setting up the retirement services
 COMMON_RETIREMENT_SERVICE_SETUP: false
-
-# How to log in as "lms" to xqueue.
-COMMON_XQUEUE_LMS_PASSWORD: password
