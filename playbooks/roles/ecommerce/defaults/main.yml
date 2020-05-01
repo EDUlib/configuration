@@ -162,7 +162,6 @@ ECOMMERCE_PAYMENT_PROCESSOR_CONFIG:
       receipt_url: '{{ ECOMMERCE_PAYPAL_RECEIPT_URL }}'
       cancel_checkout_path: '{{ ECOMMERCE_PAYPAL_CANCEL_URL }}'
       error_url: '{{ ECOMMERCE_PAYPAL_ERROR_URL }}'
-
     paysafe:
       api_key: '{{ ECOMMERCE_PAYSAFE_API_KEY }}'
       api_password: '{{ ECOMMERCE_PAYSAFE_API_PASSWORD }}'
