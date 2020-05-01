@@ -37,10 +37,10 @@ dependencies:
     edx_django_service_databases:
       default:
         ENGINE: 'django.db.backends.mysql'
-        NAME: '{{ ECOMMERCE_DATABASE_NAME}}'
-        USER: '{{ ECOMMERCE_DATABASE_USER }}'
-        PASSWORD: '{{ ECOMMERCE_DATABASE_PASSWORD }}'
-        HOST: '{{ ECOMMERCE_DATABASE_HOST }}'
+        NAME: 'ecommerce200'
+        USER: 'discov001'
+        PASSWORD: 'password'
+        HOST: '10.0.1.165'
         PORT: 3306
         ATOMIC_REQUESTS: true
         CONN_MAX_AGE: '{{ ECOMMERCE_DATABASE_CONN_MAX_AGE }}'
