@@ -22,7 +22,7 @@
 
 ##### Modifs par EDULIB 20200421
     repo_edulib: "EDUlib"
-    version_edulib: "edulib-juniper.rc1"
+    version_edulib: "edulib-juniper.rc2"
 
     CERTS_REPO: 'https://github.com/{{ repo_edulib }}/edx-certificates.git'
     certs_version: "{{ version_edulib }}"
