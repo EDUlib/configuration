@@ -109,8 +109,8 @@ sudo -H pip install --upgrade virtualenv==16.7.10
 ##
 ## MODIFS PAR EDULIB 20200421
 ##
-CONFIGURATION_VERSION="edulib-juniper.rc1"
-OPENEDX_RELEASE="edulib-juniper.rc1"
+CONFIGURATION_VERSION="edulib-juniper.rc2"
+OPENEDX_RELEASE="edulib-juniper.rc2"
 
 ##
 ## Overridable version variables in the playbooks. Each can be overridden
