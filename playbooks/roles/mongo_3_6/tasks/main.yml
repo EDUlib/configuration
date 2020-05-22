@@ -110,19 +110,19 @@
     - "install"
     - "install:app-configuration"
 
-# This will error when run on a new replica set, so we ignore_errors
-# and connect anonymously next.
-- name: determine if there is a replica set already
-  mongodb_rs_status:
-    host: "{{ ansible_lo['ipv4']['address'] }}"
-    username: "{{ MONGO_ADMIN_USER }}"
-    password: "{{ MONGO_ADMIN_PASSWORD }}"
-  run_once: true
-  register: authed_replica_set_already_configured
-  ignore_errors: true
-  tags:
-    - "manage"
-    - "manage:db-replication"
+## This will error when run on a new replica set, so we ignore_errors
+## and connect anonymously next.
+#- name: determine if there is a replica set already
+#  mongodb_rs_status:
+#    host: "{{ ansible_lo['ipv4']['address'] }}"
+#    username: "{{ MONGO_ADMIN_USER }}"
+#    password: "{{ MONGO_ADMIN_PASSWORD }}"
+#  run_once: true
+#  register: authed_replica_set_already_configured
+#  ignore_errors: true
+#  tags:
+#    - "manage"
+#    - "manage:db-replication"
 
 - name: Try checking the replica set with no user/pass in case this is a new box
   mongodb_rs_status:
@@ -139,7 +139,7 @@
 - name: set facts that default to not initializing a replica set
   set_fact:
     initialize_replica_set: false
-    skip_replica_set: false
+    skip_replica_set: true
   tags:
     - "install"
     - "install:app-configuration"
@@ -314,7 +314,7 @@
 # a replica set in the 'determine if there is a replica set already' task.
 - name: Unset our skip initializing replica set fact so that mongod.conf gets a replica set
   set_fact:
-    skip_replica_set: false
+    skip_replica_set: true
   when: initialize_replica_set
   tags:
     - "manage"
