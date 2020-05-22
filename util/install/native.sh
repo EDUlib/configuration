@@ -107,10 +107,10 @@ sudo pip install --upgrade setuptools==44.1.0
 sudo -H pip install --upgrade virtualenv==16.7.10
 
 ##
-## MODIFS PAR EDULIB 20200421
+## MODIFS PAR EDULIB 20200522
 ##
-CONFIGURATION_VERSION="edulib-juniper.rc2"
-OPENEDX_RELEASE="edulib-juniper.rc2"
+CONFIGURATION_VERSION="edulib-juniper.rc3"
+OPENEDX_RELEASE="edulib-juniper.rc3"
 
 ##
 ## Overridable version variables in the playbooks. Each can be overridden
@@ -152,7 +152,7 @@ fi
 EXTRA_VARS="-e@$(pwd)/config.yml $EXTRA_VARS"
 
 ##
-## MODIFS PAR EDULIB 20200421
+## MODIFS PAR EDULIB 20200522
 ##
 if [ -n "$OPENEDX_RELEASE" ]; then
   EXTRA_VARS="-e edx_platform_version=$OPENEDX_RELEASE \
