@@ -31,7 +31,8 @@ mongodb_debian_pkgs:
 
 
 
-mongo_configure_replica_set: true
+#####mongo_configure_replica_set: true
+mongo_configure_replica_set: false
 
 # Vars Meant to be overridden
 MONGO_ADMIN_USER: 'admin'
