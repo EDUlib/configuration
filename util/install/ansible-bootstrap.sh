@@ -27,7 +27,7 @@ fi
 
 if [[ -z "${CONFIGURATION_VERSION}" ]]; then
 #####    CONFIGURATION_VERSION=${OPENEDX_RELEASE-master}
-  CONFIGURATION_VERSION="edulib-juniper.rc3"
+  CONFIGURATION_VERSION="edulib-juniper.master"
 fi
 
 if [[ -z "${UPGRADE_OS}" ]]; then
