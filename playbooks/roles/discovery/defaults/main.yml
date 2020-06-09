@@ -69,7 +69,7 @@ DISCOVERY_ELASTICSEARCH_INDEX_NAME: 'catalog'
 
 DISCOVERY_MEMCACHE: [ 'memcache' ]
 
-DISCOVERY_VERSION: "edulib-juniper.master"
+DISCOVERY_VERSION: "edulib-juniper.1"
 DISCOVERY_DJANGO_SETTINGS_MODULE: "course_discovery.settings.production"
 DISCOVERY_URL_ROOT: 'http://discovery:{{ DISCOVERY_NGINX_PORT }}'
 DISCOVERY_LOGOUT_URL: '{{ DISCOVERY_URL_ROOT }}/logout/'
