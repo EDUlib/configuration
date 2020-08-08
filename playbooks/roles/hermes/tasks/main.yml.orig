@@ -100,7 +100,7 @@
     state: directory
     owner: "{{ hermes_user }}"
     group: "{{ common_web_group }}"
-    mode: "0770"
+    mode: "0775"
   with_items:
     - "{{ hermes_download_dir }}"
   tags:
