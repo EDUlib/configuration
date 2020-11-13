@@ -33,8 +33,6 @@
     edx_platform_version: "{{ version_edulib }}"
     forum_source_repo: 'https://github.com/{{ repo_edulib }}/cs_comments_service.git'
     forum_version: "{{ version_edulib }}"
-    NOTIFIER_SOURCE_REPO: 'https://github.com/{{ repo_edulib }}/notifier.git'
-    NOTIFIER_VERSION: "{{ version_edulib }}" 
     xqueue_source_repo: 'https://github.com/{{ repo_edulib }}/xqueue.git'
     xqueue_version: "{{ version_edulib }}"
     XQUEUE_VERSION: "{{ version_edulib }}"
