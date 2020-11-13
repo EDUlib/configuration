@@ -34,12 +34,6 @@ dependencies:
     edx_django_service_language_code: '{{ ECOMMERCE_LANGUAGE_CODE }}'
     edx_django_service_secret_key: '{{ ECOMMERCE_SECRET_KEY }}'
     edx_django_service_memcache: '{{ ECOMMERCE_MEMCACHE }}'
-    #edx_django_service_default_db_host: '{{ ECOMMERCE_DATABASE_HOST }}'
-    #edx_django_service_default_db_name: '{{ ECOMMERCE_DATABASE_NAME }}'
-    #edx_django_service_default_db_atomic_requests: true
-    #edx_django_service_db_user: '{{ ECOMMERCE_DATABASE_USER }}'
-    #edx_django_service_db_password: '{{ ECOMMERCE_DATABASE_PASSWORD }}'
-    #edx_django_service_default_db_conn_max_age: '{{ ECOMMERCE_DATABASE_CONN_MAX_AGE }}'
     edx_django_service_databases:
       default:
         ENGINE: 'django.db.backends.mysql'
