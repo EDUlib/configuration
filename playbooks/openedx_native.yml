@@ -45,7 +45,6 @@
     THEMES_VERSION: "{{ version_edulib }}"
 ##### Modifs par EDULIB 20200522
 
->>>>>>> one commit edulib-ironwood.1rc1
     # Set to false if deployed behind another proxy/load balancer.
     NGINX_SET_X_FORWARDED_HEADERS: True
     DISCOVERY_URL_ROOT: 'http://localhost:{{ DISCOVERY_NGINX_PORT }}'
