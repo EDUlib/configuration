@@ -108,8 +108,8 @@
       nginx_sites:
       - edx_notes_api
       when: SANDBOX_ENABLE_NOTES
-    - role: demo
-      when: DEMO_ROLE_ENABLED
+#####    - role: demo
+#####      when: DEMO_ROLE_ENABLED
 #####    - oauth_client_setup
     - oraclejdk
     - role: elasticsearch
