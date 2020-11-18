@@ -10,7 +10,7 @@
 ##
 # Defaults for role redis
 # 
-REDIS_PASSWORD: !!null
+REDIS_PASSWORD: 'password'
 REDIS_BIND_IP: 127.0.0.1
 REDIS_PERSISTENCE_DIR: "/var/lib/redis"
 REDIS_MEMORY_LIMIT: "512mb"
