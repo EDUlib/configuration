@@ -27,7 +27,7 @@ fi
 
 if [[ -z "${CONFIGURATION_VERSION}" ]]; then
 #####    CONFIGURATION_VERSION=${OPENEDX_RELEASE-master}
-  CONFIGURATION_VERSION="edulib-koa.test01"
+  CONFIGURATION_VERSION="edulib-koa.1"
 fi
 
 if [[ -z "${UPGRADE_OS}" ]]; then

@@ -9,7 +9,7 @@ MFE_GIT_DOMAIN: '{{ COMMON_GIT_MIRROR }}'
 #####MFE_GIT_PATH: '{{ COMMON_GIT_PATH }}'
 MFE_GIT_PATH: 'EDUlib'
 #####MFE_VERSION: 'master'
-MFE_VERSION: 'edulib-koa.test01'
+MFE_VERSION: 'edulib-koa.1'
 MFE_GIT_IDENTITY: null
 
 MFE_CODE_DIR: '{{ MFE_HOME }}/{{ MFE_REPO }}'

@@ -18,7 +18,7 @@ ECOMMERCE_REPOS:
     DOMAIN: "{{ COMMON_GIT_MIRROR }}"
     PATH: "EDUlib"
     REPO: "ecommerce.git"
-    VERSION: "edulib-koa.test01"
+    VERSION: "edulib-koa.1"
     DESTINATION: "{{ ecommerce_code_dir }}"
     SSH_KEY: "{{ ECOMMERCE_GIT_IDENTITY }}"
 
@@ -38,7 +38,7 @@ ECOMMERCE_DATABASE_PASSWORD: password
 ECOMMERCE_DATABASE_HOST: 10.0.1.165
 ECOMMERCE_DATABASE_CONN_MAX_AGE: 60
 
-ECOMMERCE_VERSION: "edulib-koa.test01"
+ECOMMERCE_VERSION: "edulib-koa.1"
 ECOMMERCE_DJANGO_SETTINGS_MODULE: "ecommerce.settings.production"
 
 ECOMMERCE_SESSION_EXPIRE_AT_BROWSER_CLOSE: false
