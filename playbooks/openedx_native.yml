@@ -19,11 +19,11 @@
     EDXAPP_LMS_BASE_SCHEME: http
     COMMON_LMS_BASE_URL: "{{ EDXAPP_LMS_BASE_SCHEME }}://{{ EDXAPP_LMS_BASE }}"
     EDXAPP_LMS_NGINX_PORT: '80'
-    EDX_PLATFORM_VERSION: 'edulib-koa.test01'
+    EDX_PLATFORM_VERSION: 'edulib-koa.test02'
     edx_platform_version: "{{ EDX_PLATFORM_VERSION }}"
 
     repo_edulib: "EDUlib"
-    version_edulib: "edulib-koa.test01"
+    version_edulib: "edulib-koa.test02"
 
     CERTS_REPO: 'https://github.com/{{ repo_edulib }}/edx-certificates.git'
     certs_version: "{{ version_edulib }}"
